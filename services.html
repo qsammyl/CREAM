@@ -1,0 +1,441 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services — Credence Real Estate &amp; Asset Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/base.css" />
+<style>
+  .page-hero{position:relative;padding:170px 0 90px;color:#fff;background:#0F0E0C;overflow:hidden}
+  .page-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.75) 100%), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2400&q=80&auto=format&fit=crop') center/cover;filter:saturate(.85)}
+  .page-hero .container{position:relative;z-index:1}
+  .page-hero .crumbs{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:18px}
+  .page-hero .crumbs a{color:rgba(255,255,255,.8)}
+  .page-hero .crumbs .sep{margin:0 10px;opacity:.5}
+  .page-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(54px,7vw,108px);line-height:.98;letter-spacing:-0.02em;margin:0 0 24px}
+  .page-hero h1 em{font-style:italic;color:#E8DEC2}
+  .page-hero .sub{color:rgba(255,255,255,.78);font-size:18px;line-height:1.7;max-width:62ch}
+
+  .page-hero .index-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:48px}
+  .page-hero .index-row a{
+    padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);
+    transition:all .25s ease;backdrop-filter:blur(8px);background:rgba(255,255,255,.06);
+  }
+  .page-hero .index-row a:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+  /* Service block */
+  .svc-block{padding:clamp(80px,9vw,130px) 0;border-bottom:1px solid var(--line);scroll-margin-top:80px}
+  .svc-block:nth-child(odd){background:var(--bone)}
+  .svc-block:nth-child(even){background:var(--bone-2)}
+  .svc-block.dark{background:#0F0E0C;color:#fff;border-bottom-color:rgba(255,255,255,.1)}
+  .svc-block.dark .lead, .svc-block.dark p{color:rgba(255,255,255,.78)}
+  .svc-block.dark .eyebrow{color:rgba(255,255,255,.6)}
+  .svc-block.dark .step{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
+  .svc-block.dark .step .n{color:var(--gold)}
+  .svc-block.dark .step .t{color:#fff}
+  .svc-block.dark .step .d{color:rgba(255,255,255,.65)}
+  .svc-block.dark .imgblk{background:#222}
+
+  .svc-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
+  .svc-block.reverse .svc-grid{grid-template-columns:1.1fr 1fr}
+  .svc-block.reverse .svc-grid .info{order:2}
+  .svc-block.reverse .svc-grid .imgblk{order:1}
+
+  .svc-grid .info h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.2vw,68px);line-height:1.02;letter-spacing:-0.015em;margin:16px 0 24px}
+  .svc-grid .info h2 em{font-style:italic;color:var(--gold)}
+  .svc-grid .info p{font-size:17px;line-height:1.7;color:var(--ink-2);margin:0 0 18px}
+  .svc-grid .info .deliverables{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+  .svc-grid .info .deliverables .d{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--ink-2);line-height:1.45}
+  .svc-grid .info .deliverables .d .tick{
+    width:18px;height:18px;border-radius:50%;background:var(--emerald);color:#fff;
+    display:grid;place-items:center;flex:none;margin-top:1px;
+  }
+  .svc-block.dark .deliverables .d{color:rgba(255,255,255,.82)}
+  .svc-block.dark .deliverables .d .tick{background:var(--gold);color:var(--ink)}
+
+  .imgblk{
+    position:relative;aspect-ratio:4/5;border-radius:var(--r-l);overflow:hidden;background:var(--bone-3);
+    box-shadow:var(--shadow-3);
+  }
+  .imgblk img{width:100%;height:100%;object-fit:cover}
+  .imgblk .tag{
+    position:absolute;top:20px;left:20px;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    padding:8px 14px;border-radius:999px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  }
+  .imgblk .caption{
+    position:absolute;bottom:20px;left:20px;right:20px;
+    background:rgba(15,14,12,.7);backdrop-filter:blur(8px);
+    color:#fff;padding:14px 18px;border-radius:10px;
+    font-size:14px;line-height:1.4;
+  }
+  .imgblk .caption .ttl{font-family:var(--serif);font-size:18px;display:block;margin-bottom:2px}
+
+  /* Process steps */
+  .steps{
+    margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--line);border-left:1px solid var(--line);
+  }
+  .step{padding:24px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+  .step .n{font-family:var(--mono);font-size:11px;color:var(--gold-2);letter-spacing:.18em}
+  .step .t{font-family:var(--serif);font-size:20px;margin-top:8px;line-height:1.15;letter-spacing:-0.01em}
+  .step .d{font-size:13px;color:var(--ink-3);line-height:1.55;margin-top:6px}
+
+  /* Process overview */
+  .proc{background:var(--bone)}
+  .proc-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .pstep{padding:30px 0 24px;border-right:1px solid var(--line);padding-right:24px}
+  .pstep:last-child{border-right:0;padding-right:0}
+  .pstep:not(:first-child){padding-left:24px}
+  .pstep .n{font-family:var(--mono);font-size:11px;color:var(--gold-2);letter-spacing:.18em}
+  .pstep .t{font-family:var(--serif);font-size:24px;margin-top:8px;line-height:1.15;letter-spacing:-0.01em}
+  .pstep .d{font-size:14px;color:var(--ink-3);line-height:1.6;margin-top:10px}
+  .pstep .ic{
+    width:42px;height:42px;border-radius:50%;background:var(--paper);border:1px solid var(--line);
+    display:grid;place-items:center;color:var(--emerald);margin-bottom:14px;
+  }
+
+  /* CTA */
+  .svc-cta{background:var(--ink);color:#fff;text-align:center;padding:clamp(70px,8vw,110px) 0;position:relative;overflow:hidden}
+  .svc-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(184,150,94,.18), transparent 60%)}
+  .svc-cta .container{position:relative;z-index:1;max-width:760px}
+  .svc-cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,72px);line-height:1.02;letter-spacing:-0.015em;color:#fff;margin:14px 0 24px}
+  .svc-cta h2 em{font-style:italic;color:var(--gold)}
+  .svc-cta p{color:rgba(255,255,255,.75);font-size:17px;line-height:1.7;margin:0 0 36px}
+  .svc-cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .svc-cta .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
+  .svc-cta .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+  @media (max-width: 1080px){
+    .svc-grid, .svc-block.reverse .svc-grid{grid-template-columns:1fr;gap:40px}
+    .svc-block.reverse .svc-grid .info{order:2}
+    .svc-block.reverse .svc-grid .imgblk{order:1}
+    .imgblk{aspect-ratio:4/3}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .proc-grid{grid-template-columns:repeat(2,1fr)}
+    .pstep{border-right:0;padding-left:0 !important;padding-right:0;padding-bottom:24px}
+  }
+  @media (max-width: 720px){
+    .svc-grid .info .deliverables{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .proc-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site" id="siteHeader">
+  <div class="row">
+    <a class="brand" href="index.html"><span class="mark">C</span><span class="word"><span class="a">Credence</span><span class="b">Real Estate</span></span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="properties.html">Properties</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
+      <a class="cta" href="contact.html">Book Consultation</a>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="properties.html">Properties</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book Consultation</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Credence</a><span class="sep">·</span><span>Services</span></div>
+    <h1>Six disciplines,<br/><em>one trusted brand.</em></h1>
+    <p class="sub">From foundation to finishing, acquisition to management — Credence is structured to handle every stage of the real estate lifecycle under one roof. Below, each discipline with its deliverables, process, and the team that owns it.</p>
+  </div>
+</section>
+
+<!-- 01 DEVELOPMENT -->
+<section class="svc-block" id="development">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="info">
+        <div class="eyebrow"><span class="dot"></span>Service</div>
+        <h2>Real Estate<br/><em>Development.</em></h2>
+        <p>We develop modern residential and commercial properties that combine luxury, functionality, and long-term value. From greenfield enclaves to single-lot homes, every project is led by an owner-operator team that stays accountable from concept to handover.</p>
+        <p>Our developments are designed around how people actually live — open ground floors, ensuite bedrooms, private outdoor rooms — and built to specifications you can audit at every stage.</p>
+        <div class="deliverables">
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Concept design + brief development</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Planning consent &amp; permit liaison</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Build-cost modelling &amp; reserves</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Marketing &amp; sales programme</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Handover &amp; aftercare</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>HOA &amp; estate management setup</div>
+        </div>
+      </div>
+      <div class="imgblk">
+        <span class="tag">Case Study</span>
+        <img src="assets/beverly-hills.jpeg" alt="Beverly Homes" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 SALES & INVESTMENT -->
+<section class="svc-block reverse" id="sales">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="imgblk">
+        <span class="tag">Diaspora Programme</span>
+        <img src="assets/royal-manhattan.png" alt="Royal Manhattan" />
+        <div class="caption"><span class="ttl">East Legon Portfolio</span>Curated listings · diaspora &amp; local buyers · USD-denominated.</div>
+      </div>
+      <div class="info">
+        <div class="eyebrow"><span class="dot"></span>Service</div>
+        <h2>Property Sales<br/><em>&amp; Investment.</em></h2>
+        <p>Whether you are purchasing your dream home, buying land, or investing in income-generating properties — we guide you through every step with professionalism and transparency.</p>
+        <p>Our advisory team verifies title, models yields, and negotiates on your behalf. For diaspora buyers we offer video walkthroughs, escrow coordination, and a single point of contact across UK, US, and Ghana time zones.</p>
+        <div class="deliverables">
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Curated listing access</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Title &amp; document verification</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Yield &amp; appreciation modelling</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Negotiation &amp; closing</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Video walk-throughs (diaspora)</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Escrow &amp; settlement coordination</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PROPERTY MANAGEMENT -->
+<section class="svc-block" id="management">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="info">
+        <div class="eyebrow"><span class="dot"></span>Service</div>
+        <h2>Property<br/><em>Management.</em></h2>
+        <p>We manage residential and commercial properties with efficiency and care — ensuring properties remain profitable, secure, and well-maintained, while owners enjoy clarity over income, occupancy, and condition.</p>
+        <p>Whether you own one home or a small portfolio, you receive monthly statements, photographic condition reports, and a single account manager who knows your property by name.</p>
+        <div class="deliverables">
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Tenant sourcing &amp; vetting</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Rent collection &amp; reconciliation</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>24-hour maintenance response</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Monthly owner statements</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Quarterly condition reports</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>HOA &amp; estate fees handling</div>
+        </div>
+      </div>
+      <div class="imgblk">
+        <span class="tag">Live Service</span>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80&auto=format&fit=crop" alt="Managed home" />
+        <div class="caption"><span class="ttl">Active Portfolio</span>Residential &amp; commercial · Greater Accra · 24-hour response.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CONSTRUCTION -->
+<section class="svc-block dark reverse" id="construction">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="imgblk">
+        <span class="tag">On Site</span>
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80&auto=format&fit=crop" alt="Construction site" />
+        <div class="caption"><span class="ttl">Project Discipline</span>Weekly reporting · QA walk-throughs · audit trail.</div>
+      </div>
+      <div class="info">
+        <div class="eyebrow"><span class="dot"></span>Service</div>
+        <h2 style="color:#fff">Construction &amp;<br/><em>Project Management.</em></h2>
+        <p style="color:#fff">From foundation to finishing, we oversee construction projects with attention to detail, quality control, and timely delivery. Weekly site reports, audit trails on every variation, and a project manager you can reach by name.</p>
+        <p style="color:#fff">For diaspora clients, our reporting is built to give you the same line-of-sight as if you walked the site each Saturday yourself.</p>
+        <div class="deliverables">
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Schedule &amp; cost discipline</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Trade procurement &amp; vetting</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Weekly progress reports</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>QA walk-throughs &amp; snag lists</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Variation order audit trail</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Handover &amp; defects period</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 INTERIORS -->
+<section class="svc-block" id="interiors">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="info">
+        <div class="eyebrow"><span class="dot"></span>Service</div>
+        <h2>Interior Decor<br/><em>&amp; Styling.</em></h2>
+        <p>Through premium interior solutions, we transform spaces into elegant and functional environments that reflect style and sophistication. From full furnishings on a turn-key build to targeted re-styling of a single room.</p>
+        <p>Delivered by Credence Interiors, our in-house specialist arm — for clients who want one team responsible from drywall to drapes.</p>
+        <div class="deliverables">
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Concept boards &amp; brief</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>FF&amp;E specification &amp; procurement</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Bespoke joinery &amp; soft goods</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Art &amp; accessories curation</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Install &amp; styling day</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Photography &amp; reveal</div>
+        </div>
+      </div>
+      <div class="imgblk">
+        <span class="tag">Credence Interiors</span>
+        <img src="assets/interior-decor.jpg" alt="Styled interior" />
+        <div class="caption"><span class="ttl">Turn-Key Interiors</span>Full furnishing &amp; styling · move-in ready.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 LAND -->
+<section class="svc-block reverse" id="land">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="imgblk">
+        <span class="tag">Due Diligence</span>
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1400&q=80&auto=format&fit=crop" alt="Land" />
+        <div class="caption"><span class="ttl">Land Acquisition</span>Title search · survey · documentation · legal sign-off.</div>
+      </div>
+      <div class="info">
+        <div class="eyebrow"><span class="dot"></span>Service</div>
+        <h2>Land Acquisition<br/><em>&amp; Due Diligence.</em></h2>
+        <p>We assist clients with land verification, documentation checks, survey coordination, and legal guidance to ensure safe and secure property transactions. The single most important step we take for diaspora clients.</p>
+        <p>Every plot we present has been verified through the Lands Commission, surveyed independently, and signed off by our retained counsel — no exceptions.</p>
+        <div class="deliverables">
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Title search at Lands Commission</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Independent boundary survey</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Chief / family verification</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Legal counsel sign-off</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Indenture &amp; registration</div>
+          <div class="d"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-12"/></svg></span>Ongoing site monitoring</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc block">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>How We Work</div>
+        <h2 class="section-title">A four-stage process,<br/>repeatable on every engagement.</h2>
+      </div>
+      <div class="right">Whatever the service, the rhythm is the same: discover, document, deliver, and steward the asset over time. Predictable for clients, accountable for us.</div>
+    </div>
+    <div class="proc-grid">
+      <div class="pstep">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <div class="n">Stage 01</div>
+        <div class="t">Discover</div>
+        <div class="d">A free consultation to understand brief, budget, timeline, and the lifestyle the property needs to serve.</div>
+      </div>
+      <div class="pstep">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
+        <div class="n">Stage 02</div>
+        <div class="t">Document</div>
+        <div class="d">A written brief, fixed scope, fixed fee schedule. We sign one document so the project is governed from day one.</div>
+      </div>
+      <div class="pstep">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-7 9 7v11"/><path d="M9 21V12h6v9"/></svg></div>
+        <div class="n">Stage 03</div>
+        <div class="t">Deliver</div>
+        <div class="d">Weekly reporting, monthly statements, photographic evidence. You see what we see, in real time, in your inbox.</div>
+      </div>
+      <div class="pstep">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div class="n">Stage 04</div>
+        <div class="t">Steward</div>
+        <div class="d">After handover, your dedicated account manager continues — for service, statements, and the next chapter of the asset.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="svc-cta">
+  <div class="container">
+    <div class="eyebrow" style="color:rgba(255,255,255,.7);justify-content:center"><span class="dot"></span>Begin the Conversation</div>
+    <h2>Ready to build, buy,<br/><em>invest, or manage?</em></h2>
+    <p>Partner with Credence — let us help you turn your vision into reality with the discipline of a global firm and the local knowledge of an Accra-born team.</p>
+    <div class="actions">
+      <a class="btn-gold" href="contact.html">Book a Consultation
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn-ghost" href="properties.html">Browse Properties</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="container">
+    <div class="top">
+      <div class="brandblock">
+        <h4>Credence<br/><em>Real Estate</em></h4>
+        <p>A subsidiary of Credence Holdings Global — owning, managing, building, selling, and renting property in Accra and across Ghana. By appointment.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@credencerealestat" target="_blank" rel="noopener" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.youtube.com/@CredenceRealEstateAssetManagem" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/people/Credence-Real-Estate-and-Asset-Management/100088681766316" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/233244120039" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div><h5>Explore</h5>
+        <ul>
+          <li><a href="properties.html">All Properties</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul></div>
+      <div><h5>Services</h5>
+        <ul>
+          <li><a href="services.html#development">Development</a></li>
+          <li><a href="services.html#sales">Sales &amp; Investment</a></li>
+          <li><a href="services.html#management">Property Management</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#interiors">Interiors</a></li>
+          <li><a href="services.html#land">Land &amp; Due Diligence</a></li>
+        </ul></div>
+      <div class="offices">
+        <h5>Locations</h5>
+        <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/>+233 24 442 7440</div>
+        <div class="of"><b>Credence Holdings LLC</b>805 Horizon Way, Manchester CT 06042 · USA<br/>United Kingdom</div>
+        <h5 style="margin-top:24px">Quarterly Letter</h5>
+        <div class="news"><input type="email" placeholder="your@email.com" /><button>Subscribe</button></div>
+      </div>
+    </div>
+    <div class="bot">
+      <div>© 2026 CREDENCE REAL ESTATE &amp; ASSET MGT. · SUBSIDIARY OF CREDENCE HOLDINGS GLOBAL · REGISTERED IN GHANA 2022</div>
+      <div>PRIVACY · TERMS · FAIR HOUSING</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('siteHeader');
+  const onScroll = () => { if(window.scrollY > 60) hdr.classList.add('solid'); else hdr.classList.remove('solid'); };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+<script src="assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Credence Real Estate &amp; Asset Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/base.css" />
+<style>
+  .page-hero{position:relative;padding:170px 0 80px;color:#fff;background:#0F0E0C;overflow:hidden}
+  .page-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.7) 100%), url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=2400&q=80&auto=format&fit=crop') center/cover}
+  .page-hero .container{position:relative;z-index:1}
+  .page-hero .crumbs{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:18px}
+  .page-hero .crumbs a{color:rgba(255,255,255,.8)}
+  .page-hero .crumbs .sep{margin:0 10px;opacity:.5}
+  .page-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(54px,7vw,108px);line-height:.98;letter-spacing:-0.02em;margin:0 0 24px;max-width:18ch}
+  .page-hero h1 em{font-style:italic;color:#E8DEC2}
+  .page-hero .sub{color:rgba(255,255,255,.78);font-size:18px;line-height:1.7;max-width:60ch}
+
+  /* Quick contacts */
+  .quick{background:var(--bone);padding:48px 0;border-bottom:1px solid var(--line)}
+  .quick-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .qitem{
+    display:flex;align-items:flex-start;gap:14px;padding:18px 22px;border-radius:var(--r-m);
+    background:var(--paper);border:1px solid var(--line);transition:all .25s ease;
+  }
+  .qitem:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--shadow-1)}
+  .qitem .ic{
+    width:44px;height:44px;border-radius:50%;background:var(--bone-2);
+    display:grid;place-items:center;color:var(--emerald);flex:none;
+  }
+  .qitem .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .qitem .v{font-family:var(--serif);font-size:20px;line-height:1.15;margin-top:4px;letter-spacing:-0.01em}
+  .qitem .d{font-size:12.5px;color:var(--ink-3);margin-top:4px}
+
+  /* Form + sidebar */
+  .form-section{padding:clamp(70px,8vw,120px) 0}
+  .form-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start}
+  .form-block .eyebrow{margin-bottom:14px}
+  .form-block h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4vw,60px);line-height:1.04;letter-spacing:-0.015em;margin:0 0 28px}
+  .form-block h2 em{font-style:italic;color:var(--gold)}
+  .form-block > p{color:var(--ink-2);font-size:16.5px;line-height:1.65;margin:0 0 32px;max-width:54ch}
+
+  .topic-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .topic-chip{
+    padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);
+    font-size:13px;color:var(--ink-2);cursor:pointer;transition:all .2s ease;
+    display:inline-flex;align-items:center;gap:6px;font-family:inherit;
+  }
+  .topic-chip:hover{border-color:var(--ink-2)}
+  .topic-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  form.contact{display:grid;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:36px}
+  form.contact .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  form.contact label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:8px}
+  form.contact input, form.contact textarea, form.contact select{
+    width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;
+    padding:14px 16px;font:inherit;font-size:14.5px;color:var(--ink);
+    transition: border-color .2s ease;
+  }
+  form.contact input:focus, form.contact textarea:focus, form.contact select:focus{outline:none;border-color:var(--emerald)}
+  form.contact textarea{resize:vertical;min-height:140px;line-height:1.55}
+  form.contact .check{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-3);line-height:1.45}
+  form.contact .check input{width:auto}
+  form.contact .submit{
+    background:var(--emerald);color:#fff;border-radius:12px;
+    padding:16px 22px;font-size:14px;letter-spacing:.04em;border:0;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    transition: background .25s ease;font:inherit;font-weight:500;
+  }
+  form.contact .submit:hover{background:var(--emerald-2)}
+
+  /* Side info */
+  .side{display:flex;flex-direction:column;gap:24px;position:sticky;top:120px}
+  .side .card{background:var(--ink);color:#fff;border-radius:var(--r-l);padding:32px;display:flex;flex-direction:column;gap:18px}
+  .side .card .eyebrow{color:rgba(255,255,255,.6)}
+  .side .card h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;letter-spacing:-0.01em;margin:0}
+  .side .card h3 em{font-style:italic;color:var(--gold)}
+  .side .card .info-row{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14.5px}
+  .side .card .info-row:last-of-type{border-bottom:0}
+  .side .card .info-row .ic{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;color:var(--gold);flex:none}
+  .side .card .info-row .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2px}
+  .side .card .info-row .v{color:#fff}
+
+  .agent-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);
+    overflow:hidden;
+  }
+  .agent-card .ph{
+    aspect-ratio:1/1;background:var(--bone-3) center/cover;
+    background-image:url('assets/adeline-quarshie.jpeg');background-position:center 22%;
+  }
+  .agent-card .body{padding:24px 28px}
+  .agent-card .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2)}
+  .agent-card .nm{font-family:var(--serif);font-size:28px;line-height:1.1;letter-spacing:-0.01em;margin-top:6px}
+  .agent-card .firm{font-size:13px;color:var(--ink-3);margin-top:4px}
+  .agent-card .actions{display:flex;gap:8px;margin-top:16px}
+  .agent-card .actions a{
+    flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    padding:11px 10px;border:1px solid var(--line);border-radius:10px;font-size:13px;
+    transition: all .2s ease;
+  }
+  .agent-card .actions a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .agent-card .actions a.wa:hover{background:#1F8A5B;border-color:#1F8A5B}
+
+  /* Offices */
+  .offices-section{background:var(--bone-2)}
+  .offices-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:32px}
+  .off{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);
+    padding:36px 32px;display:flex;flex-direction:column;gap:14px;
+  }
+  .off .flag{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2)}
+  .off .city{font-family:var(--serif);font-size:42px;line-height:1;letter-spacing:-0.01em}
+  .off .role{font-size:13.5px;color:var(--ink-3);margin-top:-4px}
+  .off .lines{margin-top:14px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink-2);line-height:1.55}
+  .off .lines .line{display:flex;gap:10px;align-items:flex-start}
+  .off .lines .line .ic{width:18px;height:18px;color:var(--ink-3);flex:none;margin-top:2px}
+  .off .lines .line b{color:var(--ink);font-weight:500}
+  .off .hr{height:1px;background:var(--line);margin:6px 0}
+  .off .hours{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* FAQ */
+  .faq{background:var(--bone)}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:32px;border-top:1px solid var(--line)}
+  .faq-item{padding:24px 0;border-bottom:1px solid var(--line)}
+  .faq-item:nth-child(odd){padding-right:32px;border-right:1px solid var(--line)}
+  .faq-item:nth-child(even){padding-left:32px}
+  .faq-item .q{font-family:var(--serif);font-size:22px;line-height:1.2;letter-spacing:-0.01em;margin:0 0 8px}
+  .faq-item .a{font-size:14.5px;color:var(--ink-3);line-height:1.65}
+
+  /* Map */
+  .map{background:#0F0E0C;color:#fff;padding:0}
+  .map .wrap{display:grid;grid-template-columns:380px 1fr;min-height:520px}
+  .map .info{padding:60px 44px;display:flex;flex-direction:column;gap:18px}
+  .map .info .eyebrow{color:rgba(255,255,255,.65)}
+  .map .info h3{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1.05;letter-spacing:-0.01em;margin:6px 0 8px;color:#fff}
+  .map .info h3 em{font-style:italic;color:var(--gold)}
+  .map .info p{font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.72);margin:0}
+  .map .info .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14px}
+  .map .info .row:last-of-type{border-bottom:0}
+  .map .info .row .k{display:flex;align-items:center;gap:10px}
+  .map .info .row .v{color:#fff}
+  .map .vis{position:relative;background:#161310}
+  .map .vis iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.15) contrast(.95)}
+
+  @media (max-width: 1080px){
+    .quick-row{grid-template-columns:repeat(2,1fr)}
+    .form-grid{grid-template-columns:1fr;gap:40px}
+    .side{position:static}
+    .offices-grid{grid-template-columns:1fr}
+    .map .wrap{grid-template-columns:1fr}
+    .map .vis{min-height:380px}
+  }
+  @media (max-width: 720px){
+    .page-hero{padding:130px 0 56px}
+    .quick-row{grid-template-columns:1fr}
+    .faq-grid{grid-template-columns:1fr}
+    .faq-item:nth-child(odd){padding-right:0;border-right:0}
+    .faq-item:nth-child(even){padding-left:0}
+    form.contact{padding:24px}
+    form.contact .row-2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site" id="siteHeader">
+  <div class="row">
+    <a class="brand" href="index.html"><span class="mark">C</span><span class="word"><span class="a">Credence</span><span class="b">Real Estate</span></span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="properties.html">Properties</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a class="cta" href="#form">Book Consultation</a>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="properties.html">Properties</a>
+    <a href="contact.html">Contact</a>
+    <a href="#form" class="mob-cta">Book Consultation</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Credence</a><span class="sep">·</span><span>Contact</span></div>
+    <h1>Begin the<br/><em>conversation.</em></h1>
+    <p class="sub">Whether you're abroad and ready to build securely in Ghana, or local and looking for a trusted manager — we welcome strategic conversations. Reach us by phone, email, WhatsApp, or the form below.</p>
+  </div>
+</section>
+
+<!-- QUICK CONTACTS -->
+<section class="quick">
+  <div class="container">
+    <div class="quick-row">
+      <a class="qitem" href="tel:+233244427440">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="k">Phone</div><div class="v">+233 24 442 7440</div><div class="d">Mon–Sat · 09:00–18:00 GMT</div></div>
+      </a>
+      <a class="qitem" href="mailto:info@credencerealestateandassetmgt.com">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+        <div><div class="k">Email</div><div class="v">info@credencerealestateandassetmgt.com</div><div class="d">Replies within 1 business day</div></div>
+      </a>
+      <a class="qitem" href="https://wa.me/233244120039" target="_blank" rel="noopener">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.65-4.92A8.5 8.5 0 1 1 7.92 19.35L3 21z"/></svg></div>
+        <div><div class="k">WhatsApp</div><div class="v">Chat with the team</div><div class="d">Voice notes accepted · 24h response</div></div>
+      </a>
+      <a class="qitem" href="#offices">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="k">Visit HQ</div><div class="v">East Legon, Accra</div><div class="d">By appointment only</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <div class="container">
+    <div class="form-grid">
+      <div class="form-block">
+        <div class="eyebrow"><span class="dot"></span>Send a Message</div>
+        <h2>Tell us what you're<br/><em>building, buying,</em><br/>or managing.</h2>
+        <p>Brief replies arrive within one business day from our Accra office. For diaspora consultations, we schedule a Zoom or WhatsApp call at a time that works across your time zone.</p>
+
+        <div class="eyebrow" style="margin-bottom:10px">Reason for Contact</div>
+        <div class="topic-row" id="topics">
+          <button class="topic-chip on" type="button">Buy a Property</button>
+          <button class="topic-chip" type="button">Sell a Property</button>
+          <button class="topic-chip" type="button">Build with Credence</button>
+          <button class="topic-chip" type="button">Property Management</button>
+          <button class="topic-chip" type="button">Interior Decor</button>
+          <button class="topic-chip" type="button">Land &amp; Due Diligence</button>
+          <button class="topic-chip" type="button">Diaspora Programme</button>
+          <button class="topic-chip" type="button">Press / Other</button>
+        </div>
+
+        <form class="contact" id="contactForm">
+          <input type="hidden" name="access_key" value="a1d19664-4e29-4813-94ef-3b071d6caa17" />
+          <input type="hidden" name="subject" value="New Enquiry — Credence Real Estate" />
+          <input type="hidden" name="from_name" value="Credence Website" />
+          <input type="hidden" name="redirect" value="false" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="hidden" id="topicInput" name="enquiry_type" value="Buy a Property" />
+          <div class="row-2">
+            <div><label for="nm">Full Name</label><input id="nm" name="name" type="text" placeholder="e.g. Alexandra Whitmore" required /></div>
+            <div><label for="cc">Country / Region</label>
+              <select id="cc" name="country">
+                <option>Ghana</option><option>United Kingdom</option><option>United States</option>
+                <option>Canada</option><option>Germany</option><option>Nigeria</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-2">
+            <div><label for="em">Email</label><input id="em" name="email" type="email" placeholder="you@domain.com" required /></div>
+            <div><label for="ph">Phone (incl. country code)</label><input id="ph" name="phone" type="tel" placeholder="+44 / +1 / +233 …" /></div>
+          </div>
+          <div class="row-2">
+            <div><label for="bg">Approx. Budget (USD)</label>
+              <select id="bg" name="budget">
+                <option>Under 150K</option><option>150K – 300K</option>
+                <option>300K – 500K</option><option>500K – 1M</option><option>1M+</option>
+                <option>Not yet defined</option>
+              </select>
+            </div>
+            <div><label for="tm">Timeline</label>
+              <select id="tm" name="timeline">
+                <option>Immediate (this quarter)</option><option>3 – 6 months</option>
+                <option>6 – 12 months</option><option>12+ months</option><option>Exploring</option>
+              </select>
+            </div>
+          </div>
+          <div><label for="msg">Message</label><textarea id="msg" name="message" placeholder="A short brief — bedrooms, neighbourhood preference, intent (own or invest), and anything else we should know…"></textarea></div>
+          <label class="check"><input type="checkbox" name="newsletter" checked /> Keep me informed on signature listings, market notes &amp; the Signature Home Show — quarterly only.</label>
+          <button class="submit" type="submit" id="submitBtn">Send Message
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <div id="formMsg" style="display:none;margin-top:8px;padding:16px 20px;border-radius:12px;font-size:14.5px;line-height:1.55"></div>
+        </form>
+      </div>
+
+      <aside class="side">
+        <div class="agent-card">
+          <div class="ph"></div>
+          <div class="body">
+            <div class="role">Direct Line · CEO</div>
+            <div class="nm">Adeline Quarshie</div>
+            <div class="firm">CEO · Credence Holdings Global</div>
+            <div class="actions">
+              <a href="tel:+233244427440">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z"/></svg> Call
+              </a>
+              <a href="mailto:info@credencerealestateandassetmgt.com">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Email
+              </a>
+              <a class="wa" href="https://wa.me/233244120039" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.65-4.92A8.5 8.5 0 1 1 7.92 19.35L3 21z"/></svg> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow"><span class="dot"></span>Diaspora Programme</div>
+          <h3>For clients in the<br/><em>USA &amp; UK.</em></h3>
+          <div>
+            <div class="info-row">
+              <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+              <div><div class="k">Scheduled call</div><div class="v">Zoom / WhatsApp · 30 min</div></div>
+            </div>
+            <div class="info-row">
+              <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2c4 4 4 16 0 20M12 2c-4 4-4 16 0 20"/></svg></div>
+              <div><div class="k">Time zones</div><div class="v">EST · PST · GMT · WAT</div></div>
+            </div>
+            <div class="info-row">
+              <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <div><div class="k">Includes</div><div class="v">Brief intake · property longlist · price guide</div></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section class="offices-section block" id="offices">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>Our Offices</div>
+        <h2 class="section-title">Three offices,<br/>one operating standard.</h2>
+      </div>
+      <div class="right">We meet clients where they are — and execute on the ground in Ghana with the same discipline expected of a global firm.</div>
+    </div>
+
+    <div class="offices-grid">
+      <div class="off">
+        <span class="flag">Ghana · Headquarters</span>
+        <div class="city">Accra</div>
+        <div class="role">East Legon, Greater Accra · GH</div>
+        <div class="lines">
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Bawuah Junction, East Legon</b><br/>Greater Accra Region, Ghana</div></div>
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z"/></svg><div>+233 24 442 7440</div></div>
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div>info@credencerealestateandassetmgt.com</div></div>
+        </div>
+        <div class="hr"></div>
+        <div class="hours">Mon–Fri · 09:00–18:00 · Sat · 10:00–14:00 (GMT)</div>
+      </div>
+
+      <div class="off">
+        <span class="flag">United Kingdom · Diaspora</span>
+        <div class="city">London</div>
+        <div class="role">Diaspora Programme · UK</div>
+        <div class="lines">
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>By appointment</b><br/>Diaspora consultations &amp; portfolio reviews</div></div>
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div>info@credencerealestateandassetmgt.com</div></div>
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 9v6l5-3z" fill="currentColor"/></svg><div>Zoom &amp; WhatsApp scheduling</div></div>
+        </div>
+        <div class="hr"></div>
+        <div class="hours">By appointment · GMT &amp; BST</div>
+      </div>
+
+      <div class="off">
+        <span class="flag">United States · Holdings</span>
+        <div class="city">Manchester, CT</div>
+        <div class="role">Credence Holdings LLC · USA</div>
+        <div class="lines">
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>By appointment</b><br/>North American diaspora &amp; holdings liaison</div></div>
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div>info@credencerealestateandassetmgt.com</div></div>
+          <div class="line"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 9v6l5-3z" fill="currentColor"/></svg><div>Zoom &amp; investor briefings</div></div>
+        </div>
+        <div class="hr"></div>
+        <div class="hours">By appointment · EST &amp; PST</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map">
+  <div class="wrap">
+    <div class="info">
+      <div class="eyebrow"><span class="dot"></span>Find Us</div>
+      <h3>Accra HQ.<br/><em>East Legon, Ghana.</em></h3>
+      <p>Visits are by appointment — please schedule via phone, WhatsApp, or the form above so our team can prepare for your consultation.</p>
+      <div style="margin-top:10px">
+        <div class="row"><div class="k"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> District</div><div class="v">East Legon</div></div>
+        <div class="row"><div class="k"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Hours</div><div class="v">Mon–Sat</div></div>
+        <div class="row"><div class="k"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-7 9 7v11"/></svg> Parking</div><div class="v">On-site, secure</div></div>
+      </div>
+      <a class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3);margin-top:14px;width:fit-content" href="https://www.google.com/maps?q=5.6423527,-0.1611202" target="_blank" rel="noopener">Open in Maps
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+    <div class="vis">
+      <iframe src="https://maps.google.com/maps?q=5.6423527,-0.1611202&t=&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Credence RE — East Legon, Accra"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq block">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>Common Questions</div>
+        <h2 class="section-title">What to ask<br/>on a first call.</h2>
+      </div>
+      <div class="right">A few of the questions clients ask most often, with our short answers. Bring more on the call — we welcome them.</div>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3 class="q">Do you work with diaspora buyers?</h3>
+        <p class="a">Yes — it's our specialism. We provide end-to-end service from land due diligence and title verification through construction, interior finishing, and ongoing management for clients in the USA, UK, and beyond.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="q">How are properties verified?</h3>
+        <p class="a">Every property we list has been title-searched at Lands Commission, independently surveyed, and signed off by retained counsel. We share full documentation on confirmed enquiry.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="q">Can I tour a property remotely?</h3>
+        <p class="a">Absolutely. We produce live walkthroughs via WhatsApp video, full cinematic tours for shortlisted homes, and arrange in-person tours for visiting family or counsel on your behalf.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="q">What does property management include?</h3>
+        <p class="a">Tenant sourcing &amp; vetting, rent collection, 24-hour maintenance, monthly statements, quarterly condition reports, and a dedicated account manager who knows your property by name.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="q">Do you build on land I already own?</h3>
+        <p class="a">Yes. We provide standalone construction &amp; project management for clients with existing land — from concept through handover, with weekly site reporting throughout.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="q">What payment terms do you offer?</h3>
+        <p class="a">Most of our developments and services use a staged-payment schedule tied to verifiable milestones. We can discuss escrow arrangements with diaspora clients on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="container">
+    <div class="top">
+      <div class="brandblock">
+        <h4>Credence<br/><em>Real Estate</em></h4>
+        <p>A subsidiary of Credence Holdings Global — owning, managing, building, selling, and renting property in Accra and across Ghana. By appointment.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@credencerealestat" target="_blank" rel="noopener" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.youtube.com/@CredenceRealEstateAssetManagem" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/233244120039" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div><h5>Explore</h5>
+        <ul>
+          <li><a href="properties.html">All Properties</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul></div>
+      <div><h5>Services</h5>
+        <ul>
+          <li><a href="services.html#development">Development</a></li>
+          <li><a href="services.html#sales">Sales &amp; Investment</a></li>
+          <li><a href="services.html#management">Property Management</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#interiors">Interiors</a></li>
+          <li><a href="services.html#land">Land &amp; Due Diligence</a></li>
+        </ul></div>
+      <div class="offices">
+        <h5>Locations</h5>
+        <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/>+233 24 442 7440</div>
+        <div class="of"><b>Credence Holdings</b>USA · United Kingdom</div>
+        <h5 style="margin-top:24px">Quarterly Letter</h5>
+        <div class="news"><input type="email" placeholder="your@email.com" /><button>Subscribe</button></div>
+      </div>
+    </div>
+    <div class="bot">
+      <div>© 2026 CREDENCE REAL ESTATE &amp; ASSET MGT. · SUBSIDIARY OF CREDENCE HOLDINGS GLOBAL · REGISTERED IN GHANA 2022</div>
+      <div>PRIVACY · TERMS · FAIR HOUSING</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('siteHeader');
+  const onScroll = () => { if(window.scrollY > 60) hdr.classList.add('solid'); else hdr.classList.remove('solid'); };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Topic chips — toggle selection and sync to hidden input
+  const topicInput = document.getElementById('topicInput');
+  document.querySelectorAll('#topics .topic-chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('#topics .topic-chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+    topicInput.value = c.textContent.trim();
+  }));
+
+  // Contact form — Web3Forms submission
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn    = document.getElementById('submitBtn');
+    const msgEl  = document.getElementById('formMsg');
+
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.innerHTML = 'Sending… <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+    const data = new FormData(this);
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+
+      if (json.success) {
+        this.reset();
+        topicInput.value = 'Buy a Property';
+        document.querySelectorAll('#topics .topic-chip').forEach((c,i) => c.classList.toggle('on', i===0));
+
+        msgEl.style.display = 'block';
+        msgEl.style.background = '#F0FAF4';
+        msgEl.style.border = '1px solid #B6DFC7';
+        msgEl.style.color = '#1A5C38';
+        msgEl.innerHTML = '<strong>Message sent.</strong> A member of our team will be in touch within one business day.';
+
+        btn.style.display = 'none';
+      } else {
+        throw new Error(json.message || 'Submission failed');
+      }
+    } catch (err) {
+      msgEl.style.display = 'block';
+      msgEl.style.background = '#FEF2F2';
+      msgEl.style.border = '1px solid #FECACA';
+      msgEl.style.color = '#991B1B';
+      msgEl.innerHTML = '<strong>Something went wrong.</strong> Please try again or reach us directly at <a href="mailto:info@credencerealestateandassetmgt.com" style="color:inherit;text-decoration:underline">info@credencerealestateandassetmgt.com</a>.';
+
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.innerHTML = 'Send Message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    }
+  });
+</script>
+<script src="assets/nav.js"></script>
+</body>
+</html>

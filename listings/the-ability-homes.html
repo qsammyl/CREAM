@@ -1,0 +1,254 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Ability Homes — Credence Real Estate &amp; Asset Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/base.css"/>
+<style>
+  .prop-hero{position:relative;height:72vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+  .prop-hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease}
+  .prop-hero:hover .bg{transform:scale(1.04)}
+  .prop-hero .scrim{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.12) 100%)}
+  .prop-hero .content{position:relative;z-index:1;padding-bottom:56px;width:100%}
+  .prop-hero .crumbs{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:22px}
+  .prop-hero .crumbs a{color:rgba(255,255,255,.72)}
+  .prop-hero .crumbs .sep{margin:0 8px;opacity:.5}
+  .prop-hero .badge-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .prop-hero .status{padding:7px 14px;border-radius:999px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase}
+  .prop-hero .status.limited{background:var(--gold);color:var(--ink)}
+  .prop-hero .ref-pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.6)}
+  .prop-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,6vw,80px);line-height:.95;letter-spacing:-0.02em;color:#fff;margin:0 0 16px}
+  .prop-hero h1 em{font-style:italic;color:#E8DEC2}
+  .prop-hero .addr{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-size:15px;margin-bottom:28px}
+  .prop-hero .hero-stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.18);padding-top:20px;flex-wrap:wrap}
+  .prop-hero .hstat{padding:16px 32px 0 0;margin-right:32px;border-right:1px solid rgba(255,255,255,.14)}
+  .prop-hero .hstat:last-child{border-right:0;margin-right:0;padding-right:0}
+  .prop-hero .hstat .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+  .prop-hero .hstat .v{font-family:var(--serif);font-size:28px;line-height:1.05;color:#fff;margin-top:4px}
+  .prop-hero .hstat .u{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}
+  .prop-main{padding:clamp(60px,7vw,100px) 0;background:var(--bone)}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:36px;transition:color .2s}
+  .back-link:hover{color:var(--ink)}
+  .back-link svg{transition:transform .2s}
+  .back-link:hover svg{transform:translateX(-3px)}
+  .prop-layout{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start}
+  .prop-price{font-family:var(--serif);font-size:clamp(38px,5vw,60px);line-height:1;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px}
+  .prop-price-sub{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:48px}
+  .prop-section{margin-bottom:40px}
+  .prop-section h3{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-0.01em;margin:0 0 18px}
+  .prop-section p{color:var(--ink-2);line-height:1.75;font-size:16px;margin:0 0 14px}
+  .prop-section p:last-child{margin-bottom:0}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .feature-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);padding:12px 0;border-bottom:1px solid var(--line)}
+  .feature-item .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+  .inquiry-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:32px 28px;box-shadow:var(--shadow-2);position:sticky;top:90px}
+  .inquiry-card .agent{display:flex;align-items:center;gap:14px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .inquiry-card .agent .av{width:48px;height:48px;border-radius:50%;background:var(--bone-3);flex-shrink:0}
+  .inquiry-card .agent .name{font-weight:500;font-size:14px;color:var(--ink)}
+  .inquiry-card .agent .role{font-size:12px;color:var(--ink-3);margin-top:2px}
+  .inquiry-card h3{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-0.01em;margin:0 0 4px}
+  .inquiry-card .ref-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
+  .inquiry-card form{display:flex;flex-direction:column;gap:10px}
+  .inquiry-card input,.inquiry-card textarea{width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:var(--r-m);font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--paper);box-sizing:border-box;transition:border-color .2s}
+  .inquiry-card input:focus,.inquiry-card textarea:focus{outline:0;border-color:var(--ink-2)}
+  .inquiry-card textarea{resize:vertical;min-height:88px}
+  .inquiry-card .submit{background:var(--ink);color:#fff;border:0;padding:14px;border-radius:999px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;transition:background .2s;letter-spacing:.02em;margin-top:4px}
+  .inquiry-card .submit:hover{background:var(--emerald)}
+  .inquiry-card .small-note{font-size:12px;color:var(--ink-3);text-align:center;margin-top:14px;line-height:1.55}
+  @media(max-width:1080px){.prop-layout{grid-template-columns:1fr}.inquiry-card{position:static}.features-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:720px){.prop-hero{height:78vh}.prop-hero .hero-stats{display:none}.features-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site solid" id="siteHeader">
+  <div class="row">
+    <a class="brand" href="../index.html"><span class="mark">C</span><span class="word"><span class="a">Credence</span><span class="b">Real Estate</span></span></a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../services.html">Services</a>
+      <a href="../properties.html" class="active">Properties</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a class="cta" href="../contact.html">Book Consultation</a>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../services.html">Services</a>
+    <a href="../properties.html">Properties</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../contact.html" class="mob-cta">Book Consultation</a>
+  </nav>
+</header>
+
+<section class="prop-hero">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2400&q=80&auto=format&fit=crop')"></div>
+  <div class="scrim"></div>
+  <div class="content container">
+    <div class="crumbs"><a href="../properties.html">Properties</a><span class="sep">/</span>The Ability Homes</div>
+    <div class="badge-row">
+      <span class="status limited">Only 3 Left</span>
+      <span class="ref-pill">REF · CR–TA–03</span>
+    </div>
+    <h1>The Ability <em>Homes</em></h1>
+    <div class="addr">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Adjiringanor · East Legon, Accra · Ghana
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="k">Bedrooms</div><div class="v">4</div><div class="u">all ensuite</div></div>
+      <div class="hstat"><div class="k">Bathrooms</div><div class="v">4</div><div class="u">premium finishes</div></div>
+      <div class="hstat"><div class="k">Boys' Qtrs</div><div class="v">Yes</div><div class="u">self-contained</div></div>
+      <div class="hstat"><div class="k">Units Left</div><div class="v">3</div><div class="u">of 12 available</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="prop-main">
+  <div class="container">
+    <a class="back-link" href="../properties.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      Back to Properties
+    </a>
+    <div class="prop-layout">
+      <div>
+        <div class="prop-price">USD 350,000</div>
+        <div class="prop-price-sub">Asking Price · Only 3 Units Remaining</div>
+
+        <div class="prop-section">
+          <h3>About this property</h3>
+          <p>The Ability Homes is a gated estate in Adjiringanor, one of East Legon's most sought-after residential pockets. With only three units remaining, this is a rare opportunity to secure a four-bedroom home with a self-contained boys' quarters in a rapidly appreciating neighbourhood.</p>
+          <p>Each unit features four en-suite bedrooms, landscaped grounds, and secure perimeter access — finished to a standard that reflects the premium address.</p>
+        </div>
+
+        <div class="prop-section">
+          <h3>Key Features</h3>
+          <div class="features-grid">
+            <div class="feature-item"><div class="dot"></div>4 Ensuite Bedrooms</div>
+            <div class="feature-item"><div class="dot"></div>Boys' Quarters</div>
+            <div class="feature-item"><div class="dot"></div>Landscaped Garden</div>
+            <div class="feature-item"><div class="dot"></div>Double Garage</div>
+            <div class="feature-item"><div class="dot"></div>CCTV &amp; Security</div>
+            <div class="feature-item"><div class="dot"></div>24-hr Water Supply</div>
+            <div class="feature-item"><div class="dot"></div>Backup Generator</div>
+            <div class="feature-item"><div class="dot"></div>Gated Estate</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="inquiry-card">
+          <div class="agent">
+            <div class="av"></div>
+            <div>
+              <div class="name">Credence RE Advisory</div>
+              <div class="role">Licensed Real Estate Advisors</div>
+            </div>
+          </div>
+          <h3>Schedule a Viewing</h3>
+          <div class="ref-tag">REF · CR–TA–03 · Adjiringanor</div>
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="39affe3c-c624-46f8-8ec5-df3ac0cde6f9"/>
+            <input type="hidden" name="subject" value="Property Enquiry — The Ability Homes (CR–TA–03)"/>
+            <input type="hidden" name="from_name" value="Credence RE Website"/>
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
+            <input type="text" name="name" placeholder="Full name" required/>
+            <input type="email" name="email" placeholder="Email address" required/>
+            <input type="tel" name="phone" placeholder="Phone number"/>
+            <textarea name="message" placeholder="Your message or preferred viewing time…"></textarea>
+            <button type="submit" class="submit" id="inquiryBtn">Submit Enquiry</button>
+            <div id="inquiryMsg" style="display:none"></div>
+          </form>
+          <p class="small-note">Or call us directly on +233 24 442 7440 · By appointment only</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <div class="top">
+      <div class="brandblock">
+        <h4>Credence<br/><em>Real Estate</em></h4>
+        <p>A subsidiary of Credence Holdings Global — owning, managing, building, selling, and renting property in Accra and across Ghana. By appointment.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@credencerealestat" target="_blank" rel="noopener" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.youtube.com/@CredenceRealEstateAssetManagem" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/people/Credence-Real-Estate-and-Asset-Management/100088681766316" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/233244120039" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div><h5>Explore</h5>
+        <ul>
+          <li><a href="../properties.html">All Properties</a></li>
+          <li><a href="../services.html">Our Services</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+      <div><h5>Services</h5>
+        <ul>
+          <li><a href="../services.html#development">Development</a></li>
+          <li><a href="../services.html#sales">Sales &amp; Investment</a></li>
+          <li><a href="../services.html#management">Property Management</a></li>
+          <li><a href="../services.html#construction">Construction</a></li>
+          <li><a href="../services.html#interiors">Interiors</a></li>
+          <li><a href="../services.html#land">Land &amp; Due Diligence</a></li>
+        </ul>
+      </div>
+      <div class="offices">
+        <h5>Locations</h5>
+        <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/>+233 24 442 7440</div>
+        <div class="of"><b>Credence Holdings LLC</b>805 Horizon Way, Manchester CT 06042 · USA<br/>United Kingdom</div>
+        <h5 style="margin-top:24px">Quarterly Letter</h5>
+        <div class="news"><input type="email" placeholder="your@email.com"/><button>Subscribe</button></div>
+      </div>
+    </div>
+    <div class="bot">
+      <div>© 2026 CREDENCE REAL ESTATE &amp; ASSET MGT. · SUBSIDIARY OF CREDENCE HOLDINGS GLOBAL · REGISTERED IN GHANA 2022</div>
+      <div>PRIVACY · TERMS · FAIR HOUSING</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('siteHeader');
+  const onScroll = () => { if(window.scrollY > 60) hdr.classList.add('solid'); else hdr.classList.remove('solid'); };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('inquiryBtn');
+    const msg = document.getElementById('inquiryMsg');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
+      const json = await res.json();
+      if (json.success) {
+        this.reset();
+        msg.style.cssText = 'display:block;margin-top:12px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.5;background:#F0FAF4;border:1px solid #B6DFC7;color:#1A5C38';
+        msg.textContent = "Enquiry sent. We'll be in touch within one business day.";
+        btn.style.display = 'none';
+      } else { throw new Error(json.message || 'Failed'); }
+    } catch(err) {
+      msg.style.cssText = 'display:block;margin-top:12px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.5;background:#FEF2F2;border:1px solid #FECACA;color:#991B1B';
+      msg.textContent = 'Something went wrong — please try again or call us directly.';
+      btn.disabled = false; btn.textContent = 'Submit Enquiry';
+    }
+  });
+</script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>
+

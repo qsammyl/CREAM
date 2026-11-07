@@ -1,0 +1,535 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Properties — Credence Real Estate &amp; Asset Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/base.css" />
+<style>
+  .page-hero{position:relative;padding:160px 0 64px;color:#fff;background:#0F0E0C;overflow:hidden}
+  .page-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.7) 100%), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=2400&q=80&auto=format&fit=crop') center/cover}
+  .page-hero .container{position:relative;z-index:1}
+  .page-hero .crumbs{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:18px}
+  .page-hero .crumbs a{color:rgba(255,255,255,.8)}
+  .page-hero .crumbs .sep{margin:0 10px;opacity:.5}
+  .page-hero .head-row{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end}
+  .page-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,6.5vw,96px);line-height:.98;letter-spacing:-0.02em;margin:0}
+  .page-hero h1 em{font-style:italic;color:#E8DEC2}
+  .page-hero .sub{color:rgba(255,255,255,.78);font-size:17px;line-height:1.7;max-width:48ch}
+  .page-hero .counts{
+    margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .page-hero .c .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .page-hero .c .v{font-family:var(--serif);font-size:32px;line-height:1;margin-top:6px}
+
+  /* Filter bar */
+  .filterbar{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;padding:18px var(--gutter)}
+  .filterbar .inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .filterbar .label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+  .chip{
+    padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);
+    font-size:13px;color:var(--ink-2);cursor:pointer;transition:all .2s ease;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .chip:hover{border-color:var(--ink-2)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip .ct{font-family:var(--mono);font-size:10.5px;opacity:.6}
+  .chip.on .ct{opacity:.8}
+  .filterbar .sort{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-3)}
+  .filterbar .sort select{
+    border:1px solid var(--line);border-radius:999px;padding:8px 14px;font:inherit;font-size:13px;color:var(--ink);background:var(--paper);
+  }
+
+  /* Featured */
+  .feature{padding:clamp(60px,7vw,90px) 0;background:var(--bone)}
+  .feature .head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:32px}
+  .feature .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-0.015em;margin:8px 0 0}
+  .feature .head h2 em{font-style:italic;color:var(--gold)}
+  .feature .head .more{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-3)}
+  .feature-card{
+    background:var(--ink);color:#fff;border-radius:var(--r-xl);overflow:hidden;
+    display:grid;grid-template-columns:1.3fr 1fr;gap:0;
+    box-shadow:var(--shadow-3);position:relative;
+  }
+  .feature-card .img{
+    position:relative;aspect-ratio:auto;min-height:520px;
+    background-size:cover;background-position:center;
+    background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1800&q=80&auto=format&fit=crop');
+  }
+  .feature-card .img .badge{
+    position:absolute;top:24px;left:24px;
+    background:var(--gold);color:var(--ink);
+    padding:8px 14px;border-radius:999px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .feature-card .img .ref{
+    position:absolute;bottom:24px;left:24px;
+    background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
+    padding:8px 14px;border-radius:6px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#fff;
+  }
+  .feature-card .info{padding:48px 44px;display:flex;flex-direction:column;gap:20px}
+  .feature-card .info .eyebrow{color:rgba(255,255,255,.6)}
+  .feature-card .info h3{font-family:var(--serif);font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1;letter-spacing:-0.01em;margin:6px 0 0}
+  .feature-card .info h3 em{font-style:italic;color:var(--gold)}
+  .feature-card .info .loc{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.78);font-size:14px}
+  .feature-card .info p{color:rgba(255,255,255,.78);font-size:15.5px;line-height:1.7;margin:0}
+  .feature-card .info .ks{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:auto;border-top:1px solid rgba(255,255,255,.15);padding-top:18px}
+  .feature-card .info .k{display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,.12);padding-right:10px}
+  .feature-card .info .k:last-child{border-right:0}
+  .feature-card .info .k .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+  .feature-card .info .k .val{font-family:var(--serif);font-size:22px;line-height:1.05}
+  .feature-card .info .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+  .feature-card .info .actions .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
+  .feature-card .info .actions .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+  /* Grid */
+  .grid-section{padding:clamp(40px,6vw,80px) 0 clamp(80px,9vw,130px);background:var(--bone-2)}
+  .grid-section .gr-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:32px}
+  .grid-section .gr-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,44px);line-height:1.04;letter-spacing:-0.015em;margin:8px 0 0}
+  .grid-section .gr-head .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-3)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;
+    display:flex;flex-direction:column;transition: transform .3s ease, box-shadow .3s ease;
+    position:relative;cursor:pointer;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-3)}
+  .card .img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--bone-3)}
+  .card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .img img{transform:scale(1.06)}
+  .card .save{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);display:grid;place-items:center;color:var(--ink);z-index:2;transition: background .2s ease;border:0;cursor:pointer}
+  .card .save:hover{background:#fff}
+  .card .save.saved{background:#fff;color:#E53935}
+  .card .save.saved svg{fill:#E53935;stroke:#E53935}
+  .card .tag{position:absolute;top:14px;left:14px;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.92);font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2)}
+  .card .tag.gold{background:var(--gold);color:var(--ink)}
+  .card .body{padding:22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card .price{font-family:var(--serif);font-size:26px;line-height:1;letter-spacing:-0.01em}
+  .card .ttl{font-family:var(--serif);font-size:22px;line-height:1.2;color:var(--ink);letter-spacing:-0.01em}
+  .card .ttl em{font-style:italic;color:var(--gold)}
+  .card .loc{font-size:13px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+  .card .stats-row{display:flex;gap:16px;padding-top:14px;margin-top:auto;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2);flex-wrap:wrap}
+  .card .stats-row span{display:inline-flex;align-items:center;gap:6px}
+  .card .stats-row .dim{color:var(--ink-3)}
+  .card .ref{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;margin-top:2px}
+
+  /* Land block */
+  .land-block{background:var(--ink);color:#fff;padding:clamp(70px,8vw,110px) 0}
+  .land-block .head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:32px}
+  .land-block .head .eyebrow{color:rgba(255,255,255,.6)}
+  .land-block .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-0.015em;margin:8px 0 0;color:#fff}
+  .land-block .head h2 em{font-style:italic;color:var(--gold)}
+  .land-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .lcard{
+    border:1px solid rgba(255,255,255,.14);border-radius:var(--r-l);padding:32px 28px;
+    display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,.03);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .lcard:hover{background:rgba(255,255,255,.07);transform:translateY(-4px)}
+  .lcard .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  .lcard .ttl{font-family:var(--serif);font-size:28px;line-height:1.1;letter-spacing:-0.01em}
+  .lcard .area{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.65)}
+  .lcard .specs{display:flex;flex-direction:column;gap:6px;margin-top:8px;font-size:14px;color:rgba(255,255,255,.78)}
+  .lcard .specs .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .lcard .specs .row:last-child{border-bottom:0}
+  .lcard .price{font-family:var(--serif);font-size:32px;line-height:1;margin-top:14px}
+  .lcard .arrow{margin-top:8px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:#fff;display:inline-flex;align-items:center;gap:8px;text-transform:uppercase}
+
+  /* CTA */
+  .pcta{background:var(--bone);text-align:center;padding:clamp(70px,8vw,110px) 0;border-top:1px solid var(--line)}
+  .pcta h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,56px);line-height:1.04;letter-spacing:-0.015em;margin:14px 0 18px}
+  .pcta h2 em{font-style:italic;color:var(--gold)}
+  .pcta p{color:var(--ink-2);max-width:48ch;margin:0 auto 28px;font-size:17px;line-height:1.65}
+  .pcta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  @media (max-width: 1080px){
+    .page-hero .head-row{grid-template-columns:1fr;gap:24px}
+    .page-hero .counts{grid-template-columns:repeat(2,1fr)}
+    .feature-card{grid-template-columns:1fr}
+    .feature-card .img{min-height:340px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .land-row{grid-template-columns:1fr}
+    .filterbar{position:static}
+  }
+  @media (max-width: 720px){
+    .page-hero{padding:130px 0 48px}
+    .page-hero .counts{grid-template-columns:1fr 1fr;gap:14px}
+    .feature-card .info{padding:32px 26px}
+    .feature-card .info .ks{grid-template-columns:1fr 1fr;gap:14px 0}
+    .feature-card .info .ks .k:nth-child(2){border-right:0}
+    .grid{grid-template-columns:1fr}
+    .filterbar .sort{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site" id="siteHeader">
+  <div class="row">
+    <a class="brand" href="index.html"><span class="mark">C</span><span class="word"><span class="a">Credence</span><span class="b">Real Estate</span></span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="properties.html" class="active">Properties</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a class="cta" href="contact.html">Book Consultation</a>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="properties.html">Properties</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book Consultation</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero" style="padding: 160px 0px">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Credence</a><span class="sep">·</span><span>Properties</span></div>
+    <div class="head-row">
+      <h1>The Accra<br/><em>Portfolio.</em></h1>
+      <p class="sub">A curated selection of luxury townhouses, contemporary homes, and investment properties — each title-verified and walked by our team before it appears on this page.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<section class="filterbar">
+  <div class="inner">
+    <span class="label">Filter</span>
+    <button class="chip on" data-f="all">All <span class="ct">· 6</span></button>
+    <button class="chip" data-f="sale">For Sale <span class="ct">· 4</span></button>
+    <button class="chip" data-f="rent">For Rent <span class="ct">· 1</span></button>
+    <button class="chip" data-f="furnished">Furnished <span class="ct">· 4</span></button>
+    <div class="sort">
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">Location</span>
+      <select id="locationSelect">
+        <option value="all">All Areas</option>
+        <option value="east-legon">East Legon</option>
+        <option value="ashale-botwe">Ashale Botwe</option>
+        <option value="accra">Accra</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="grid-section">
+  <div class="container">
+    <div class="gr-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Homes for Sale</div>
+        <h2>Curated residences across Greater Accra.</h2>
+      </div>
+      <div class="num">6 listings · updated 24 May 2026</div>
+    </div>
+
+    <div class="grid">
+      <article class="card" data-tags="sale furnished ashale-botwe">
+        <div class="img">
+          <span class="tag">For Sale</span>
+          <button class="save" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="assets/royal-manhattan.png" alt="Royal Manhattan" loading="lazy"/>
+        </div>
+        <div class="body">
+          <div class="price">USD 420,000</div>
+          <div class="ttl">Royal <em>Manhattan</em></div>
+          <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ashale Botwe · School Junction</div>
+          <div class="ref">REF · CR–RM–01</div>
+          <div class="stats-row">
+            <span>4 <span class="dim">bd</span></span>
+            <span>4 <span class="dim">ba</span></span>
+            <span>Furnished <span class="dim">+ pool</span></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="sale furnished east-legon">
+        <div class="img">
+          <span class="tag">For Sale</span>
+          <button class="save" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="assets/beverly-hills.jpeg" alt="Beverly Homes" loading="lazy"/>
+        </div>
+        <div class="body">
+          <div class="price">USD 450,000</div>
+          <div class="ttl">Beverly <em>Homes</em></div>
+          <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Beverly Hills · East Legon</div>
+          <div class="ref">REF · CR–BH–02</div>
+          <div class="stats-row">
+            <span>4 <span class="dim">bd</span></span>
+            <span>4 <span class="dim">ba</span></span>
+            <span>Furnished <span class="dim">+ outdoor kit.</span></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="sale east-legon">
+        <div class="img">
+          <span class="tag">For Sale</span>
+          <button class="save" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="assets/salem-plus-home.JPG" alt="" loading="lazy"/>
+        </div>
+        <div class="body">
+          <div class="price">USD 550,000</div>
+          <div class="ttl">Salem Plus <em>Homes</em></div>
+          <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Adjiringanor · East Legon</div>
+          <div class="ref">REF · CR–SP–05</div>
+          <div class="stats-row">
+            <span>4 <span class="dim">bd</span></span>
+            <span>Pool</span>
+            <span>Electric fence</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="sale furnished accra">
+        <div class="img">
+          <span class="tag">For Sale</span>
+          <button class="save" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy"/>
+        </div>
+        <div class="body">
+          <div class="price">USD 450,000</div>
+          <div class="ttl">Westland <em>Residence</em></div>
+          <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Westland · Accra</div>
+          <div class="ref">REF · CR–WL–04</div>
+          <div class="stats-row">
+            <span>4 <span class="dim">bd</span></span>
+            <span>Study <span class="dim">+ pergola</span></span>
+            <span>Semi-furn.</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="construction accra">
+        <div class="img">
+          <span class="tag gold">Under Construction</span>
+          <button class="save" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy"/>
+        </div>
+        <div class="body">
+          <div class="price">USD 280,000</div>
+          <div class="ttl">Cantonments <em>Court</em></div>
+          <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cantonments · Accra</div>
+          <div class="ref">REF · CR–CC–07</div>
+          <div class="stats-row">
+            <span>3 <span class="dim">bd</span></span>
+            <span>3.5 <span class="dim">ba</span></span>
+            <span>Q4 2026</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="rent furnished accra">
+        <div class="img">
+          <span class="tag">For Rent</span>
+          <button class="save" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy"/>
+        </div>
+        <div class="body">
+          <div class="price">USD 3,500<span style="font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-left:6px">/mo</span></div>
+          <div class="ttl">Airport Residential <em>Loft</em></div>
+          <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Airport Residential · Accra</div>
+          <div class="ref">REF · CR–AL–08</div>
+          <div class="stats-row">
+            <span>2 <span class="dim">bd</span></span>
+            <span>2 <span class="dim">ba</span></span>
+            <span>Fully furnished</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div style="text-align:center;margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:12px">
+      <p style="font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin:0">Extended portfolio · hosted on Google Drive</p>
+      <a href="https://drive.google.com/drive/folders/1MWqHmS1b1QWeCMq2NAban1rZQ1mZVXfG" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex;align-items:center;gap:10px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Drive_icon_%282026%29.svg" width="18" height="18" alt="Google Drive" style="flex-shrink:0;display:block"/>
+        Browse Full Portfolio
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAND & PLOTS -->
+<section class="land-block">
+  <div class="container">
+    <div class="head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Land &amp; Plots</div>
+        <h2>Title-verified <em>plots</em>, ready to build.</h2>
+      </div>
+      <div class="eyebrow" style="color:rgba(255,255,255,.55)"><span class="dot"></span>3 plots · documentation on file</div>
+    </div>
+
+    <div class="land-row">
+      <a href="contact.html" class="lcard">
+        <span class="tag">Plot · East Legon</span>
+        <div class="ttl">Adjiringanor<br/>Plot 14B</div>
+        <div class="area">2.5 plots · 0.65 acres · Title-verified</div>
+        <div class="specs">
+          <div class="row"><span>Tenure</span><span>Leasehold · 99 yrs</span></div>
+          <div class="row"><span>Survey</span><span>Independent · 2025</span></div>
+          <div class="row"><span>Access</span><span>Tarred road · gated</span></div>
+        </div>
+        <div class="price">USD 180,000</div>
+        <div class="arrow">Request docs <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+      <a href="contact.html" class="lcard">
+        <span class="tag">Plot · Trasacco</span>
+        <div class="ttl">Trasacco Valley<br/>Plot 09</div>
+        <div class="area">1.2 plots · 0.31 acres · Title-verified</div>
+        <div class="specs">
+          <div class="row"><span>Tenure</span><span>Leasehold · 50 yrs</span></div>
+          <div class="row"><span>Survey</span><span>Independent · 2026</span></div>
+          <div class="row"><span>Access</span><span>Estate · 24-hour</span></div>
+        </div>
+        <div class="price">USD 145,000</div>
+        <div class="arrow">Request docs <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+      <a href="contact.html" class="lcard">
+        <span class="tag">Plot · Tse Addo</span>
+        <div class="ttl">Tse Addo<br/>Reserve Plot</div>
+        <div class="area">3 plots · 0.78 acres · Title-verified</div>
+        <div class="specs">
+          <div class="row"><span>Tenure</span><span>Leasehold · 99 yrs</span></div>
+          <div class="row"><span>Survey</span><span>Independent · 2025</span></div>
+          <div class="row"><span>Access</span><span>Tarred road</span></div>
+        </div>
+        <div class="price">USD 220,000</div>
+        <div class="arrow">Request docs <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="pcta">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center"><span class="dot"></span>Cannot Find the Right Fit?</div>
+    <h2>We source <em>off-market</em> homes,<br/>too.</h2>
+    <p>Around 40% of our completed transactions never appear on this page. Tell us the brief — bedrooms, budget, location, timeline — and we'll surface matching opportunities from the private side of our book.</p>
+    <div class="actions">
+      <a href="contact.html" class="btn-solid">Submit a Brief
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="about.html" class="btn-ghost">About Credence</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="container">
+    <div class="top">
+      <div class="brandblock">
+        <h4>Credence<br/><em>Real Estate</em></h4>
+        <p>A subsidiary of Credence Holdings Global — owning, managing, building, selling, and renting property in Accra and across Ghana. By appointment.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@credencerealestat" target="_blank" rel="noopener" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.youtube.com/@CredenceRealEstateAssetManagem" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/233244120039" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div><h5>Explore</h5>
+        <ul>
+          <li><a href="properties.html">All Properties</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul></div>
+      <div><h5>Services</h5>
+        <ul>
+          <li><a href="services.html#development">Development</a></li>
+          <li><a href="services.html#sales">Sales &amp; Investment</a></li>
+          <li><a href="services.html#management">Property Management</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#interiors">Interiors</a></li>
+          <li><a href="services.html#land">Land &amp; Due Diligence</a></li>
+        </ul></div>
+      <div class="offices">
+        <h5>Locations</h5>
+        <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/>+233 24 442 7440</div>
+        <div class="of"><b>Credence Holdings LLC</b>805 Horizon Way, Manchester CT 06042 · USA<br/>United Kingdom</div>
+        <h5 style="margin-top:24px">Quarterly Letter</h5>
+        <div class="news"><input type="email" placeholder="your@email.com" /><button>Subscribe</button></div>
+      </div>
+    </div>
+    <div class="bot">
+      <div>© 2026 CREDENCE REAL ESTATE &amp; ASSET MGT. · SUBSIDIARY OF CREDENCE HOLDINGS GLOBAL · REGISTERED IN GHANA 2022</div>
+      <div>PRIVACY · TERMS · FAIR HOUSING</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('siteHeader');
+  const onScroll = () => { if(window.scrollY > 60) hdr.classList.add('solid'); else hdr.classList.remove('solid'); };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const cards = document.querySelectorAll('.grid .card');
+  const landBlock = document.querySelector('.land-block');
+  let activeType = 'all';
+  let activeLocation = 'all';
+
+  function applyFilters() {
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || '').split(' ');
+      const typeOk = activeType === 'all' || tags.includes(activeType);
+      const locOk  = activeLocation === 'all' || tags.includes(activeLocation);
+      card.style.display = (typeOk && locOk) ? '' : 'none';
+    });
+    if (landBlock) {
+      landBlock.style.display = (activeType === 'all' || activeType === 'land') ? '' : 'none';
+    }
+  }
+
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+    activeType = c.dataset.f;
+    applyFilters();
+  }));
+
+  document.getElementById('locationSelect').addEventListener('change', function() {
+    activeLocation = this.value;
+    applyFilters();
+  });
+
+  // Save / wishlist toggle
+  document.querySelectorAll('.card .save').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      btn.classList.toggle('saved');
+    });
+  });
+
+  // Card navigation
+  const cardSlugs = ['royal-manhattan','beverly-homes','salem-plus-homes','westland-residence','cantonments-court','airport-residential-loft'];
+  document.querySelectorAll('.grid .card').forEach((card, i) => {
+    if (cardSlugs[i]) {
+      card.addEventListener('click', e => {
+        if (!e.target.closest('.save')) location.href = 'listings/' + cardSlugs[i] + '.html';
+      });
+    }
+  });
+</script>
+<script src="assets/nav.js"></script>
+</body>
+</html>

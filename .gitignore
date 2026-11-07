@@ -1,0 +1,17 @@
+# Large raw source media (kept locally, not in git — converted/compressed versions are committed)
+assets/manhattan.MOV
+assets/salem-miami.MOV
+assets/beverly-hills.MP4
+*.MOV
+
+# Backup archive
+CREAM.zip
+
+# Hostinger / WordPress leftovers
+default.php
+.private/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+node_modules/
