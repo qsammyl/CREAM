@@ -1,768 +1,474 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Credence Real Estate &amp; Asset Management — Building Value. Creating Legacy.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/base.css" />
+<meta name="description" content="Premium real estate, construction and asset management in Accra for Ghanaians at home and in the diaspora. View title-verified properties or talk to our team."/>
+<link rel="canonical" href="https://credencerealestateandassetmgt.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Credence Real Estate &amp; Asset Management — Building Value. Creating Legacy."/>
+<meta property="og:description" content="Premium real estate, construction and asset management in Accra for Ghanaians at home and in the diaspora. View title-verified properties or talk to our team."/>
+<meta property="og:url" content="https://credencerealestateandassetmgt.com/"/>
+<meta property="og:image" content="https://credencerealestateandassetmgt.com/assets/royal-manhattan.png"/>
+<meta property="og:site_name" content="Credence Real Estate &amp; Asset Management"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Credence Real Estate &amp; Asset Management — Building Value. Creating Legacy."/>
+<meta name="twitter:description" content="Premium real estate, construction and asset management in Accra for Ghanaians at home and in the diaspora. View title-verified properties or talk to our team."/>
+<meta name="twitter:image" content="https://credencerealestateandassetmgt.com/assets/royal-manhattan.png"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="favicon.svg" sizes="any"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/base.css"/>
+<link rel="stylesheet" href="assets/site.css"/>
+<link rel="stylesheet" href="assets/pages.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Credence Real Estate & Asset Management","url":"https://credencerealestateandassetmgt.com/","image":"https://credencerealestateandassetmgt.com/assets/royal-manhattan.png","telephone":"+233 24 442 7440","email":"info@credencerealestateandassetmgt.com","areaServed":"Greater Accra, Ghana","address":{"@type":"PostalAddress","streetAddress":"Bawuah Junction, East Legon","addressLocality":"Accra","addressRegion":"Greater Accra","addressCountry":"GH"},"parentOrganization":{"@type":"Organization","name":"Credence Holdings Global"},"sameAs":["https://www.instagram.com/credence_realestateandassetmgt","https://www.tiktok.com/@credencerealestat","https://www.youtube.com/@CredenceRealEstateAssetManagem","https://www.facebook.com/people/Credence-Real-Estate-and-Asset-Management/100088681766316"]}</script>
 <style>
-  /* ============== HERO ============== */
-  .hero{
-    position:relative;min-height:100vh;color:#fff;overflow:hidden;background:#0F0E0C;isolation:isolate;
-  }
-  .hero .bg{position:absolute;inset:0}
-  .hero .bg .slide{
-    position:absolute;inset:0;
-    background-size:cover;background-position:center 40%;
-    filter:saturate(.95) contrast(1.02);
-    opacity:0;transform:scale(1.08);
-    transition: opacity 1.4s ease, transform 8s ease;
-  }
-  .hero .bg .slide.is-active{opacity:1;transform:scale(1.0)}
-  .hero .scrim{position:absolute;inset:0;background:
-    linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 35%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.78) 100%);
-  }
-  .hero .scrim-left{position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,.55) 0%, rgba(0,0,0,.25) 45%, rgba(0,0,0,0) 75%)}
-  .hero .content{
-    position:relative;z-index:2;min-height:100vh;
-    display:flex;flex-direction:column;justify-content:space-between;
-    padding-top:140px;padding-bottom:80px;
-  }
-  .hero .meta-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;color:rgba(255,255,255,.8)}
-  .hero .meta-top .badge{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:9px 16px;border-radius:999px;
-    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
-    backdrop-filter:blur(8px);
-    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  }
-  .hero .meta-top .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
-  .hero .meta-top .geos{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.hero{position:relative;min-height:100vh;color:#fff;overflow:hidden;background:#0F0E0C;isolation:isolate}
+.hero .bg{position:absolute;inset:0}
+.hero .bg .slide{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:0;transform:scale(1.06);transition:opacity 1.4s ease, transform 8s ease}
+.hero .bg .slide.is-active{opacity:1;transform:scale(1)}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.32) 40%, rgba(0,0,0,.72) 100%)}
+.hero .content{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:160px;padding-bottom:84px}
+.hero .meta-top{position:absolute;top:150px;left:0;right:0}
+.hero .badge{display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.hero .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(54px,8.4vw,132px);line-height:.95;letter-spacing:-0.02em;margin:0;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero h1 em{font-style:italic;color:#E8DEC2}
+.hero .sub{margin-top:26px;max-width:56ch;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:rgba(255,255,255,.92);text-shadow:0 1px 18px rgba(0,0,0,.55)}
+.hero .cta-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;align-items:center}
+.hero .cta-row .btn-solid{background:var(--gold);color:var(--ink)}
+.hero .cta-row .btn-solid:hover{background:#fff}
+.hero .cta-row .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero .cta-row .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.hero .wa-link{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:14px;opacity:.9;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:3px}
+.hero .wa-link:hover{opacity:1}
+.hero .dots{position:absolute;left:var(--gutter);bottom:30px;display:flex;gap:6px;z-index:3}
+.hero .dots .d{width:24px;height:2px;background:rgba(255,255,255,.3)}
+.hero .dots .d.on{background:#fff}
 
-  .hero h1{
-    font-family:var(--serif);font-weight:400;
-    font-size: clamp(54px, 8.4vw, 138px);
-    line-height:.95;letter-spacing:-0.02em;margin:0;
-    text-shadow: 0 2px 30px rgba(0,0,0,.35);
-  }
-  .hero h1 em{font-style:italic;color:#E8DEC2}
-  .hero .sub{
-    margin-top:32px;max-width:58ch;
-    font-size:clamp(16px, 1.4vw, 19px);line-height:1.65;color:rgba(255,255,255,.92);
-    text-shadow: 0 1px 18px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.4);
-  }
-  .hero .cta-row{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
-  .hero .cta-row .btn-solid{background:var(--gold);color:var(--ink)}
-  .hero .cta-row .btn-solid:hover{background:#fff}
-  .hero .cta-row .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
-  .hero .cta-row .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.feat{background:var(--bone)}
+.feat .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.feat .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,64px);line-height:1.02;letter-spacing:-0.015em;margin:8px 0 0}
+.feat .head h2 em{font-style:italic;color:var(--gold)}
+.feat .links{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;justify-content:center}
 
-  .hero .bottombar{
-    display:grid;grid-template-columns: repeat(4, 1fr);gap:24px;
-    padding-top:32px;border-top:1px solid rgba(255,255,255,.18);
-  }
-  .hero .bottombar .stat{display:flex;flex-direction:column;gap:6px}
-  .hero .bottombar .stat .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-  .hero .bottombar .stat .v{font-family:var(--serif);font-size:38px;line-height:1.05;margin-top:6px}
-  .hero .bottombar .stat .d{font-size:12.5px;color:rgba(255,255,255,.7);margin-top:4px}
+.svcs{background:var(--bone-2)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);background:#fff}
+.svc{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:38px 30px 30px;display:flex;flex-direction:column;gap:12px;position:relative}
+.svc .num{position:absolute;top:18px;right:22px;font-family:var(--mono);font-size:11px;color:var(--ink-4);letter-spacing:.18em}
+.svc h3{font-family:var(--serif);font-size:25px;font-weight:400;margin:0;line-height:1.15;letter-spacing:-0.01em}
+.svc p{font-size:14.5px;color:var(--ink-3);line-height:1.6;margin:0}
+.svc .enq{margin-top:auto;padding-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--emerald);display:inline-flex;align-items:center;gap:8px}
+@media(max-width:1080px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.svc-grid{grid-template-columns:1fr}}
 
-  .hero .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:28px;display:flex;gap:6px;z-index:3}
-  .hero .dots .d{width:24px;height:2px;background:rgba(255,255,255,.3);transition:background .25s ease}
-  .hero .dots .d.on{background:#fff}
+.why{background:var(--bone)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);margin-top:8px}
+.why-item{padding:28px 24px 28px 0;border-bottom:1px solid var(--line)}
+.why-item:not(:last-child){border-right:1px solid var(--line);padding-right:24px}
+.why-item:not(:first-child){padding-left:24px}
+.why-item .n{font-family:var(--mono);font-size:11px;color:var(--gold-2);letter-spacing:.18em}
+.why-item .t{font-family:var(--serif);font-size:22px;line-height:1.15;margin-top:12px;letter-spacing:-0.01em}
+.why-item .d{font-size:13.5px;color:var(--ink-3);line-height:1.6;margin-top:8px}
+@media(max-width:1080px){.why-grid{grid-template-columns:1fr 1fr}.why-item:nth-child(2){border-right:0}}
+@media(max-width:640px){.why-grid{grid-template-columns:1fr}.why-item{border-right:0!important;padding-right:0}}
 
-  /* ============== INTRO STATEMENT ============== */
-  .intro{background:var(--bone);padding: clamp(80px, 9vw, 130px) 0}
-  .intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
-  .intro h2{
-    font-family:var(--serif);font-weight:400;letter-spacing:-0.015em;line-height:1.04;
-    font-size:clamp(34px,3.8vw,56px);margin:18px 0 0;
-  }
-  .intro-body p{font-size:17.5px;line-height:1.75;color:var(--ink-2);margin:0 0 22px}
-  .intro-body p:first-child::first-letter{
-    font-family:var(--serif);font-size:64px;line-height:.85;float:left;margin:6px 14px 0 0;color:var(--emerald);
-  }
-  .intro-body .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:1px solid var(--line)}
-  .intro-body .pillar{padding:24px 0;border-bottom:1px solid var(--line)}
-  .intro-body .pillar:not(:last-child){padding-right:24px}
-  .intro-body .pillar .n{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--gold-2)}
-  .intro-body .pillar .t{font-family:var(--serif);font-size:22px;margin-top:8px;line-height:1.15}
-  .intro-body .pillar .d{font-size:13.5px;color:var(--ink-3);margin-top:6px;line-height:1.5}
+.reels{background:var(--bone-2);border-top:1px solid var(--line)}
+.reels .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.reels .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.02;margin:8px 0 0}
+.reels .head h2 em{font-style:italic;color:var(--gold)}
+.reels-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.reel{aspect-ratio:9/16;border-radius:var(--r-l);overflow:hidden;position:relative;background:#0F0E0C;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .3s ease,box-shadow .3s ease}
+.reel:hover{transform:translateY(-4px);box-shadow:var(--shadow-3)}
+.reel video,.reel .ph-brand{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.reel::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.25) 0%,transparent 40%,rgba(0,0,0,.85) 100%);z-index:1}
+.reel .play-ic{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;z-index:2}
+.reel .body{position:relative;z-index:2;padding:16px 18px}
+.reel .ttl{font-family:var(--serif);font-size:18px;line-height:1.15}
+.reel .ttl em{font-style:italic;color:#E8DEC2}
+.reel .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.8);text-transform:uppercase;margin-top:6px}
+@media(max-width:1080px){.reels-row{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.reels-row{grid-template-columns:1fr 1fr;gap:12px}}
 
-  /* ============== SERVICES ============== */
-  .services{background:var(--bone-2)}
-  .svc-grid{
-    display:grid;grid-template-columns:repeat(3, 1fr);gap:0;
-    border-top:1px solid var(--line);border-left:1px solid var(--line);
-    background:#fff;
-  }
-  .svc{
-    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-    padding:40px 32px 36px;display:flex;flex-direction:column;gap:14px;
-    position:relative;transition: background .25s ease;cursor:pointer;
-  }
-  .svc:hover{background:var(--bone)}
-  .svc .num{position:absolute;top:18px;right:24px;font-family:var(--mono);font-size:11px;color:var(--ink-4);letter-spacing:.18em}
-  .svc .ic{width:46px;height:46px;border-radius:50%;background:var(--bone-2);display:grid;place-items:center;color:var(--emerald);margin-bottom:6px}
-  .svc h3{font-family:var(--serif);font-size:26px;font-weight:400;margin:0;line-height:1.15;letter-spacing:-0.01em}
-  .svc p{font-size:14.5px;color:var(--ink-3);line-height:1.6;margin:0}
-  .svc .arrow{margin-top:auto;padding-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-2);display:flex;align-items:center;gap:8px}
-  .svc .arrow svg{transition:transform .25s ease}
-  .svc:hover .arrow svg{transform:translateX(4px)}
+.test{background:var(--bone)}
+.test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:36px}
+.qcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:40px;display:flex;flex-direction:column;gap:18px}
+.qcard .mark{font-family:var(--serif);font-size:70px;line-height:.3;color:var(--gold);height:26px}
+.qcard .q{font-family:var(--serif);font-size:23px;line-height:1.35;font-style:italic;color:var(--ink)}
+.qcard .stars{color:var(--gold);letter-spacing:.18em;font-size:13px}
+.qcard .who{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.qcard .who .av{width:46px;height:46px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:18px;flex:none}
+.qcard .who .n{font-family:var(--serif);font-size:18px}
+.qcard .who .r{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+@media(max-width:900px){.test-grid{grid-template-columns:1fr}}
 
-  /* ============== FEATURED PROPERTY ============== */
-  .feature-prop{background:var(--ink);color:#fff;position:relative;overflow:hidden}
-  .feature-prop .container{position:relative;z-index:2}
-  .feature-prop .head{margin-bottom:48px}
-  .feature-prop .eyebrow{color:rgba(255,255,255,.6)}
-  .feature-prop .eyebrow .dot{background:var(--gold)}
-  .feature-prop h2{font-family:var(--serif);font-weight:400;letter-spacing:-0.015em;line-height:1.02;font-size:clamp(40px,5vw,72px);margin:14px 0 0;color:#fff}
-  .feature-prop .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:stretch}
-  .feature-prop .imgwrap{
-    position:relative;border-radius:var(--r-l);overflow:hidden;aspect-ratio: 4/3;background:#222;
-  }
-  .feature-prop .imgwrap img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-  .feature-prop .imgwrap:hover img{transform:scale(1.04)}
-  .feature-prop .imgwrap .badge{
-    position:absolute;top:20px;left:20px;
-    background:var(--gold);color:var(--ink);
-    padding:8px 14px;border-radius:999px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  }
-  .feature-prop .imgwrap .ref{
-    position:absolute;bottom:20px;right:20px;
-    background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
-    padding:8px 14px;border-radius:6px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#fff;
-  }
-  .feature-prop .info{display:flex;flex-direction:column;gap:24px;padding:8px 0}
-  .feature-prop .info .name{font-family:var(--serif);font-size:clamp(40px,4vw,58px);line-height:1;margin:0}
-  .feature-prop .info .name em{font-style:italic;color:var(--gold)}
-  .feature-prop .info .loc{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-size:14px}
-  .feature-prop .info .desc{color:rgba(255,255,255,.78);font-size:16px;line-height:1.7;margin:6px 0 0}
-  .feature-prop .info .ks{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.15)}
-  .feature-prop .info .k{padding:20px 0 20px 20px;border-bottom:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15)}
-  .feature-prop .info .k:first-child{padding-left:0}
-  .feature-prop .info .k:last-child{border-right:0}
-  .feature-prop .info .k .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-  .feature-prop .info .k .val{font-family:var(--serif);font-size:24px;margin-top:6px;line-height:1}
-  .feature-prop .info .actions{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
-  .feature-prop .info .actions .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
-  .feature-prop .info .actions .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
-  .feature-prop .info .actions .btn-gold:hover{background:#fff}
-
-  /* ============== WHY US (TIMELINE / PILLARS) ============== */
-  .why{background:var(--bone)}
-  .why-grid{display:grid;grid-template-columns: 1fr 1fr;gap:80px;align-items:start}
-  .why-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
-  .why-item{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:48px 1fr auto;gap:24px;align-items:start;cursor:pointer;transition:background .25s ease;padding-left:0;padding-right:0}
-  .why-item:hover{background:rgba(184,150,94,.06)}
-  .why-item .n{font-family:var(--mono);font-size:11px;color:var(--gold-2);letter-spacing:.18em;padding-top:6px}
-  .why-item .t{font-family:var(--serif);font-size:28px;line-height:1.1;letter-spacing:-0.01em}
-  .why-item .d{font-size:14px;color:var(--ink-3);margin-top:8px;line-height:1.6;max-width:50ch}
-  .why-item .arr{padding-top:8px;color:var(--ink-3);transition:transform .25s ease, color .25s ease}
-  .why-item:hover .arr{transform:translateX(4px);color:var(--emerald)}
-
-  .why .imgblk{
-    aspect-ratio: 4/5;border-radius:var(--r-l);overflow:hidden;background:var(--bone-3);
-    position:sticky;top:120px;
-  }
-  .why .imgblk img{width:100%;height:100%;object-fit:cover}
-
-  /* ============== CEO MESSAGE ============== */
-  .ceo-section{background:#0F0E0C;color:#fff;position:relative;overflow:hidden}
-  .ceo-grid{display:grid;grid-template-columns: 1.1fr 1fr;gap:80px;align-items:center}
-  .ceo-portrait{
-    position:relative;aspect-ratio: 4/5;border-radius:var(--r-l);overflow:hidden;background:#222;
-  }
-  .ceo-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
-  .ceo-portrait::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,.4), transparent 50%);
-  }
-  .ceo-portrait .caption{
-    position:absolute;left:24px;bottom:22px;right:24px;
-    display:flex;justify-content:space-between;align-items:end;color:#fff;
-  }
-  .ceo-portrait .caption .name{font-family:var(--serif);font-size:30px;line-height:1.05}
-  .ceo-portrait .caption .role{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:4px}
-  .ceo-portrait .caption .badge{
-    background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
-    padding:8px 12px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:#fff;
-  }
-  .ceo-msg .eyebrow{color:rgba(255,255,255,.6)}
-  .ceo-msg h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.8vw,56px);line-height:1.04;letter-spacing:-0.015em;margin:14px 0 28px;color:#fff}
-  .ceo-msg h2 em{font-style:italic;color:var(--gold)}
-  .ceo-msg .quote{
-    font-family:var(--serif);font-size:22px;font-style:italic;line-height:1.5;
-    color:rgba(255,255,255,.85);margin:0 0 24px;
-    padding-left:24px;border-left:1px solid var(--gold);
-  }
-  .ceo-msg p{font-size:15.5px;line-height:1.75;color:rgba(255,255,255,.72);margin:0 0 18px}
-  .ceo-msg .sig{margin-top:28px;display:flex;align-items:center;gap:16px}
-  .ceo-msg .sig .sn{font-family:var(--serif);font-size:24px;font-style:italic}
-  .ceo-msg .sig .sr{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:2px}
-  .ceo-msg .sig .pipe{width:1px;height:28px;background:rgba(255,255,255,.2)}
-
-  /* ============== TESTIMONIALS ============== */
-  .test{background:var(--bone-2)}
-  .test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:40px}
-  .qcard{
-    background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);
-    padding:40px;display:flex;flex-direction:column;gap:20px;position:relative;
-  }
-  .qcard .mark{font-family:var(--serif);font-size:80px;line-height:.4;color:var(--gold);height:30px}
-  .qcard .q{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-0.01em;font-style:italic;color:var(--ink)}
-  .qcard .stars{color:var(--gold);font-size:13px;letter-spacing:.18em}
-  .qcard .who{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
-  .qcard .who .av{width:48px;height:48px;border-radius:50%;background:var(--bone-3) center/cover;flex:none;border:1px solid var(--line)}
-  .qcard .who .n{font-family:var(--serif);font-size:18px;line-height:1.1}
-  .qcard .who .r{font-size:12.5px;color:var(--ink-3);margin-top:2px}
-
-  /* ============== REELS ============== */
-  .reels{background:var(--bone-2);padding:clamp(70px,8vw,120px) 0;border-top:1px solid var(--line)}
-  .reels .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
-  .reels .head h2{font-family:var(--serif);font-weight:400;letter-spacing:-0.015em;line-height:1.02;font-size:clamp(34px,4vw,56px);margin:8px 0 0}
-  .reels .head h2 em{font-style:italic;color:var(--gold)}
-  .reels .head .right{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:14px}
-  .reels .head .right a{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);border-bottom:1px solid var(--ink-2);padding-bottom:2px}
-  .reels-row{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;margin: 0 calc(var(--gutter) * -1);padding:6px var(--gutter)}
-  .reels-row::-webkit-scrollbar{display:none}
-  .reel{flex:0 0 260px;scroll-snap-align:start;aspect-ratio:9/16;border-radius:var(--r-l);overflow:hidden;position:relative;background:#0F0E0C;background-size:cover;background-position:center;cursor:pointer;transition: transform .3s ease, box-shadow .3s ease;color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
-  .reel:hover{transform:translateY(-4px);box-shadow:var(--shadow-3)}
-  .reel::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.3) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.1) 55%, rgba(0,0,0,.85) 100%)}
-  .reel > *{position:relative;z-index:1}
-  .reel .top-row{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;z-index:1}
-  .reel .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff}
-  .reel .tag.live{background:#D9483B}
-  .reel .dur{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:5px;color:#fff}
-  .reel .play-ic{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;opacity:.92;transition:opacity .25s ease, transform .25s ease;z-index:1}
-  .reel:hover .play-ic{opacity:1;transform:translate(-50%,-50%) scale(1.05)}
-  .reel .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
-  .reel .ttl{font-family:var(--serif);font-size:18px;line-height:1.15;letter-spacing:-0.01em}
-  .reel .ttl em{font-style:italic;color:#E8DEC2}
-  .reel .meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.75);text-transform:uppercase}
-  .reels .ledger{margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
-  .reels .ledger .row{padding:22px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
-  .reels .ledger .row:not(:last-child){padding-right:24px;border-right:1px solid var(--line)}
-  .reels .ledger .row:not(:first-child){padding-left:24px}
-  .reels .ledger .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
-  .reels .ledger .v{font-family:var(--serif);font-size:30px;line-height:1;letter-spacing:-0.01em}
-  .reels .ledger .v em{font-style:italic;color:var(--gold)}
-  .reels .ledger .d{font-size:12.5px;color:var(--ink-3)}
-  .reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
-  .reel .top-row,.reel .body{transition:opacity .3s ease,transform .3s ease}
-  .reel:hover .top-row,.reel:hover .body{opacity:0;pointer-events:none;transform:translateY(5px)}
-  @media (max-width:720px){.reel{flex:0 0 220px}}
-
-  /* ── Reel lightbox ── */
-  #reelLb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
-  #reelLb.open{opacity:1;pointer-events:auto}
-  #reelLb .lb-wrap{position:relative;width:min(420px,88vw);border-radius:20px;overflow:hidden;background:#111;box-shadow:0 40px 100px rgba(0,0,0,.75);transform:scale(.94) translateY(16px);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  #reelLb.open .lb-wrap{transform:scale(1) translateY(0)}
-  #reelLb video{width:100%;display:block;max-height:72vh;object-fit:contain;background:#000}
-  #reelLb .lb-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);cursor:pointer;color:#fff;display:grid;place-items:center;transition:background .2s;z-index:1}
-  #reelLb .lb-close:hover{background:rgba(255,255,255,.22)}
-  #reelLb .lb-meta{padding:14px 18px 20px;background:#111}
-  #reelLb .lb-ttl{font-family:var(--serif);font-size:22px;line-height:1.15;color:#fff}
-  #reelLb .lb-ttl em{font-style:italic;color:#E8DEC2}
-  #reelLb .lb-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:5px}
-  #reelLb .lb-view{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,150,94,.4);padding-bottom:2px}
-  #reelLb .lb-view:hover{color:#fff;border-color:rgba(255,255,255,.4)}
-
-  /* ============== SIGNATURE HOME SHOW ============== */
-  .show-section{background:var(--bone);position:relative;overflow:hidden}
-  .show-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .show-section h2{font-family:var(--serif);font-weight:400;letter-spacing:-0.015em;line-height:1.02;font-size:clamp(40px,5vw,72px);margin:14px 0 0}
-  .show-section h2 em{font-style:italic;color:var(--gold)}
-  .show-section .desc{color:var(--ink-2);font-size:17px;line-height:1.7;margin-top:24px;max-width:48ch}
-  .show-section .desc + .desc{margin-top:16px}
-  .show-section .actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
-  .show-img{
-    position:relative;aspect-ratio:4/3;border-radius:var(--r-l);overflow:hidden;background:var(--bone-3);
-    box-shadow:var(--shadow-3);
-  }
-  .show-img img{width:100%;height:100%;object-fit:cover}
-  .show-img .play{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);
-    display:grid;place-items:center;box-shadow:0 12px 40px rgba(0,0,0,.3);
-    transition:transform .3s ease, background .3s ease;
-  }
-  .show-img .play:hover{transform:translate(-50%,-50%) scale(1.06);background:#fff}
-  .show-img .epbadge{
-    position:absolute;top:20px;left:20px;
-    background:rgba(0,0,0,.55);color:#fff;backdrop-filter:blur(8px);
-    padding:8px 14px;border-radius:999px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  }
-
-  /* ============== YOUTUBE LIGHTBOX ============== */
-  #ytLb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
-  #ytLb.open{opacity:1;pointer-events:auto}
-  #ytLb .yt-wrap{position:relative;width:min(900px,92vw);aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.75);transform:scale(.94) translateY(16px);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  #ytLb.open .yt-wrap{transform:scale(1) translateY(0)}
-  #ytLb iframe{width:100%;height:100%;border:0;display:block}
-  #ytLb .yt-close{position:absolute;top:-48px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);cursor:pointer;color:#fff;display:grid;place-items:center;transition:background .2s}
-  #ytLb .yt-close:hover{background:rgba(255,255,255,.28)}
-
-  /* ============== CTA STRIP ============== */
-  .cta-strip{
-    background:linear-gradient(135deg, var(--emerald) 0%, var(--emerald-2) 100%);
-    color:#fff;padding:clamp(70px,8vw,110px) 0;position:relative;overflow:hidden;
-  }
-  .cta-strip::before{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(ellipse at 80% 20%, rgba(184,150,94,.18), transparent 50%);
-  }
-  .cta-strip .row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;position:relative}
-  .cta-strip h2{font-family:var(--serif);font-weight:400;letter-spacing:-0.015em;line-height:1.02;font-size:clamp(40px,5vw,68px);margin:0;color:#fff}
-  .cta-strip h2 em{font-style:italic;color:var(--gold)}
-  .cta-strip .p{color:rgba(255,255,255,.8);font-size:17px;line-height:1.65;margin:0;max-width:50ch}
-  .cta-strip .actions{margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.18);display:flex;flex-wrap:wrap;gap:14px;align-items:center;position:relative}
-  .cta-strip .actions .btn-gold:hover{background:#fff}
-  .cta-strip .actions .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
-  .cta-strip .actions .btn-ghost:hover{background:#fff;color:var(--emerald);border-color:#fff}
-
-  /* ============== RESPONSIVE ============== */
-  @media (max-width: 1080px){
-    .hero .bottombar{display:none}
-    .intro-grid{grid-template-columns:1fr;gap:32px}
-    .svc-grid{grid-template-columns:repeat(2,1fr)}
-    .feature-prop .grid{grid-template-columns:1fr;gap:32px}
-    .why-grid{grid-template-columns:1fr;gap:48px}
-    .why .imgblk{position:static;aspect-ratio:16/9}
-    .ceo-grid{grid-template-columns:1fr;gap:40px}
-    .show-grid{grid-template-columns:1fr;gap:32px}
-    .test-grid{grid-template-columns:1fr}
-    .cta-strip .row{grid-template-columns:1fr;gap:32px}
-  }
-  @media (max-width: 720px){
-    .hero h1{font-size:clamp(48px,12vw,80px)}
-    .hero .bottombar{display:none}
-    .intro-body .pillars{grid-template-columns:1fr}
-    .intro-body p:first-child::first-letter{font-size:48px}
-    .svc-grid{grid-template-columns:1fr}
-    .feature-prop .info .ks{grid-template-columns:1fr 1fr}
-    .feature-prop .info .ks .k:nth-child(2){border-right:0}
-    .qcard{padding:28px}
-    .qcard .q{font-size:20px}
-  }
+.closing{background:linear-gradient(135deg,var(--emerald),var(--emerald-2));color:#fff;text-align:center}
+.closing h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,64px);line-height:1.02;margin:12px 0 18px;color:#fff}
+.closing h2 em{font-style:italic;color:var(--gold)}
+.closing p{color:rgba(255,255,255,.82);max-width:52ch;margin:0 auto 30px;font-size:17px;line-height:1.65}
+.closing .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.closing .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.closing .btn-ghost:hover{background:#fff;color:var(--emerald);border-color:#fff}
+.closing .btn-gold:hover{background:#fff}
+.ceo-quote{background:var(--ink);color:#fff;text-align:center}
+.ceo-quote .q{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,34px);line-height:1.35;max-width:24ch;margin:0 auto}
+.ceo-quote .q em{color:var(--gold)}
+.ceo-quote .by{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:20px}
 </style>
 </head>
 <body>
-
-<!-- =================== HEADER =================== -->
-<header class="site" id="siteHeader">
-  <div class="row">
-    <a class="brand" href="index.html">
-      <span class="mark">C</span>
-      <span class="word"><span class="a">Credence</span><span class="b">Real Estate</span></span>
-    </a>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="properties.html">Properties</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="tools">
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-      <a class="cta" href="contact.html">Book Consultation</a>
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px">Skip to content</a>
+<header class="site" id="siteHeader" data-overlay>
+  <div class="util-bar">
+    <div class="util-inner">
+      <div class="util-left">
+        <a href="blog/index.html">Blog</a>
+        <a href="insights.html">Insights</a>
+        <a href="search-document.html">Search Document</a>
+      </div>
+      <div class="util-right">
+        <a class="util-phone" href="tel:+233244427440">+233 24 442 7440</a>
+        <a href="https://wa.me/233244120039" target="_blank" rel="noopener">WhatsApp</a>
+        <span class="util-social">
+          <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@credencerealestat" target="_blank" rel="noopener" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.youtube.com/@CredenceRealEstateAssetManagem" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/people/Credence-Real-Estate-and-Asset-Management/100088681766316" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </span>
+      </div>
     </div>
   </div>
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="properties.html">Properties</a>
-    <a href="contact.html">Contact</a>
-    <a href="contact.html" class="mob-cta">Book Consultation</a>
-  </nav>
+  <div class="main-bar">
+    <div class="row">
+      <a class="brand" href="index.html"><span class="mark">C</span><span class="word"><span class="a">Credence</span><span class="b">Real Estate</span></span></a>
+      <nav class="mainnav" aria-label="Primary">
+        <div class="has-mega">
+          <button class="navitem" aria-expanded="false" aria-controls="mega-assets" aria-haspopup="true">Assets <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega" id="mega-assets" role="menu">
+            <div class="col"><h4>Properties</h4>
+              <a role="menuitem" href="properties/buy.html">Buy</a>
+              <a role="menuitem" href="properties/rent.html">Rent</a>
+              <a role="menuitem" href="sell.html">Sell with us</a>
+              <a role="menuitem" href="properties/land.html">Land</a>
+            </div>
+            <div class="col"><h4>Exclusives</h4>
+              <a role="menuitem" href="exclusives.html">Exclusive listings</a>
+              <a role="menuitem" href="new-projects.html">New projects &amp; off-plan</a>
+              <a role="menuitem" href="exclusives.html#off-market">Off-market brief</a>
+            </div>
+            <div class="col"><h4>Short stays</h4>
+              <a role="menuitem" href="short-stays.html">Short-stay homes</a>
+              <a role="menuitem" href="short-stays.html#request">Request dates</a>
+              <a role="menuitem" href="properties.html">All properties</a>
+            </div>
+          </div>
+        </div>
+        <div class="has-drop">
+          <button class="navitem" aria-expanded="false" aria-controls="drop-services" aria-haspopup="true">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="drop" id="drop-services" role="menu">
+            <a role="menuitem" href="services.html#development">Development</a>
+            <a role="menuitem" href="services.html#sales">Sales &amp; Investment</a>
+            <a role="menuitem" href="services.html#management">Property Management</a>
+            <a role="menuitem" href="services.html#construction">Construction &amp; Project Management</a>
+            <a role="menuitem" href="services.html#interiors">Interiors</a>
+            <a role="menuitem" href="services.html#land">Land Acquisition &amp; Due Diligence</a>
+          </div>
+        </div>
+        <a class="navitem" href="about.html">About</a>
+        <a class="navitem" href="contact.html">Contact</a>
+      </nav>
+      <div class="tools">
+        <a class="cta" href="contact.html">Talk to us</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
 </header>
-
-<!-- =================== HERO =================== -->
+<div class="drawer-scrim" id="drawerScrim"></div>
+<aside class="drawer" id="mobileDrawer" aria-label="Menu">
+  <div class="drawer-head">
+    <a class="brand" href="index.html"><span class="mark">C</span> Credence</a>
+    <button class="d-close" aria-label="Close menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="d-group">
+    <button class="d-acc" aria-expanded="true" aria-controls="dp-assets">Assets <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="d-panel open" id="dp-assets">
+      <h5>Properties</h5>
+      <a href="properties/buy.html">Buy</a><a href="properties/rent.html">Rent</a><a href="sell.html">Sell with us</a><a href="properties/land.html">Land</a>
+      <h5>Exclusives</h5>
+      <a href="exclusives.html">Exclusive listings</a><a href="new-projects.html">New projects &amp; off-plan</a><a href="exclusives.html#off-market">Off-market brief</a>
+      <h5>Short stays</h5>
+      <a href="short-stays.html">Short-stay homes</a><a href="short-stays.html#request">Request dates</a>
+    </div>
+  </div>
+  <div class="d-group">
+    <button class="d-acc" aria-expanded="false" aria-controls="dp-services">Services <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="d-panel" id="dp-services">
+      <a href="services.html#development">Development</a><a href="services.html#sales">Sales &amp; Investment</a><a href="services.html#management">Property Management</a><a href="services.html#construction">Construction &amp; Project Management</a><a href="services.html#interiors">Interiors</a><a href="services.html#land">Land Acquisition &amp; Due Diligence</a>
+    </div>
+  </div>
+  <a class="d-link" href="about.html">About</a>
+  <a class="d-link" href="contact.html">Contact</a>
+  <div class="d-util">
+    <a href="blog/index.html">Blog</a>
+    <a href="insights.html">Insights</a>
+    <a href="search-document.html">Search Document</a>
+  </div>
+  <a class="d-cta" href="contact.html">Talk to us</a>
+</aside>
+<main id="main">
 <section class="hero">
   <div class="bg" id="heroBg">
-    <div class="slide is-active" style="background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=2400&q=80&auto=format&fit=crop')"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2400&q=80&auto=format&fit=crop')"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=80&auto=format&fit=crop')"></div>
+    <div class="slide is-active" style="background-image:url('assets/royal-manhattan.png')"></div>
     <div class="slide" style="background-image:url('assets/beverly-hills.jpeg')"></div>
+    <div class="slide" style="background-image:url('assets/salem-plus-home.JPG')"></div>
   </div>
   <div class="scrim"></div>
-  <div class="scrim-left"></div>
-
+  <div class="container meta-top"><span class="badge"><span class="dot"></span>Credence Holdings Global · Real Estate Division</span></div>
   <div class="container content">
-    <div class="meta-top">
-      <span class="badge"><span class="dot"></span>Credence Holdings Global · Real Estate Division</span>
-      <span class="geos">Accra · London · Manchester, CT</span>
-    </div>
-
-    <div>
-      <h1>Building Value.<br/><em>Creating Legacy.</em></h1>
-      <p class="sub">Premium real estate, construction, and asset management for Ghanaians at home and in the diaspora — end-to-end, transparent, and built to outlive trends.</p>
-      <div class="cta-row">
-        <a href="properties.html" class="btn-solid">View Listings
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="contact.html" class="btn-ghost">Diaspora Consultation</a>
-      </div>
-
-      <div class="bottombar" style="margin-top:64px">
-        <div class="stat"><span class="k">Headquartered</span><span class="v">Accra</span><span class="d">East Legon, Greater Accra</span></div>
-        <div class="stat"><span class="k">Group Presence</span><span class="v">USA · UK · GH</span><span class="d">Credence Holdings Global</span></div>
-        <div class="stat"><span class="k">Founded</span><span class="v">2022</span><span class="d">Ghana real estate launch</span></div>
-        <div class="stat"><span class="k">Diaspora Programme</span><span class="v">End-to-End</span><span class="d">Land · Build · Manage</span></div>
-      </div>
+    <h1>Building Value.<br/><em>Creating Legacy.</em></h1>
+    <p class="sub">Premium real estate, construction, and asset management for Ghanaians at home and in the diaspora — end-to-end, transparent, and built to outlive trends.</p>
+    <div class="cta-row">
+      <a href="properties.html" class="btn-solid">See our properties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="contact.html" class="btn-ghost">Talk to us</a>
+      <a href="https://wa.me/233244120039" target="_blank" rel="noopener" class="wa-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21l1.65-4.92A8.5 8.5 0 1 1 7.92 19.35L3 21z"/></svg> WhatsApp us</a>
     </div>
   </div>
-
-  <div class="dots" id="heroDots">
-    <span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span>
-  </div>
+  <div class="dots" id="heroDots"><span class="d on"></span><span class="d"></span><span class="d"></span></div>
 </section>
 
-<!-- =================== INTRO STATEMENT =================== -->
-<section class="intro">
-  <div class="container">
-    <div class="intro-grid">
-      <div>
-        <div class="eyebrow"><span class="dot"></span>The Firm</div>
-        <h2>Real estate is more than property —<br/>it is legacy, security,<br/>investment, lifestyle.</h2>
-      </div>
-      <div class="intro-body">
-        <p>Credence Real Estate &amp; Asset Management is a premium real estate and property solutions company operating under <em class="serif">Credence Holdings Global</em>, a globally registered company with operations in the USA, UK, and Ghana. We specialise in helping Ghanaians in the diaspora securely invest, build, and own property in Ghana with confidence and peace of mind.</p>
-        <p>From land acquisition and due diligence to architectural design, construction, interior finishing, and property management — we provide end-to-end solutions tailored to clients living abroad who demand transparency, professionalism, and quality execution.</p>
-
-        <div class="pillars">
-          <div class="pillar">
-            <div class="n">01</div>
-            <div class="t">Transparency</div>
-            <div class="d">Honesty, documentation, clear communication on every transaction.</div>
-          </div>
-          <div class="pillar">
-            <div class="n">02</div>
-            <div class="t">Quality &amp; Excellence</div>
-            <div class="d">Every project handled with professionalism and precision.</div>
-          </div>
-          <div class="pillar">
-            <div class="n">03</div>
-            <div class="t">Client-Centred</div>
-            <div class="d">We listen, understand the vision, deliver to the goal.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== SERVICES =================== -->
-<section class="services block">
-  <div class="container">
-    <div class="section-head">
-      <div class="left">
-        <div class="eyebrow"><span class="dot"></span>Our Services</div>
-        <h2 class="section-title">Six disciplines,<br/>one trusted brand.</h2>
-      </div>
-      <div class="right">From foundation to finishing, acquisition to management — Credence is structured to handle every stage of the real estate lifecycle under one roof.</div>
-    </div>
-
-    <div class="svc-grid">
-      <a href="services.html#development" class="svc">
-        <span class="num">01</span>
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-7 9 7v11"/><path d="M9 21V12h6v9"/></svg></div>
-        <h3>Real Estate<br/>Development</h3>
-        <p>Modern residential and commercial properties combining luxury, functionality, and long-term value.</p>
-        <span class="arrow">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a href="services.html#sales" class="svc">
-        <span class="num">02</span>
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h3>Property Sales<br/>&amp; Investment</h3>
-        <p>Whether buying your dream home, acquiring land, or investing in income property — we guide every step.</p>
-        <span class="arrow">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a href="services.html#management" class="svc">
-        <span class="num">03</span>
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>Property<br/>Management</h3>
-        <p>Residential and commercial properties managed efficiently — profitable, secure, well-maintained.</p>
-        <span class="arrow">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a href="services.html#construction" class="svc">
-        <span class="num">04</span>
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V8l4-4h8l4 4v11"/><path d="M9 22V12h6v10"/></svg></div>
-        <h3>Construction &amp;<br/>Project Management</h3>
-        <p>From foundation to finishing — quality control, schedule discipline, and timely delivery.</p>
-        <span class="arrow">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a href="services.html#interiors" class="svc">
-        <span class="num">05</span>
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M9 19v-9"/></svg></div>
-        <h3>Interior Decor<br/>&amp; Styling</h3>
-        <p>Premium interior solutions that transform spaces into elegant, functional, and sophisticated environments.</p>
-        <span class="arrow">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a href="services.html#land" class="svc">
-        <span class="num">06</span>
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>Land Acquisition<br/>&amp; Due Diligence</h3>
-        <p>Verification, documentation checks, survey coordination, legal guidance — safe and secure transactions.</p>
-        <span class="arrow">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- =================== WHY US =================== -->
-<section class="why block">
-  <div class="container">
-    <div class="section-head">
-      <div class="left">
-        <div class="eyebrow"><span class="dot"></span>The Credence Way</div>
-        <h2 class="section-title">Six commitments,<br/>kept on every project.</h2>
-      </div>
-      <div class="right">Real estate is more than construction — it is legacy, wealth preserved, comfort delivered. Each commitment we make is structured for measurable value creation and accountability.</div>
-    </div>
-
-    <div class="why-grid">
-      <div class="why-list">
-        <div class="why-item">
-          <div class="n">01</div>
-          <div>
-            <div class="t">Transparency &amp; Trust</div>
-            <div class="d">Proper documentation, clear communication, no surprises — the foundation we built the brand on.</div>
-          </div>
-          <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-        <div class="why-item">
-          <div class="n">02</div>
-          <div>
-            <div class="t">Premium Quality Delivery</div>
-            <div class="d">High standards on every site, on every finish — verified by independent walk-throughs.</div>
-          </div>
-          <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-        <div class="why-item">
-          <div class="n">03</div>
-          <div>
-            <div class="t">Comprehensive Solutions</div>
-            <div class="d">End-to-end under one trusted brand — land, build, furnish, manage, exit.</div>
-          </div>
-          <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-        <div class="why-item">
-          <div class="n">04</div>
-          <div>
-            <div class="t">Secure Investment Guidance</div>
-            <div class="d">Informed decisions, title verification, market intelligence — value that lasts.</div>
-          </div>
-          <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-        <div class="why-item">
-          <div class="n">05</div>
-          <div>
-            <div class="t">Client-Focused Service</div>
-            <div class="d">We listen, we understand the vision, we deliver to the lifestyle and the goal.</div>
-          </div>
-          <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-        <div class="why-item">
-          <div class="n">06</div>
-          <div>
-            <div class="t">Timely Project Execution</div>
-            <div class="d">Disciplined timelines, weekly reporting, deliverables that arrive when they're promised.</div>
-          </div>
-          <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-      </div>
-
-      <div class="imgblk">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=80&auto=format&fit=crop" alt="A modern Credence home" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== CEO MESSAGE =================== -->
-<section class="ceo-section block">
-  <div class="container">
-    <div class="ceo-grid">
-      <div class="ceo-portrait">
-        <img src="assets/adeline-quarshie.jpeg" alt="Adeline Quarshie, CEO of Credence Holdings Global" />
-        <div class="caption">
-          <div>
-            <div class="name">Adeline Quarshie</div>
-            <div class="role">Chief Executive Officer</div>
-          </div>
-          <div class="badge">EST · 2022</div>
-        </div>
-      </div>
-
-      <div class="ceo-msg">
-        <div class="eyebrow"><span class="dot"></span>Chairman / CEO Message</div>
-        <h2>Growth without structure is noise.<br/><em>Growth with governance is legacy.</em></h2>
-        <p class="quote">Our journey has never been about size — it has always been about significance. We chose to build enterprises anchored in integrity, governance, and measurable value creation.</p>
-        <p>As a diversified global holding company, we operate across financial services, real estate, consultancy, and lifestyle enterprises with a disciplined approach to growth. Each subsidiary is structured for performance, accountability, and long-term sustainability.</p>
-        <p>Our ambition is clear: to build institutions that outlive trends and create generational impact. As we expand our global footprint, we remain guided by excellence, innovation, and an unwavering commitment to delivering value.</p>
-
-        <div style="margin-top:32px"><a href="about.html" class="btn-gold">Read the Full Message
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a></div>
-
-        <div class="sig" style="display:none">
-          <div>
-            <div class="sn">Adeline Quarshie</div>
-            <div class="sr">CEO · Credence Holdings Global</div>
-          </div>
-          <div class="pipe"></div>
-          <div style="font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)">Accra · London · Manchester, CT</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== REELS =================== -->
-<section class="reels">
+<section class="feat sec">
   <div class="container">
     <div class="head">
-      <div>
-        <div class="eyebrow"><span class="dot"></span>From the Reel</div>
-        <h2>Walk-throughs, drone cuts<br/>&amp; <em>behind-the-build</em>.</h2>
-      </div>
-      <div class="right">
-        <span>Updated weekly</span>
-        <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener">@credencerealestate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-      </div>
+      <div><div class="eyebrow"><span class="dot"></span>Featured Properties</div><h2>Homes, land &amp; new<br/>projects across <em>Accra</em>.</h2></div>
+      <a href="properties.html" class="btn-ghost">View all properties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
+    <div class="cr-grid">
+<article class="cr-card" data-tags="sale furnished" data-area="ashale-botwe">
+  <div class="cr-img">
+    <span class="cr-tag em">For Sale</span>
+    <img src="assets/royal-manhattan.png" alt="Royal Manhattan — Ashale Botwe · School Junction, Accra" loading="lazy"/>
+  </div>
+  <div class="cr-cbody">
+    <div class="cr-price">USD 420,000</div>
+    <div class="cr-ttl">Royal <em>Manhattan</em></div>
+    <div class="cr-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ashale Botwe · School Junction, Accra</div>
+    <div class="cr-ref">REF · CR-RM-01</div>
+    <div class="cr-stats"><span>4 <span class="dim">bd</span></span><span>4 <span class="dim">ba</span></span><span class="cr-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-12"/></svg> Title verified</span></div>
+  </div>
+  <a class="cr-cover" href="listings/royal-manhattan.html" aria-label="Royal Manhattan">Royal Manhattan</a>
+</article>
+<article class="cr-card" data-tags="sale furnished" data-area="east-legon">
+  <div class="cr-img">
+    <span class="cr-tag em">For Sale</span>
+    <img src="assets/beverly-hills.jpeg" alt="Beverly Homes — Beverly Hills · East Legon, Accra" loading="lazy"/>
+  </div>
+  <div class="cr-cbody">
+    <div class="cr-price">USD 450,000</div>
+    <div class="cr-ttl">Beverly <em>Homes</em></div>
+    <div class="cr-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Beverly Hills · East Legon, Accra</div>
+    <div class="cr-ref">REF · CR-BH-02</div>
+    <div class="cr-stats"><span>4 <span class="dim">bd</span></span><span>4 <span class="dim">ba</span></span><span class="cr-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-12"/></svg> Title verified</span></div>
+  </div>
+  <a class="cr-cover" href="listings/beverly-homes.html" aria-label="Beverly Homes">Beverly Homes</a>
+</article>
+<article class="cr-card" data-tags="sale exclusive" data-area="east-legon">
+  <div class="cr-img">
+    <span class="cr-tag em">For Sale</span>
+    <img src="assets/salem-plus-home.JPG" alt="Salem Plus Homes — Adjiringanor · East Legon, Accra" loading="lazy"/>
+  </div>
+  <div class="cr-cbody">
+    <div class="cr-price">USD 550,000</div>
+    <div class="cr-ttl">Salem Plus <em>Homes</em></div>
+    <div class="cr-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Adjiringanor · East Legon, Accra</div>
+    <div class="cr-ref">REF · CR-SP-05</div>
+    <div class="cr-stats"><span>4 <span class="dim">bd</span></span><span class="cr-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-12"/></svg> Title verified</span></div>
+  </div>
+  <a class="cr-cover" href="listings/salem-plus-homes.html" aria-label="Salem Plus Homes">Salem Plus Homes</a>
+</article>
+<article class="cr-card" data-tags="off-plan under-construction" data-area="accra">
+  <div class="cr-img">
+    <span class="cr-tag gold">Off-plan</span>
+    <div class="ph-brand ph-root"><span class="ph-mark"></span><span class="ph-word">Credence</span><span class="ph-sub">Cantonments Court</span></div>
+  </div>
+  <div class="cr-cbody">
+    <div class="cr-price">USD 280,000</div>
+    <div class="cr-ttl">Cantonments <em>Court</em></div>
+    <div class="cr-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cantonments · Accra</div>
+    <div class="cr-ref">REF · CR-CC-07</div>
+    <div class="cr-stats"><span>3 <span class="dim">bd</span></span><span>3.5 <span class="dim">ba</span></span><span class="cr-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-12"/></svg> Title verified</span></div>
+  </div>
+  <a class="cr-cover" href="listings/cantonments-court.html" aria-label="Cantonments Court">Cantonments Court</a>
+</article>
+<article class="cr-card" data-tags="rent furnished" data-area="accra">
+  <div class="cr-img">
+    <span class="cr-tag gold">For Rent</span>
+    <div class="ph-brand ph-root"><span class="ph-mark"></span><span class="ph-word">Credence</span><span class="ph-sub">Airport Residential Loft</span></div>
+  </div>
+  <div class="cr-cbody">
+    <div class="cr-price">USD 3,500 <span class="per">/mo</span></div>
+    <div class="cr-ttl">Airport Residential <em>Loft</em></div>
+    <div class="cr-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Airport Residential · Accra</div>
+    <div class="cr-ref">REF · CR-AL-08</div>
+    <div class="cr-stats"><span>2 <span class="dim">bd</span></span><span>2 <span class="dim">ba</span></span></div>
+  </div>
+  <a class="cr-cover" href="listings/airport-residential-loft.html" aria-label="Airport Residential Loft">Airport Residential Loft</a>
+</article>
+<article class="cr-card" data-tags="sale furnished" data-area="east-legon">
+  <div class="cr-img">
+    <span class="cr-tag em">For Sale</span>
+    <div class="ph-brand ph-root"><span class="ph-mark"></span><span class="ph-word">Credence</span><span class="ph-sub">Adjiringanor Homes</span></div>
+  </div>
+  <div class="cr-cbody">
+    <div class="cr-price">USD 350,000</div>
+    <div class="cr-ttl">Adjiringanor <em>Homes</em></div>
+    <div class="cr-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Adjiringanor · East Legon, Accra</div>
+    <div class="cr-ref">REF · CR-AF-06</div>
+    <div class="cr-stats"><span>3.5 <span class="dim">bd</span></span><span>3 <span class="dim">ba</span></span><span class="cr-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-12"/></svg> Title verified</span></div>
+  </div>
+  <a class="cr-cover" href="listings/adjiringanor-homes.html" aria-label="Adjiringanor Homes">Adjiringanor Homes</a>
+</article>
+</div>
+    <div class="links">
+      <a href="properties/land.html" class="btn-ghost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Title-verified land</a>
+      <a href="new-projects.html" class="btn-ghost">New projects &amp; off-plan <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
 
+<section class="svcs sec">
+  <div class="container">
+    <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Our Services</div><h2 class="section-title">Six disciplines,<br/>one trusted brand.</h2></div><div class="right">From foundation to finishing, acquisition to management — Credence handles every stage of the real estate lifecycle under one roof.</div></div>
+    <div class="svc-grid">
+      <a class="svc" href="contact.html?reason=development">
+        <span class="num">01</span>
+        <h3>Real Estate Development</h3>
+        <p>Modern residential and commercial properties combining luxury, functionality, and long-term value.</p>
+        <span class="enq">Enquire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="contact.html?reason=sales">
+        <span class="num">02</span>
+        <h3>Property Sales &amp; Investment</h3>
+        <p>Buying a home, acquiring land, or investing in income property — we guide every step.</p>
+        <span class="enq">Enquire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="contact.html?reason=management">
+        <span class="num">03</span>
+        <h3>Property Management</h3>
+        <p>Residential and commercial properties managed efficiently — profitable, secure, well-maintained.</p>
+        <span class="enq">Enquire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="contact.html?reason=construction">
+        <span class="num">04</span>
+        <h3>Construction &amp; Project Mgmt.</h3>
+        <p>From foundation to finishing — quality control, schedule discipline, and timely delivery.</p>
+        <span class="enq">Enquire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="contact.html?reason=interiors">
+        <span class="num">05</span>
+        <h3>Interior Decor &amp; Styling</h3>
+        <p>Premium interiors that transform spaces into elegant, functional, sophisticated environments.</p>
+        <span class="enq">Enquire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="contact.html?reason=land">
+        <span class="num">06</span>
+        <h3>Land Acquisition &amp; Due Diligence</h3>
+        <p>Verification, documentation checks, survey coordination, legal guidance — safe transactions.</p>
+        <span class="enq">Enquire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="why sec">
+  <div class="container">
+    <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Why Credence</div><h2 class="section-title">Four reasons the<br/>diaspora trust us.</h2></div><div class="right">Measurable, observable commitments — not slogans. The proof arrives in your inbox on our timeline.</div></div>
+    <div class="why-grid">
+      <div class="why-item"><div class="n">01</div><div class="t">Title-searched land</div><div class="d">Every plot is searched at the Lands Commission and independently surveyed before we list it.</div></div>
+      <div class="why-item"><div class="n">02</div><div class="t">Weekly site reports</div><div class="d">Building with us? You get weekly progress reports and photographic evidence throughout.</div></div>
+      <div class="why-item"><div class="n">03</div><div class="t">One account manager</div><div class="d">A single point of contact who knows your property by name, from brief to handover and beyond.</div></div>
+      <div class="why-item"><div class="n">04</div><div class="t">UK &amp; US time zones</div><div class="d">Zoom or WhatsApp calls scheduled across GMT, BST, EST and PST — we meet you where you are.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="reels sec">
+  <div class="container">
+    <div class="head">
+      <div><div class="eyebrow"><span class="dot"></span>Walk-throughs</div><h2>Walk-throughs &amp; <em>behind-the-build</em>.</h2></div>
+      <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" class="btn-ghost">@credence_realestateandassetmgt <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
     <div class="reels-row">
-      <a href="listings/royal-manhattan.html" class="reel">
-        <video muted loop playsinline preload="metadata"><source src="assets/manhattan.MOV" type="video/mp4"/></video>
-        <div class="top-row"><span class="tag live">● Walk-through</span><span class="dur">New</span></div>
-        <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="body"><div class="ttl">Royal <em>Manhattan</em></div><div class="meta"><span>Ashale Botwe, Accra</span><span>For Sale</span></div></div>
-      </a>
-      <a href="listings/beverly-homes.html" class="reel">
-        <video muted loop playsinline preload="metadata"><source src="assets/beverly-hills.MP4" type="video/mp4"/></video>
-        <div class="top-row"><span class="tag">Walk-through</span><span class="dur">New</span></div>
-        <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="body"><div class="ttl">Beverly <em>Homes</em></div><div class="meta"><span>East Legon, Accra</span><span>For Sale</span></div></div>
-      </a>
-      <a href="listings/salem-plus-homes.html" class="reel">
-        <video muted loop playsinline preload="metadata"><source src="assets/salem-miami.MOV" type="video/mp4"/></video>
-        <div class="top-row"><span class="tag">Walk-through</span><span class="dur">New</span></div>
-        <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="body"><div class="ttl">Salem Plus <em>Homes</em></div><div class="meta"><span>Adjiringanor, Accra</span><span>Exclusive</span></div></div>
-      </a>
-      <a href="listings/adjiringanor-homes.html" class="reel">
-        <video muted loop playsinline preload="metadata"><source src="assets/adjiringanor-east-legon.mp4" type="video/mp4"/></video>
-        <div class="top-row"><span class="tag">Walk-through</span><span class="dur">New</span></div>
-        <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="body"><div class="ttl">Adjiringanor <em>Homes</em></div><div class="meta"><span>East Legon, Accra</span><span>For Sale</span></div></div>
-      </a>
+      <a href="listings/royal-manhattan.html" class="reel" data-video="">
+      <img src="assets/royal-manhattan.png" alt="Royal Manhattan" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="lazy"/>
+      <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="body">
+        <div class="ttl">Royal <em>Manhattan</em></div>
+        <div class="meta"><span>Ashale Botwe, Accra</span><span>USD 420,000 · 4 bd</span></div>
+      </div>
+    </a>
+      <a href="listings/beverly-homes.html" class="reel" data-video="assets/beverly-hills.MP4">
+      <video muted loop playsinline preload="none" poster="assets/beverly-hills.jpeg"><source src="assets/beverly-hills.MP4" type="video/mp4"/></video>
+      <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="body">
+        <div class="ttl">Beverly <em>Homes</em></div>
+        <div class="meta"><span>East Legon, Accra</span><span>USD 450,000 · 4 bd</span></div>
+      </div>
+    </a>
+      <a href="listings/salem-plus-homes.html" class="reel" data-video="">
+      <img src="assets/salem-plus-home.JPG" alt="Salem Plus Homes" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="lazy"/>
+      <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="body">
+        <div class="ttl">Salem Plus <em>Homes</em></div>
+        <div class="meta"><span>Adjiringanor, Accra</span><span>USD 550,000 · 4 bd</span></div>
+      </div>
+    </a>
+      <a href="listings/adjiringanor-homes.html" class="reel" data-video="assets/adjiringanor-east-legon.mp4">
+      <video muted loop playsinline preload="none"><source src="assets/adjiringanor-east-legon.mp4" type="video/mp4"/></video>
+      <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="body">
+        <div class="ttl">Adjiringanor <em>Homes</em></div>
+        <div class="meta"><span>East Legon, Accra</span><span>USD 350,000 · 3.5 bd</span></div>
+      </div>
+    </a>
     </div>
   </div>
 </section>
 
-<!-- =================== SIGNATURE HOME SHOW =================== -->
-<section class="show-section block">
+<section class="ceo-quote sec">
   <div class="container">
-    <div class="show-grid">
-      <div>
-        <div class="eyebrow"><span class="dot"></span>Series</div>
-        <h2>The Signature<br/><em>Home Show</em></h2>
-        <p class="desc"><em class="serif">“Where every home tells a story of elegance.”</em> Experience extraordinary homes and unforgettable stories through our exclusive showcase platform — where architecture, design, and lifestyle come together to inspire audiences across Ghana and beyond.</p>
-        <p class="desc">Each episode steps inside a Credence home — the owners, the brief, the build — and ends in the room they're most proud of.</p>
-        <div class="actions">
-          <a href="https://www.youtube.com/watch?v=R1tyNIg0JXA" target="_blank" rel="noopener" class="btn-solid">Watch Latest Episode
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@TheSignatureHomeShow" target="_blank" rel="noopener" class="btn-ghost">All Episodes</a>
-        </div>
-      </div>
-      <div class="show-img">
-        <img src="assets/royal-manhattan.png" alt="Royal Manhattan — Credence Real Estate" />
-        <span class="epbadge">Ep · Royal Manhattan</span>
-        <img src="assets/signature-home-show.jpeg" alt="Signature Homes Show" style="position:absolute;left:20px;bottom:20px;height:62px;width:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:2" />
-        <button class="play" aria-label="Play episode">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-      </div>
-    </div>
+    <p class="q">Growth without structure is noise. Growth with <em>governance is legacy.</em></p>
+    <div class="by">Adeline Quarshie · CEO · <a href="about.html" style="color:var(--gold)">Read the full message</a></div>
   </div>
 </section>
 
-<!-- =================== TESTIMONIALS =================== -->
-<section class="test block">
+<section class="test sec">
   <div class="container">
-    <div class="section-head">
-      <div class="left">
-        <div class="eyebrow"><span class="dot"></span>Client Voices</div>
-        <h2 class="section-title">Trusted by clients<br/>at home and abroad.</h2>
-      </div>
-      <div class="right">A small selection of the families and investors we've quietly helped build, buy, and manage property across Accra and beyond.</div>
-    </div>
-
+    <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Client Voices</div><h2 class="section-title">Trusted at home<br/>and abroad.</h2></div><div class="right">A small selection of the families and investors we have quietly helped build, buy, and manage property across Accra and beyond.</div></div>
     <div class="test-grid">
-      <div class="qcard">
-        <span class="mark">"</span>
-        <div class="q">Credence made our home-building journey smooth and stress-free. Their professionalism and attention to detail exceeded expectations.</div>
-        <div class="stars">★★★★★</div>
-        <div class="who">
-          <div class="av" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80&auto=format&fit=crop')"></div>
-          <div>
-            <div class="n">Ama K. Mensah</div>
-            <div class="r">Diaspora Buyer · London, 2025</div>
-          </div>
-        </div>
-      </div>
-      <div class="qcard">
-        <span class="mark">"</span>
-        <div class="q">From property acquisition to interior finishing, the entire process was seamless. Highly recommended for anyone serious about building in Ghana.</div>
-        <div class="stars">★★★★★</div>
-        <div class="who">
-          <div class="av" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format&fit=crop')"></div>
-          <div>
-            <div class="n">Kwame Boateng</div>
-            <div class="r">Buyer · East Legon, 2024</div>
-          </div>
-        </div>
-      </div>
+      <div class="qcard"><span class="mark">&ldquo;</span><div class="q">Credence made our home-building journey smooth and stress-free. Their professionalism and attention to detail exceeded expectations.</div><div class="stars">★★★★★</div><div class="who"><div class="av">A</div><div><div class="n">Ama K. Mensah</div><div class="r">Diaspora Buyer · London, 2025</div></div></div></div>
+      <div class="qcard"><span class="mark">&ldquo;</span><div class="q">From property acquisition to interior finishing, the entire process was seamless. Highly recommended for anyone serious about building in Ghana.</div><div class="stars">★★★★★</div><div class="who"><div class="av">K</div><div><div class="n">Kwame Boateng</div><div class="r">Buyer · East Legon, 2024</div></div></div></div>
     </div>
+    <!-- TODO(sam): supply more client testimonials (name, location, year). Do not invent any. -->
   </div>
 </section>
 
-<!-- =================== CTA STRIP =================== -->
-<section class="cta-strip">
+<section class="closing sec">
   <div class="container">
-    <div class="row">
-      <div>
-        <div class="eyebrow" style="color:rgba(255,255,255,.7)"><span class="dot"></span>Begin the Conversation</div>
-        <h2 style="margin-top:14px">Ready to build, buy,<br/><em>invest, or manage?</em></h2>
-      </div>
-      <div>
-        <p class="p">Partner with Credence Real Estate &amp; Asset Management &mdash; let us help you turn your vision into reality with the discipline of a global firm and the local knowledge of an Accra-born team.</p>
-      </div>
-    </div>
-    <div class="actions" style="text-align: center; justify-content: center">
-      <a class="btn-gold" href="contact.html">Book a Consultation
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a class="btn-ghost" href="properties.html">Browse Properties</a>
-      <a class="btn-ghost" href="about.html">About Credence</a>
+    <div class="eyebrow" style="color:rgba(255,255,255,.7);justify-content:center"><span class="dot"></span>Begin the Conversation</div>
+    <h2>Ready to build, buy,<br/><em>invest, or manage?</em></h2>
+    <p>Partner with Credence — the discipline of a global firm with the local knowledge of an Accra-born team.</p>
+    <div class="actions">
+      <a class="btn-gold" href="contact.html">Book a consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn-ghost" href="https://wa.me/233244120039" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21l1.65-4.92A8.5 8.5 0 1 1 7.92 19.35L3 21z"/></svg> WhatsApp</a>
+      <a class="btn-ghost" href="tel:+233244427440"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z"/></svg> Call +233 24 442 7440</a>
     </div>
   </div>
 </section>
-
-<!-- =================== FOOTER =================== -->
+</main>
 <footer class="site">
   <div class="container">
     <div class="top">
@@ -773,23 +479,21 @@
           <a href="https://www.instagram.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
           <a href="https://www.tiktok.com/@credencerealestat" target="_blank" rel="noopener" aria-label="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3a5 5 0 0 0 5 5"/></svg></a>
           <a href="https://www.youtube.com/@CredenceRealEstateAssetManagem" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg></a>
-          <a href="https://www.facebook.com/credence_realestateandassetmgt" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="https://wa.me/233244120039" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+          <a href="https://www.facebook.com/people/Credence-Real-Estate-and-Asset-Management/100088681766316" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/233244120039" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21l1.65-4.92A8.5 8.5 0 1 1 7.92 19.35L3 21z"/></svg></a>
         </div>
       </div>
-
-      <div>
-        <h5>Explore</h5>
+      <div><h5>Assets</h5>
         <ul>
-          <li><a href="properties.html">All Properties</a></li>
-          <li><a href="services.html">Our Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="https://www.youtube.com/@TheSignatureHomeShow" target="_blank" rel="noopener">Signature Home Show</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h5>Services</h5>
+          <li><a href="properties/buy.html">Buy</a></li>
+          <li><a href="properties/rent.html">Rent</a></li>
+          <li><a href="properties/land.html">Land</a></li>
+          <li><a href="sell.html">Sell with us</a></li>
+          <li><a href="exclusives.html">Exclusives</a></li>
+          <li><a href="new-projects.html">New projects</a></li>
+          <li><a href="short-stays.html">Short stays</a></li>
+        </ul></div>
+      <div><h5>Services</h5>
         <ul>
           <li><a href="services.html#development">Development</a></li>
           <li><a href="services.html#sales">Sales &amp; Investment</a></li>
@@ -797,149 +501,65 @@
           <li><a href="services.html#construction">Construction</a></li>
           <li><a href="services.html#interiors">Interiors</a></li>
           <li><a href="services.html#land">Land &amp; Due Diligence</a></li>
+        </ul></div>
+      <div class="offices">
+        <h5>Insights</h5>
+        <ul style="margin-bottom:22px">
+          <li><a href="insights.html">Insights hub</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="https://www.youtube.com/@TheSignatureHomeShow" target="_blank" rel="noopener">Signature Home Show</a></li>
+          <li><a href="search-document.html">Search Document</a></li>
+        </ul>
+        <h5>Company</h5>
+        <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/><a href="tel:+233244427440">+233 24 442 7440</a></div>
+        <div class="of"><a href="mailto:info@credencerealestateandassetmgt.com">info@credencerealestateandassetmgt.com</a><br/><a href="https://wa.me/233244120039" target="_blank" rel="noopener">WhatsApp +233 24 412 0039</a></div>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
         </ul>
       </div>
-
-      <div class="offices">
-        <h5>Locations</h5>
-        <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/>+233 24 442 7440</div>
-        <div class="of"><b>Credence Holdings LLC</b>805 Horizon Way, Manchester CT 06042 · USA<br/>United Kingdom</div>
-        <h5 style="margin-top:24px">Quarterly Letter</h5>
-        <div class="news">
-          <input type="email" placeholder="your@email.com" />
-          <button>Subscribe</button>
-        </div>
-      </div>
     </div>
-
     <div class="bot">
       <div>© 2026 CREDENCE REAL ESTATE &amp; ASSET MGT. · SUBSIDIARY OF CREDENCE HOLDINGS GLOBAL · REGISTERED IN GHANA 2022</div>
-      <div>PRIVACY · TERMS · FAIR HOUSING</div>
+      <div><a href="privacy.html">PRIVACY</a> · <a href="terms.html">TERMS</a></div>
     </div>
   </div>
 </footer>
-
+<!-- TODO(sam): add company registration number and Real Estate Agency Council (REAC) licence number to the footer bottom line. -->
+<nav class="mobilebar" aria-label="Quick actions">
+  <div class="mb-inner">
+    <a href="properties.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Properties</a>
+    <a class="wa" href="https://wa.me/233244120039" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21l1.65-4.92A8.5 8.5 0 1 1 7.92 19.35L3 21z"/></svg>WhatsApp</a>
+    <a href="tel:+233244427440"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+  </div>
+</nav>
+<div class="cr-modal-scrim" id="crPopup">
+  <div class="cr-modal no-image" role="dialog" aria-modal="true" aria-labelledby="crPopupTitle">
+    <button class="cr-close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    
+    <div class="cr-body">
+      <div class="cr-eyebrow">NEW PROJECT</div>
+      <h2 id="crPopupTitle">Cantonments Court</h2>
+        <p class="cr-line">Cantonments, Accra · 3 beds · delivery Q4 2026</p>
+        <p class="cr-line">From USD 280,000</p>
+      <div class="cr-actions">
+        <a class="btn-solid" href="listings/cantonments-court.html">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn-ghost" href="new-projects.html#register">Register interest</a>
+      </div>
+      <p class="cr-foot">Get first access to off-plan prices and site updates.</p>
+    </div>
+  </div>
+</div>
+<script>window.CR_POPUP={"enabled":true};</script>
 <script>
-  // sticky header
-  const hdr = document.getElementById('siteHeader');
-  const onScroll = () => {
-    if(window.scrollY > 60) hdr.classList.add('solid');
-    else hdr.classList.remove('solid');
-  };
-  document.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  // hero slider
-  (function(){
-    const slides = document.querySelectorAll('#heroBg .slide');
-    const dots = document.querySelectorAll('#heroDots .d');
-    let cur = 0;
-    function go(n){
-      cur = (n + slides.length) % slides.length;
-      slides.forEach((s, i) => s.classList.toggle('is-active', i === cur));
-      dots.forEach((d, i) => d.classList.toggle('on', i === cur));
-    }
-    setInterval(() => go(cur + 1), 6000);
-  })();
-
-  // reel lightbox
-  (function(){
-    const closeIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>';
-    const playIcon  = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-
-    // Build lightbox DOM
-    const lb = document.createElement('div');
-    lb.id = 'reelLb';
-    lb.innerHTML =
-      '<div class="lb-wrap">' +
-        '<video playsinline controls></video>' +
-        '<button class="lb-close" aria-label="Close">' + closeIcon + '</button>' +
-        '<div class="lb-meta">' +
-          '<div class="lb-ttl"></div>' +
-          '<div class="lb-sub"></div>' +
-          '<a class="lb-view" href="properties.html">View Property <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>' +
-        '</div>' +
-      '</div>';
-    document.body.appendChild(lb);
-
-    const lbVideo = lb.querySelector('video');
-    const lbClose = lb.querySelector('.lb-close');
-    const lbTtl   = lb.querySelector('.lb-ttl');
-    const lbSub   = lb.querySelector('.lb-sub');
-    const lbView  = lb.querySelector('.lb-view');
-
-    function openLb(src, ttlHTML, sub, href) {
-      lbVideo.src = src;
-      lbTtl.innerHTML = ttlHTML;
-      lbSub.textContent = sub;
-      lbView.href = href;
-      lb.classList.add('open');
-      lbVideo.play().catch(() => {});
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLb() {
-      lb.classList.remove('open');
-      lbVideo.pause();
-      lbVideo.removeAttribute('src');
-      lbVideo.load();
-      document.body.style.overflow = '';
-    }
-
-    lbClose.addEventListener('click', closeLb);
-    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
-
-    // Reel cards: hover preview + click to open lightbox
-    document.querySelectorAll('.reel video').forEach(v => {
-      const reel  = v.closest('.reel');
-      const playIc = reel.querySelector('.play-ic');
-      if (playIc) playIc.innerHTML = playIcon;
-
-      reel.addEventListener('mouseenter', () => { v.muted = true; v.play().catch(() => {}); });
-      reel.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
-
-      reel.addEventListener('click', e => {
-        e.preventDefault();
-        const src    = v.querySelector('source').getAttribute('src');
-        const ttlEl  = reel.querySelector('.ttl');
-        const metaEl = reel.querySelector('.meta span');
-        const href   = reel.getAttribute('href') || '#';
-        openLb(src, ttlEl ? ttlEl.innerHTML : '', metaEl ? metaEl.textContent : '', href);
-      });
-    });
-  })();
+(function(){
+  var slides=document.querySelectorAll('#heroBg .slide'),dots=document.querySelectorAll('#heroDots .d'),cur=0;
+  if(slides.length>1){setInterval(function(){cur=(cur+1)%slides.length;slides.forEach(function(s,i){s.classList.toggle('is-active',i===cur)});dots.forEach(function(d,i){d.classList.toggle('on',i===cur)})},6000);}
+  document.querySelectorAll('.reel').forEach(function(r){var v=r.querySelector('video');if(!v)return;r.addEventListener('mouseenter',function(){v.play().catch(function(){})});r.addEventListener('mouseleave',function(){v.pause();v.currentTime=0;});});
+})();
 </script>
-<script>
-  // YouTube lightbox for Signature Home Show play button
-  (function(){
-    const YT_ID = 'R1tyNIg0JXA';
-    const lb = document.createElement('div');
-    lb.id = 'ytLb';
-    lb.innerHTML =
-      '<div class="yt-wrap">' +
-        '<button class="yt-close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
-        '<iframe id="ytFrame" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>' +
-      '</div>';
-    document.body.appendChild(lb);
-    const frame = lb.querySelector('#ytFrame');
-    function openYt() {
-      frame.src = 'https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0';
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeYt() {
-      lb.classList.remove('open');
-      frame.src = '';
-      document.body.style.overflow = '';
-    }
-    const playBtn = document.querySelector('.show-img .play');
-    if (playBtn) playBtn.addEventListener('click', openYt);
-    lb.querySelector('.yt-close').addEventListener('click', closeYt);
-    lb.addEventListener('click', e => { if (e.target === lb) closeYt(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) closeYt(); });
-  })();
-</script>
-<script src="assets/nav.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>

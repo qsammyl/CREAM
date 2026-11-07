@@ -1,0 +1,13 @@
+{
+  "_comment": "New-projects promo modal. Set enabled:false to turn it off site-wide. Rerun scripts/build.mjs after editing.",
+  "enabled": true,
+  "eyebrow": "NEW PROJECT",
+  "projectSlug": "cantonments-court",
+  "headline": "Cantonments Court",
+  "lines": ["Cantonments, Accra · 3 beds · delivery Q4 2026", "From USD 280,000"],
+  "image": "",
+  "imageTodo": "TODO(sam): supply a real photo/render for the Cantonments Court popup. No stock image is used; with no image the modal shows the text panel alone.",
+  "viewHref": "listings/cantonments-court.html",
+  "registerHref": "new-projects.html#register",
+  "footnote": "Get first access to off-plan prices and site updates."
+}

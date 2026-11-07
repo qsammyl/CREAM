@@ -1,0 +1,6 @@
+# Cloudflare content-signal preferences (preserved)
+# NOTE: AI content signals
+User-agent: *
+Allow: /
+
+Sitemap: https://credencerealestateandassetmgt.com/sitemap.xml

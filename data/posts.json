@@ -1,0 +1,23 @@
+{
+  "_comment": "Blog posts. Add entries here and run scripts/build.mjs to regenerate blog/index.html. Do NOT add empty/placeholder posts. Each post needs a real title, date (YYYY-MM-DD), author (a person's name), excerpt and either an internal `file` (existing hand-written post) or a `body` for the template. The two 'Rental Experiences, Tears' posts are the existing hand-written articles and keep their original URLs.",
+  "posts": [
+    {
+      "slug": "rental-experiences-tears",
+      "title": "Rental Experiences, Tears — Lessons from Ghana's Property Market",
+      "date": "2026-06-17",
+      "author": "TODO(sam): confirm author name for this post",
+      "excerpt": "The hard lessons renters and buyers learn in Ghana's property market — and how to avoid them.",
+      "file": "blog-rental-experiences-tears.html",
+      "hero": ""
+    },
+    {
+      "slug": "rental-experiences-tears-5",
+      "title": "Rental Experiences, Tears (5) — The Conclusion",
+      "date": "2026-06-17",
+      "author": "TODO(sam): confirm author name for this post",
+      "excerpt": "The conclusion of the Rental Experiences series: what to insist on before you sign.",
+      "file": "blog-rental-experiences-tears-5.html",
+      "hero": ""
+    }
+  ]
+}

@@ -1,9 +1,41 @@
 RewriteEngine On
 
-# Remove .html extension
+# ---------------------------------------------------------------------------
+# 301 redirects for moved/retired URLs
+# ---------------------------------------------------------------------------
+# Old blog index -> new blog directory
+RewriteRule ^blog\.html$ /blog/ [R=301,L,NC]
+RewriteRule ^blog/?$ /blog/index.html [L]
+
+# ---------------------------------------------------------------------------
+# Clean URLs (unchanged from the previous site): serve /x from /x.html and
+# 301 any /x.html request to the extensionless /x form.
+# ---------------------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-# Redirect .html URLs to clean URLs
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [NC,L,R=301]
+
+# ---------------------------------------------------------------------------
+# Custom 404
+# ---------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------------
+# Security headers
+# NOTE(sam): if Cloudflare is terminating TLS and you prefer to manage these
+# centrally, set Strict-Transport-Security, X-Content-Type-Options,
+# X-Frame-Options, Referrer-Policy and Permissions-Policy as a Cloudflare
+# Transform Rule (Modify Response Header) instead and remove them here to
+# avoid duplicate headers. HSTS in particular is best set once, at the edge.
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "upgrade-insecure-requests"
+</IfModule>

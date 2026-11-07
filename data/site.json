@@ -1,0 +1,46 @@
+{
+  "name": "Credence Real Estate",
+  "legalName": "Credence Real Estate & Asset Management",
+  "parent": "Credence Holdings Global",
+  "domain": "https://credencerealestateandassetmgt.com",
+  "tagline": "Building Value. Creating Legacy.",
+  "locationLine": "Accra HQ · Diaspora desks in the UK and USA",
+  "founded": "2022",
+  "phone": {
+    "display": "+233 24 442 7440",
+    "tel": "+233244427440"
+  },
+  "whatsapp": {
+    "display": "+233 24 412 0039",
+    "number": "233244120039",
+    "note": "TODO(sam): the live site currently uses WhatsApp 233244120039 (+233 24 412 0039 formatted). Confirm this is correct and whether it should be merged with the phone line +233 24 442 7440."
+  },
+  "email": "info@credencerealestateandassetmgt.com",
+  "address": {
+    "hq": "Bawuah Junction, East Legon, Greater Accra, Ghana",
+    "district": "East Legon",
+    "region": "Greater Accra",
+    "country": "Ghana",
+    "usHoldings": "805 Horizon Way, Manchester, CT 06042, USA",
+    "coords": { "lat": 5.6423527, "lng": -0.1611202 }
+  },
+  "hours": "TODO(sam): confirm opening hours — the old site showed both 'Mon–Sat 09:00–18:00' and 'Mon–Fri 09:00–18:00, Sat 10:00–14:00'. Placeholder used: 'By appointment · Mon–Sat'.",
+  "web3forms": {
+    "contactKey": "a1d19664-4e29-4813-94ef-3b071d6caa17",
+    "listingKey": "39affe3c-c624-46f8-8ec5-df3ac0cde6f9",
+    "attachmentsNote": "TODO(sam): confirm the Web3Forms plan. File uploads require a paid plan; forms currently ask for documents by WhatsApp/email instead."
+  },
+  "social": {
+    "instagram": { "handle": "@credence_realestateandassetmgt", "url": "https://www.instagram.com/credence_realestateandassetmgt" },
+    "tiktok": { "handle": "@credencerealestat", "url": "https://www.tiktok.com/@credencerealestat" },
+    "youtube": { "handle": "@CredenceRealEstateAssetManagem", "url": "https://www.youtube.com/@CredenceRealEstateAssetManagem" },
+    "facebook": { "handle": "Credence Real Estate and Asset Management", "url": "https://www.facebook.com/people/Credence-Real-Estate-and-Asset-Management/100088681766316" }
+  },
+  "show": {
+    "name": "The Signature Home Show",
+    "channel": "https://www.youtube.com/@TheSignatureHomeShow",
+    "latestVideoId": "R1tyNIg0JXA"
+  },
+  "registration": "TODO(sam): add company registration number and Real Estate Agency Council (REAC) licence number.",
+  "notes": "Phone and WhatsApp are kept as separate numbers per the current site; see whatsapp.note."
+}
