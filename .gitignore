@@ -15,3 +15,10 @@ default.php
 Thumbs.db
 .DS_Store
 node_modules/
+
+# Local preview / test artifacts
+.playwright-mcp/
+*-1366.png
+drawer-375.png
+popup.png
+mega-open.png

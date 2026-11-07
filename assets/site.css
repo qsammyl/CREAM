@@ -162,8 +162,7 @@ body.has-solid-header header.site .main-bar{ background:rgba(246,242,236,.94); b
 .ph-brand .ph-mark{ width:54px; height:54px; border-radius:50%; background:url("../assets/credence-logo.png") center/contain no-repeat; filter:brightness(0) invert(1); opacity:.9; }
 .ph-brand .ph-word{ font-family:var(--serif); font-size:22px; letter-spacing:.01em; }
 .ph-brand .ph-sub{ font-family:var(--mono); font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.6); }
-/* depth-0 pages reference the logo without ../ */
-.ph-brand.ph-root .ph-mark{ background-image:url("assets/credence-logo.png"); }
+/* url() above is relative to this stylesheet (always /assets/), so ../assets/… is correct at every page depth. */
 
 /* ---------- NEW-PROJECTS POPUP ---------- */
 .cr-modal-scrim{ position:fixed; inset:0; z-index:200; background:rgba(15,14,12,.6); backdrop-filter:blur(6px); display:grid; place-items:center; padding:20px; opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s; }
