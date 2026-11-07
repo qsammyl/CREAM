@@ -90,7 +90,6 @@ const blogIndex = {
     ${cards}
   </div>
   ${hasPosts ? '' : '<p class="small" style="margin-top:18px">New articles are on the way.</p>'}
-  <!-- TODO(sam): confirm author names for the two existing posts (see data/posts.json). Do not publish empty/placeholder posts. -->
 </div></section>`;
     return C.page(site, {
       d: 1, active: '',
