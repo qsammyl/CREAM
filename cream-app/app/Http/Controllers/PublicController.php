@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Enums\AssetCategory;
 use App\Enums\CommentStatus;
+use App\Enums\TestimonialStatus;
 use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\StoreTestimonialRequest;
 use App\Models\Article;
 use App\Models\Asset;
 use App\Models\AssetRedirect;
 use App\Models\Comment;
+use App\Models\Testimonial;
 use App\Support\ActivityLogger;
 use App\Support\Turnstile;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PublicController extends Controller
@@ -28,6 +32,9 @@ class PublicController extends Controller
             $featured = $featured->concat($fill);
         }
 
+        $testimonials = Testimonial::query()->approved()
+            ->orderByDesc('is_featured')->orderBy('sort_order')->latest()->take(3)->get();
+
         return view('public.home', [
             'title' => 'Credence Real Estate & Asset Management — Building Value. Creating Legacy.',
             'description' => 'Premium real estate, construction and asset management in Accra for Ghanaians at home and in the diaspora. View title-verified properties or talk to our team.',
@@ -35,6 +42,7 @@ class PublicController extends Controller
             'active' => '',
             'featured' => $featured,
             'reels' => $featured->take(4),
+            'testimonials' => $testimonials,
         ]);
     }
 
@@ -159,7 +167,7 @@ class PublicController extends Controller
             'asset' => $asset,
             'active' => 'assets',
             'title' => $asset->title.' — '.trim(explode('·', (string) $asset->location)[0]).' | Credence Real Estate',
-            'description' => \Illuminate\Support\Str::limit($asset->summary ?: "{$asset->title} in {$asset->location}. {$asset->formattedPrice()}. Enquire with Credence Real Estate.", 157, ''),
+            'description' => Str::limit($asset->summary ?: "{$asset->title} in {$asset->location}. {$asset->formattedPrice()}. Enquire with Credence Real Estate.", 157, ''),
             'canonical' => '/listings/'.$asset->slug,
             'ogImage' => $asset->cover()?->url(),
         ]);
@@ -255,7 +263,7 @@ class PublicController extends Controller
             'article' => $article,
             'comments' => $comments,
             'title' => $article->title.' | Credence Real Estate',
-            'description' => \Illuminate\Support\Str::limit(strip_tags((string) ($article->excerpt ?: $article->body)), 157, ''),
+            'description' => Str::limit(strip_tags((string) ($article->excerpt ?: $article->body)), 157, ''),
             'canonical' => $article->url(),
             'ogImage' => $article->coverUrl(),
             'includePopup' => false,
@@ -291,6 +299,58 @@ class PublicController extends Controller
         ActivityLogger::log('create', $comment, $request, actor: null);
 
         return back()->with('comment_status', 'pending')->withFragment('comments');
+    }
+
+    /* ---------------- Testimonials & feedback ---------------- */
+
+    public function testimonials(): View
+    {
+        $testimonials = Testimonial::query()->approved()
+            ->orderByDesc('is_featured')->orderBy('sort_order')->latest()->get();
+
+        return view('public.testimonials', ['active' => '',
+            'title' => 'Client Stories & Testimonials | Credence Real Estate',
+            'description' => 'What clients say about buying, building, renting and managing property in Accra with Credence Real Estate — in their own words.',
+            'canonical' => '/testimonials', 'testimonials' => $testimonials, 'includePopup' => false]);
+    }
+
+    public function feedback(): View
+    {
+        return view('public.feedback', ['active' => '',
+            'title' => 'Share Your Experience | Credence Real Estate',
+            'description' => 'Tell us about your experience with Credence Real Estate. With your permission we may share your feedback as a testimonial.',
+            'canonical' => '/feedback', 'includePopup' => false,
+            'noindex' => true]);
+    }
+
+    public function storeFeedback(StoreTestimonialRequest $request): RedirectResponse
+    {
+        // Honeypot: pretend success without saving, so bots learn nothing.
+        if ($request->honeypotTripped()) {
+            return redirect()->route('feedback')->with('feedback_status', 'thanks');
+        }
+
+        if (! app(Turnstile::class)->verify($request->input('cf-turnstile-response'), $request->ip())) {
+            return back()->withInput()
+                ->withErrors(['feedback' => 'Please complete the verification challenge and try again.']);
+        }
+
+        $testimonial = Testimonial::create([
+            'name' => $request->validated('name'),
+            'email' => $request->validated('email'),
+            'role' => $request->validated('role'),
+            'rating' => $request->validated('rating'),
+            'body' => $request->validated('body'),
+            'consent' => $request->boolean('consent'),
+            'status' => TestimonialStatus::Pending,
+            'source' => $request->input('src') === 'qr' ? 'qr' : 'web',
+            'ip_hash' => ActivityLogger::hashIp($request->ip()),
+            'user_agent' => mb_substr((string) $request->userAgent(), 0, 500),
+        ]);
+
+        ActivityLogger::log('create', $testimonial, $request, actor: null);
+
+        return redirect()->route('feedback')->with('feedback_status', 'thanks');
     }
 
     public function privacy(): View

@@ -45,6 +45,12 @@
                 @php($pendingComments = \App\Models\Comment::where('status', 'pending')->count())
                 @if ($pendingComments)<span class="pill">{{ $pendingComments }}</span>@endif
             </a>
+            <a href="{{ route('staff.testimonials.index') }}" class="{{ request()->routeIs('staff.testimonials.*') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.9 5.9 6.1.9-4.4 4.3 1 6.1-5.6-2.9-5.6 2.9 1-6.1L2 9.8l6.1-.9z"/></svg>
+                Testimonials
+                @php($pendingTestimonials = \App\Models\Testimonial::where('status', 'pending')->count())
+                @if ($pendingTestimonials)<span class="pill">{{ $pendingTestimonials }}</span>@endif
+            </a>
 
             <a href="{{ route('staff.profile') }}" class="{{ request()->routeIs('staff.profile') ? 'active' : '' }}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>

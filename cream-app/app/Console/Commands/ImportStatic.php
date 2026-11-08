@@ -2,10 +2,15 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\ArticleStatus;
 use App\Enums\AssetCategory;
 use App\Enums\AssetStatus;
+use App\Enums\TestimonialStatus;
+use App\Models\Article;
 use App\Models\Asset;
 use App\Models\AssetMedia;
+use App\Models\Testimonial;
+use App\Support\HtmlSanitizer;
 use App\Support\ImageProcessor;
 use Illuminate\Console\Command;
 use Throwable;
@@ -103,8 +108,63 @@ class ImportStatic extends Command
         }
 
         $this->importArticles();
+        $this->importTestimonials();
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Seed the two testimonials the static homepage already published.
+     * These were live, consented client quotes — migrating them is faithful,
+     * not invented content. Idempotent: matched on name + body.
+     */
+    protected function importTestimonials(): void
+    {
+        $seed = [
+            [
+                'name' => 'Ama K. Mensah',
+                'role' => 'Diaspora Buyer · London, 2025',
+                'body' => 'Credence made our home-building journey smooth and stress-free. Their professionalism and attention to detail exceeded expectations.',
+            ],
+            [
+                'name' => 'Kwame Boateng',
+                'role' => 'Buyer · East Legon, 2024',
+                'body' => 'From property acquisition to interior finishing, the entire process was seamless. Highly recommended for anyone serious about building in Ghana.',
+            ],
+        ];
+
+        $created = 0;
+        $skipped = 0;
+
+        $this->newLine();
+        $this->line('Testimonials:');
+
+        foreach ($seed as $i => $t) {
+            $exists = Testimonial::withTrashed()
+                ->where('name', $t['name'])->where('body', $t['body'])->exists();
+            if ($exists) {
+                $skipped++;
+
+                continue;
+            }
+
+            Testimonial::create([
+                'name' => $t['name'],
+                'role' => $t['role'],
+                'rating' => 5,
+                'body' => $t['body'],
+                'consent' => true,                 // already published on the live site
+                'status' => TestimonialStatus::Approved,
+                'is_featured' => true,             // keep them on the homepage
+                'sort_order' => $i,
+                'source' => 'import',
+                'moderated_at' => now(),
+            ]);
+            $created++;
+            $this->info("  + {$t['name']}");
+        }
+
+        $this->info("Testimonials: imported {$created}, skipped {$skipped} already present.");
     }
 
     protected function importArticles(): void
@@ -124,7 +184,7 @@ class ImportStatic extends Command
 
         foreach ($posts as $p) {
             $slug = $p['slug'] ?? null;
-            if (! $slug || \App\Models\Article::withTrashed()->where('slug', $slug)->exists()) {
+            if (! $slug || Article::withTrashed()->where('slug', $slug)->exists()) {
                 $skipped++;
 
                 continue;
@@ -132,13 +192,13 @@ class ImportStatic extends Command
 
             [$body, $legacyPath] = $this->articleBody($p);
 
-            \App\Models\Article::create([
+            Article::create([
                 'slug' => $slug,
                 'title' => $p['title'],
                 'excerpt' => $p['excerpt'] ?? null,
-                'body' => \App\Support\HtmlSanitizer::article($body),
+                'body' => HtmlSanitizer::article($body),
                 'author_name' => $p['author'] ?? 'Credence',
-                'status' => \App\Enums\ArticleStatus::Published,
+                'status' => ArticleStatus::Published,
                 'allow_comments' => true,
                 'source' => $p['source'] ?? null,
                 'source_url' => $p['sourceUrl'] ?? null,

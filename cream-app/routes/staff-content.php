@@ -8,6 +8,7 @@
 
 use App\Http\Controllers\Staff\ArticleController;
 use App\Http\Controllers\Staff\CommentController;
+use App\Http\Controllers\Staff\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 // Articles
@@ -24,3 +25,14 @@ Route::post('comments/bulk', [CommentController::class, 'bulk'])->name('comments
 Route::post('comments/{comment}/approve', [CommentController::class, 'approve'])->name('comments.approve');
 Route::post('comments/{comment}/spam', [CommentController::class, 'spam'])->name('comments.spam');
 Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+// Testimonials & feedback moderation
+Route::get('testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+Route::get('testimonials/qr', [TestimonialController::class, 'qr'])->name('testimonials.qr');
+Route::post('testimonials/bulk', [TestimonialController::class, 'bulk'])->name('testimonials.bulk');
+Route::put('testimonials/{testimonial}', [TestimonialController::class, 'update'])->name('testimonials.update');
+Route::post('testimonials/{testimonial}/approve', [TestimonialController::class, 'approve'])->name('testimonials.approve');
+Route::post('testimonials/{testimonial}/archive', [TestimonialController::class, 'archive'])->name('testimonials.archive');
+Route::post('testimonials/{testimonial}/spam', [TestimonialController::class, 'spam'])->name('testimonials.spam');
+Route::post('testimonials/{testimonial}/feature', [TestimonialController::class, 'feature'])->name('testimonials.feature');
+Route::delete('testimonials/{testimonial}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');

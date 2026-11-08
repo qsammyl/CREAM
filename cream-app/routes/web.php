@@ -36,6 +36,11 @@ Route::get('/blog/{slug}', [PublicController::class, 'blogPost'])->where('slug',
 Route::post('/blog/{slug}/comments', [PublicController::class, 'storeComment'])
     ->where('slug', '[a-z0-9-]+')->middleware('throttle:comments')->name('comments.store');
 
+Route::get('/testimonials', [PublicController::class, 'testimonials'])->name('testimonials');
+Route::get('/feedback', [PublicController::class, 'feedback'])->name('feedback');
+Route::post('/feedback', [PublicController::class, 'storeFeedback'])
+    ->middleware('throttle:testimonials')->name('feedback.store');
+
 Route::get('/privacy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PublicController::class, 'terms'])->name('terms');
 

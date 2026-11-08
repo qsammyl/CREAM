@@ -231,16 +231,19 @@
     </div>
 </section>
 
+@if ($testimonials->isNotEmpty())
 <section class="test sec">
     <div class="container">
         <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Client Voices</div><h2 class="section-title">Trusted at home<br/>and abroad.</h2></div><div class="right">A small selection of the families and investors we have quietly helped build, buy, and manage property across Accra and beyond.</div></div>
         <div class="test-grid">
-            {{-- Phase 5 replaces these with approved testimonials from the database. --}}
-            <div class="qcard"><span class="mark">&ldquo;</span><div class="q">Credence made our home-building journey smooth and stress-free. Their professionalism and attention to detail exceeded expectations.</div><div class="stars">★★★★★</div><div class="who"><div class="av">A</div><div><div class="n">Ama K. Mensah</div><div class="r">Diaspora Buyer · London, 2025</div></div></div></div>
-            <div class="qcard"><span class="mark">&ldquo;</span><div class="q">From property acquisition to interior finishing, the entire process was seamless. Highly recommended for anyone serious about building in Ghana.</div><div class="stars">★★★★★</div><div class="who"><div class="av">K</div><div><div class="n">Kwame Boateng</div><div class="r">Buyer · East Legon, 2024</div></div></div></div>
+            @foreach ($testimonials as $t)
+                <div class="qcard"><span class="mark">&ldquo;</span><div class="q">{{ $t->body }}</div><div class="stars" aria-label="{{ $t->rating }} out of 5">{{ str_repeat('★', $t->rating).str_repeat('☆', 5 - $t->rating) }}</div><div class="who"><div class="av">{{ $t->initial() }}</div><div><div class="n">{{ $t->name }}</div>@if ($t->role)<div class="r">{{ $t->role }}</div>@endif</div></div></div>
+            @endforeach
         </div>
+        <div style="text-align:center;margin-top:28px"><a class="btn-ghost" href="/testimonials">Read more client stories <x-icon name="arrow"/></a></div>
     </div>
 </section>
+@endif
 
 <section class="closing sec">
     <div class="container">

@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{{ $title ?? config('cream.legal_name') }}</title>
     <meta name="description" content="{{ $description ?? '' }}"/>
+    @if ($noindex ?? false)<meta name="robots" content="noindex, nofollow"/>@endif
     <link rel="canonical" href="{{ $canonicalUrl }}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ $title ?? config('cream.legal_name') }}"/>

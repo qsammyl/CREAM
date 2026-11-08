@@ -37,6 +37,7 @@
                 <ul style="margin-bottom:22px">
                     <li><a href="/insights">Insights hub</a></li>
                     <li><a href="/blog">Blog</a></li>
+                    <li><a href="/testimonials">Client stories</a></li>
                     <li><a href="{{ config('cream.show.channel') }}" target="_blank" rel="noopener">Signature Home Show</a></li>
                     <li><a href="/search-document">Search Document</a></li>
                 </ul>
