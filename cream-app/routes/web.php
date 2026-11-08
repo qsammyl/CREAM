@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Staff\ActivityController;
 use App\Http\Controllers\Staff\DashboardController;
 use App\Http\Controllers\Staff\ProfileController;
@@ -8,20 +10,42 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Public site
+| Public site (database-driven, clean URLs — unchanged from the static site)
 |--------------------------------------------------------------------------
-| The public, database-driven pages are ported from the static site in
-| Phase 3. For now, the root redirects into the staff area.
 */
 
-Route::get('/', fn () => redirect()->route('staff.dashboard'));
+Route::get('/', [PublicController::class, 'home'])->name('home');
+Route::get('/about', [PublicController::class, 'about'])->name('about');
+Route::get('/services', [PublicController::class, 'services'])->name('services');
+Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+
+Route::get('/properties', [PublicController::class, 'properties'])->name('properties');
+Route::get('/properties/buy', [PublicController::class, 'buy'])->name('properties.buy');
+Route::get('/properties/rent', [PublicController::class, 'rent'])->name('properties.rent');
+Route::get('/properties/land', [PublicController::class, 'land'])->name('properties.land');
+
+Route::get('/sell', [PublicController::class, 'sell'])->name('sell');
+Route::get('/exclusives', [PublicController::class, 'exclusives'])->name('exclusives');
+Route::get('/new-projects', [PublicController::class, 'newProjects'])->name('new-projects');
+Route::get('/short-stays', [PublicController::class, 'shortStays'])->name('short-stays');
+Route::get('/search-document', [PublicController::class, 'searchDocument'])->name('search-document');
+
+Route::get('/insights', [PublicController::class, 'insights'])->name('insights');
+Route::get('/blog', [PublicController::class, 'blog'])->name('blog');
+
+Route::get('/privacy', [PublicController::class, 'privacy'])->name('privacy');
+Route::get('/terms', [PublicController::class, 'terms'])->name('terms');
+
+Route::get('/listings/{slug}', [PublicController::class, 'listing'])
+    ->where('slug', '[a-z0-9-]+')->name('listings.show');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+Route::get('/robots.txt', [SitemapController::class, 'robots']);
 
 /*
 |--------------------------------------------------------------------------
 | Staff dashboard (/staff)
 |--------------------------------------------------------------------------
-| Fortify registers the auth routes (login, logout, password reset, 2FA,
-| profile/password updates) under the same "staff" prefix via config.
 */
 
 Route::middleware(['auth', 'active', AuthenticateSession::class, '2fa.admin'])
@@ -34,8 +58,9 @@ Route::middleware(['auth', 'active', AuthenticateSession::class, '2fa.admin'])
         Route::post('/profile/logout-other-sessions', [ProfileController::class, 'logoutOtherSessions'])
             ->name('profile.logout-others');
 
-        // Admin-only
         Route::middleware('admin')->group(function () {
             Route::get('/activity', [ActivityController::class, 'index'])->name('activity');
         });
+
+        require __DIR__.'/staff-assets.php';
     });

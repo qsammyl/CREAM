@@ -1,0 +1,5 @@
+# Large raw media kept on disk (and in release packages) but out of git,
+# mirroring the source repo. Deployed separately, like the static site.
+beverly-hills.MP4
+*.MOV
+*.zip

@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\EnsureUserIsActive;
 use App\Http\Middleware\EnsureUserIsAdmin;
+use App\Http\Middleware\RedirectLegacyHtml;
 use App\Http\Middleware\RequireTwoFactorForAdmins;
 use App\Http\Middleware\SecurityHeaders;
 use Illuminate\Foundation\Application;
@@ -16,6 +17,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // 301 legacy .html URLs to clean URLs (global — runs before routing,
+        // so it also catches .html paths that match no route).
+        $middleware->prepend(RedirectLegacyHtml::class);
+
         // Security headers on every response.
         $middleware->append(SecurityHeaders::class);
 

@@ -47,6 +47,18 @@ return [
             'report' => false,
         ],
 
+        // Web-served uploads. Rooted inside the web root (public/uploads →
+        // public_html/uploads in production), so no storage:link symlink is
+        // needed on Hostinger. Only re-encoded, EXIF-stripped images land here.
+        'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/uploads',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

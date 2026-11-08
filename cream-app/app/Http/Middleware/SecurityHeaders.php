@@ -32,17 +32,23 @@ class SecurityHeaders
             $headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
         }
 
-        $headers->set('Content-Security-Policy', $this->csp());
+        $isStaff = $request->is('staff', 'staff/*');
+
+        $headers->set('Content-Security-Policy', $isStaff ? $this->staffCsp() : $this->publicCsp());
 
         // Keep the private dashboard out of search indexes.
-        if ($request->is('staff', 'staff/*')) {
+        if ($isStaff) {
             $headers->set('X-Robots-Tag', 'noindex, nofollow');
         }
 
         return $response;
     }
 
-    protected function csp(): string
+    /**
+     * Strict policy for the staff dashboard. script-src is 'self' + Turnstile
+     * only (no inline scripts); style-src allows inline for the brand CSS.
+     */
+    protected function staffCsp(): string
     {
         return implode('; ', [
             "default-src 'self'",
@@ -55,6 +61,31 @@ class SecurityHeaders
             "frame-src https://challenges.cloudflare.com",
             "connect-src 'self'",
             "form-action 'self'",
+            'upgrade-insecure-requests',
+        ]);
+    }
+
+    /**
+     * Public site. No inline scripts are used (hero/reels/popup run from
+     * /assets/site.js), so script-src stays 'self'. Allowances: Google Fonts,
+     * Google Maps iframes, self-hosted video, and — until Phase 6 — the
+     * Web3Forms endpoint for form submission. The Turnstile host is pre-allowed
+     * for the Phase 6 form rollout.
+     */
+    protected function publicCsp(): string
+    {
+        return implode('; ', [
+            "default-src 'self'",
+            "base-uri 'self'",
+            "frame-ancestors 'self'",
+            "img-src 'self' data:",
+            "media-src 'self'",
+            "font-src 'self' https://fonts.gstatic.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "script-src 'self' https://challenges.cloudflare.com",
+            "frame-src https://www.google.com https://maps.google.com https://challenges.cloudflare.com",
+            "connect-src 'self' https://api.web3forms.com",
+            "form-action 'self' https://api.web3forms.com",
             'upgrade-insecure-requests',
         ]);
     }
