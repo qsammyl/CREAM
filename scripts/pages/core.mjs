@@ -147,10 +147,10 @@ const contact = {
 
     const body = `${pageHero({ crumbTrail: [{ label: 'Credence', href: 'index.html' }, { label: 'Contact' }], h1: 'Begin the<br/><em>conversation.</em>', sub: "Whether you are abroad and ready to build securely in Ghana, or local and looking for a trusted manager — reach us by phone, email, WhatsApp, or the form below." })}
 <section class="quick"><div class="container"><div class="quick-row">
-  <a class="qitem" href="tel:${site.phone.tel}"><div class="ic">${C.icon.phone}</div><div><div class="k">Phone</div><div class="v">${C.esc(site.phone.display)}</div><div class="d">By appointment · Mon–Sat</div></div></a>
+  <a class="qitem" href="tel:${site.phone.tel}"><div class="ic">${C.icon.phone}</div><div><div class="k">Phone</div><div class="v">${C.esc(site.phone.display)}</div><div class="d">By appointment · Mon–Fri</div></div></a>
   <a class="qitem" href="mailto:${site.email}"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><div class="k">Email</div><div class="v" style="font-size:14px;word-break:break-all">${C.esc(site.email)}</div><div class="d">Replies within 1 business day</div></div></a>
   <a class="qitem" href="https://wa.me/${site.whatsapp.number}" target="_blank" rel="noopener"><div class="ic">${C.icon.wa}</div><div><div class="k">WhatsApp</div><div class="v">${C.esc(site.whatsapp.display)}</div><div class="d">Voice notes accepted</div></div></a>
-  <a class="qitem" href="#offices"><div class="ic">${C.icon.pin}</div><div><div class="k">Visit HQ</div><div class="v">East Legon, Accra</div><div class="d">By appointment only</div></div></a>
+  <a class="qitem" href="#offices"><div class="ic">${C.icon.pin}</div><div><div class="k">Visit HQ</div><div class="v">East Legon, Accra</div><div class="d">Mon–Fri</div></div></a>
 </div></div></section>
 
 <section class="sec" id="form"><div class="container"><div class="form-grid">
@@ -202,7 +202,7 @@ const contact = {
 <section class="sec bone2" id="offices"><div class="container">
   <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Our Base</div><h2 class="section-title">Accra HQ and<br/>diaspora desks.</h2></div><div class="right">We execute on the ground in Ghana, and meet diaspora clients by appointment in the UK and USA — no public office there.</div></div>
   <div class="offices-grid">
-    <div class="off"><span class="flag">Ghana · Headquarters</span><div class="city">Accra</div><div class="role">East Legon, Greater Accra</div><div class="lines"><div><b>Bawuah Junction, East Legon</b></div><div>Greater Accra, Ghana</div><div><a href="tel:${site.phone.tel}">${C.esc(site.phone.display)}</a></div><div><a href="mailto:${site.email}">${C.esc(site.email)}</a></div></div><div class="hours">By appointment · Mon–Sat<br/><!-- TODO(sam): confirm exact opening hours --></div></div>
+    <div class="off"><span class="flag">Ghana · Headquarters</span><div class="city">Accra</div><div class="role">East Legon, Greater Accra</div><div class="lines"><div><b>Bawuah Junction, East Legon</b></div><div>Greater Accra, Ghana</div><div><a href="tel:${site.phone.tel}">${C.esc(site.phone.display)}</a></div><div><a href="mailto:${site.email}">${C.esc(site.email)}</a></div></div><div class="hours">Mon–Fri</div></div>
     <div class="off"><span class="flag">United Kingdom · Diaspora desk</span><div class="city">London</div><div class="role">By appointment</div><div class="lines"><div>Diaspora consultations &amp; portfolio reviews, scheduled via Accra HQ.</div><div>Zoom &amp; WhatsApp</div></div><div class="hours">By appointment · GMT &amp; BST</div></div>
     <div class="off"><span class="flag">United States · Holdings liaison</span><div class="city">Manchester, CT</div><div class="role">Credence Holdings LLC</div><div class="lines"><div>805 Horizon Way, Manchester CT 06042</div><div>North American diaspora, by appointment.</div></div><div class="hours">By appointment · EST &amp; PST</div></div>
   </div>
@@ -306,9 +306,10 @@ const about = {
 <section class="sec bone2"><div class="container">
   <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>The Team</div><h2 class="section-title">A small, deliberate<br/>group of operators.</h2></div><div class="right">Compact teams, senior people, repeatable processes. <em class="serif">Further bios to follow.</em></div></div>
   <div class="team-grid">
-    <div class="tm"><div class="ph"><img src="assets/adeline-quarshie.jpeg" alt="Adeline Quarshie" style="object-position:center 22%"/></div><div class="nm">Adeline Quarshie</div><div class="rl">Chief Executive Officer</div></div>
-    <div class="tm"><div class="ph"><img src="assets/joshua-asimakumah.jpeg" alt="Joshua Asimakumah"/></div><div class="nm">Joshua Asimakumah</div><div class="rl">Head of Administration</div></div>
-    <div class="tm"><div class="ph"><img src="assets/adelina-quarshie.jpeg" alt="Adelina Quarshie"/></div><div class="nm">Adelina Quarshie</div><div class="rl">Head of Diaspora</div></div>
+    <div class="tm"><div class="ph"><img src="assets/adeline-quarshie.jpeg" alt="Adeline Quarshie" style="object-position:49% 35%;transform:scale(1.24);transform-origin:49% 35%"/></div><div class="nm">Adeline Quarshie</div><div class="rl">Chief Executive Officer</div></div>
+    <div class="tm"><div class="ph"><img src="assets/ivan-avereyireh.jpeg" alt="Ivan Avereyireh" style="object-position:50% 42%;transform:scale(1.08);transform-origin:50% 42%"/></div><div class="nm">Ivan Avereyireh</div><div class="rl">Executive Director</div></div>
+    <div class="tm"><div class="ph"><img src="assets/joshua-asimakumah.jpeg" alt="Joshua Asimakumah" style="object-position:49% 25%;transform:scale(1.98);transform-origin:49% 25%"/></div><div class="nm">Joshua Asimakumah</div><div class="rl">Head of Administration</div></div>
+    <div class="tm"><div class="ph"><img src="assets/adelina-quarshie.jpeg" alt="Adelina Quarshie" style="object-position:54% 33%;transform:scale(1.18);transform-origin:54% 33%"/></div><div class="nm">Adelina Quarshie</div><div class="rl">Head of Diaspora</div></div>
   </div>
   <img src="assets/group-photo.jpeg" alt="The Credence team at the Accra office" loading="lazy" style="margin-top:44px;width:100%;border-radius:var(--r-l);display:block;object-fit:cover;aspect-ratio:16/6"/>
 </div></section>

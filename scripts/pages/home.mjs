@@ -75,6 +75,12 @@ const CSS = `
 .reel .ttl{font-family:var(--serif);font-size:18px;line-height:1.15}
 .reel .ttl em{font-style:italic;color:#E8DEC2}
 .reel .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.8);text-transform:uppercase;margin-top:6px}
+.reel .top-row{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.reel .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff}
+.reel .tag.live{background:#D9483B}
+.reel .dur{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:5px;color:#fff}
+.reel .top-row,.reel .body{transition:opacity .3s ease,transform .3s ease}
+.reel:hover .top-row,.reel:hover .body{opacity:0;pointer-events:none;transform:translateY(5px)}
 @media(max-width:1080px){.reels-row{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.reels-row{grid-template-columns:1fr 1fr;gap:12px}}
 
@@ -104,7 +110,7 @@ const CSS = `
 .ceo-quote .by{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:20px}
 `;
 
-function reel(ctx, slug, areaLabel) {
+function reel(ctx, slug, areaLabel, isFirst) {
   const l = ctx.bySlug[slug];
   const p = '';
   const hasPhoto = l.photos && l.photos.length;
@@ -112,13 +118,18 @@ function reel(ctx, slug, areaLabel) {
   const media = l.video
     ? `<video muted loop playsinline preload="none"${poster}><source src="${l.video}" type="video/mp4"/></video>`
     : (hasPhoto ? `<img src="${l.photos[0]}" alt="${C.esc(l.title)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="lazy"/>` : C.placeholder(0, l.title));
-  const beds = (l.beds !== '' && l.beds != null) ? `${l.beds} bd` : '';
+  const tags = l.tags || [];
+  const statusLabel = tags.includes('exclusive') ? 'Exclusive'
+    : l.status === 'rent' ? 'For Rent'
+    : l.status === 'shortstay' ? 'Short Stay'
+    : 'For Sale';
   return `<a href="listings/${l.slug}.html" class="reel" data-video="${l.video || ''}">
       ${media}
+      <div class="top-row"><span class="tag${isFirst ? ' live' : ''}">${isFirst ? '● ' : ''}Walk-through</span><span class="dur">New</span></div>
       <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="body">
         <div class="ttl">${l.title.replace(/\s(\w+)$/, ' <em>$1</em>')}</div>
-        <div class="meta"><span>${C.esc(areaLabel)}</span><span>${C.money(l).replace(/<[^>]+>/g, '')}${beds ? ' · ' + beds : ''}</span></div>
+        <div class="meta"><span>${C.esc(areaLabel)}</span><span>${C.esc(statusLabel)}</span></div>
       </div>
     </a>`;
 }
@@ -138,7 +149,7 @@ export default {
       </a>`).join('\n      ');
 
     const reels = [
-      reel(ctx, 'royal-manhattan', 'Ashale Botwe, Accra'),
+      reel(ctx, 'royal-manhattan', 'Ashale Botwe, Accra', true),
       reel(ctx, 'beverly-homes', 'East Legon, Accra'),
       reel(ctx, 'salem-plus-homes', 'Adjiringanor, Accra'),
       reel(ctx, 'adjiringanor-homes', 'East Legon, Accra')

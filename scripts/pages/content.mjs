@@ -6,7 +6,7 @@ const insights = {
   path: 'insights.html',
   build(ctx) {
     const { site, postsData } = ctx;
-    const posts = postsData.posts.slice(0, 3).map((pst) => `<a class="media-card" href="${pst.file ? pst.file : 'blog/index.html'}">
+    const posts = postsData.posts.slice(0, 3).map((pst) => `<a class="media-card" href="${pst.file ? pst.file : 'blog/' + pst.slug + '.html'}">
       <div class="mc-top">${C.placeholder(0, 'Credence Insights')}</div>
       <div class="mc-body"><div class="mc-k">Blog</div><div class="mc-t">${C.esc(pst.title)}</div><div class="mc-d">${C.esc(pst.excerpt)}</div><div class="mc-meta"><span>${C.esc(pst.date)}</span><span>Read ${C.icon.arrow}</span></div></div>
     </a>`).join('\n');
@@ -304,5 +304,53 @@ const notFound = {
     });
   }
 };
+
+/* ---------------- BLOG POST (data-driven, from posts.json `body`) ---------------- */
+function postBodyHtml(blocks) {
+  return (blocks || []).map((b) => {
+    if (typeof b === 'string') return `    <p>${C.esc(b)}</p>`;
+    if (b.h) return `    <h2>${C.esc(b.h)}</h2>`;
+    if (b.ol) return `    <ol>${b.ol.map((i) => `<li>${C.esc(i)}</li>`).join('')}</ol>`;
+    if (b.ul) return `    <ul>${b.ul.map((i) => `<li>${C.esc(i)}</li>`).join('')}</ul>`;
+    return '';
+  }).filter(Boolean).join('\n');
+}
+
+export function renderPost(site, pst) {
+  const css = `.post{max-width:760px;margin:0 auto}
+.post .meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.post .hero-img{width:100%;border-radius:var(--r-l);margin:0 0 28px;aspect-ratio:16/9;object-fit:cover}
+.post .body p{font-size:17px;line-height:1.8;color:var(--ink-2);margin:0 0 20px}
+.post .body h2{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-0.01em;color:var(--ink);margin:34px 0 14px}
+.post .body ul,.post .body ol{margin:0 0 20px;padding-left:22px;color:var(--ink-2);font-size:17px;line-height:1.8}
+.post .body li{margin:0 0 8px}
+.post .source{font-size:13px;color:var(--ink-3);margin:26px 0 0;font-style:italic}
+.post .share{display:flex;gap:10px;margin:28px 0;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
+.post .cta{background:var(--ink);color:#fff;border-radius:var(--r-l);padding:32px;text-align:center;margin-top:36px}
+.post .cta h3{font-family:var(--serif);font-weight:400;font-size:28px;margin:0 0 14px;color:#fff}`;
+  const hero = pst.hero ? `<img class="hero-img" src="../${pst.hero}" alt="${C.esc(pst.title)}"/>\n  ` : '';
+  const source = pst.source
+    ? `\n  <p class="source">Originally published by ${pst.sourceUrl ? `<a href="${pst.sourceUrl}" target="_blank" rel="noopener">${C.esc(pst.source)}</a>` : C.esc(pst.source)}.</p>`
+    : '';
+  const body = `${pageHero({ d: 1, crumbTrail: [{ label: 'Credence', href: 'index.html' }, { label: 'Blog', href: 'blog/index.html' }, { label: pst.title }], h1: C.esc(pst.title) })}
+<section class="sec bone"><div class="container"><article class="post">
+  <div class="meta">${C.esc(pst.date)} · By ${C.esc(pst.author)}</div>
+  ${hero}<div class="body">
+${postBodyHtml(pst.body)}
+  </div>${source}
+  <div class="share">
+    <a class="btn-ghost" href="https://wa.me/${site.whatsapp.number}" target="_blank" rel="noopener">Share on WhatsApp</a>
+    <a class="btn-ghost" href="https://www.facebook.com/sharer/sharer.php?u=${site.domain}/blog/${pst.slug}.html" target="_blank" rel="noopener">Share on Facebook</a>
+  </div>
+  <div class="cta"><h3>Thinking about a move?</h3><a class="btn-gold" href="../contact.html">Talk to us ${C.icon.arrow}</a></div>
+</article></div></section>`;
+  return C.page(site, {
+    d: 1, active: '',
+    title: `${pst.title} | Credence Real Estate`,
+    description: pst.excerpt,
+    canonical: `blog/${pst.slug}.html`,
+    extraCss: css, body, includePopup: false
+  });
+}
 
 export const contentPages = [insights, blogIndex, blogTemplate, searchDoc, privacy, terms, notFound];

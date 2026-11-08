@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import * as C from './components.mjs';
 import { pages } from './pages/index.mjs';
+import { renderPost } from './pages/content.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -189,6 +190,11 @@ for (const def of pages) {
   out(def.path, result);
 }
 
+// Blog posts generated from data (posts with a `body` and no pre-written `file`)
+for (const pst of postsData.posts) {
+  if (pst.body && !pst.file) out('blog/' + pst.slug + '.html', renderPost(site, pst));
+}
+
 /* ---------- sitemap.xml ---------- */
 const urls = [
   'index.html', 'about.html', 'services.html', 'properties.html', 'contact.html',
@@ -196,7 +202,7 @@ const urls = [
   'sell.html', 'exclusives.html', 'new-projects.html', 'short-stays.html',
   'search-document.html', 'insights.html', 'blog/index.html', 'privacy.html', 'terms.html',
   ...allListings.map((l) => 'listings/' + l.slug + '.html'),
-  ...postsData.posts.filter((p) => p.file).map((p) => p.file)
+  ...postsData.posts.map((p) => (p.file ? p.file : 'blog/' + p.slug + '.html'))
 ];
 const today = new Date().toISOString().slice(0, 10);
 const clean = (u) => u.replace(/index\.html$/, '').replace(/\.html$/, '');

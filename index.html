@@ -90,6 +90,12 @@
 .reel .ttl{font-family:var(--serif);font-size:18px;line-height:1.15}
 .reel .ttl em{font-style:italic;color:#E8DEC2}
 .reel .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.8);text-transform:uppercase;margin-top:6px}
+.reel .top-row{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.reel .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff}
+.reel .tag.live{background:#D9483B}
+.reel .dur{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:5px;color:#fff}
+.reel .top-row,.reel .body{transition:opacity .3s ease,transform .3s ease}
+.reel:hover .top-row,.reel:hover .body{opacity:0;pointer-events:none;transform:translateY(5px)}
 @media(max-width:1080px){.reels-row{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.reels-row{grid-template-columns:1fr 1fr;gap:12px}}
 
@@ -404,34 +410,38 @@
     <div class="reels-row">
       <a href="listings/royal-manhattan.html" class="reel" data-video="">
       <img src="assets/royal-manhattan.png" alt="Royal Manhattan" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="lazy"/>
+      <div class="top-row"><span class="tag live">● Walk-through</span><span class="dur">New</span></div>
       <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="body">
         <div class="ttl">Royal <em>Manhattan</em></div>
-        <div class="meta"><span>Ashale Botwe, Accra</span><span>USD 420,000 · 4 bd</span></div>
+        <div class="meta"><span>Ashale Botwe, Accra</span><span>For Sale</span></div>
       </div>
     </a>
       <a href="listings/beverly-homes.html" class="reel" data-video="assets/beverly-hills.MP4">
       <video muted loop playsinline preload="none" poster="assets/beverly-hills.jpeg"><source src="assets/beverly-hills.MP4" type="video/mp4"/></video>
+      <div class="top-row"><span class="tag">Walk-through</span><span class="dur">New</span></div>
       <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="body">
         <div class="ttl">Beverly <em>Homes</em></div>
-        <div class="meta"><span>East Legon, Accra</span><span>USD 450,000 · 4 bd</span></div>
+        <div class="meta"><span>East Legon, Accra</span><span>For Sale</span></div>
       </div>
     </a>
       <a href="listings/salem-plus-homes.html" class="reel" data-video="">
       <img src="assets/salem-plus-home.JPG" alt="Salem Plus Homes" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="lazy"/>
+      <div class="top-row"><span class="tag">Walk-through</span><span class="dur">New</span></div>
       <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="body">
         <div class="ttl">Salem Plus <em>Homes</em></div>
-        <div class="meta"><span>Adjiringanor, Accra</span><span>USD 550,000 · 4 bd</span></div>
+        <div class="meta"><span>Adjiringanor, Accra</span><span>Exclusive</span></div>
       </div>
     </a>
       <a href="listings/adjiringanor-homes.html" class="reel" data-video="assets/adjiringanor-east-legon.mp4">
       <video muted loop playsinline preload="none"><source src="assets/adjiringanor-east-legon.mp4" type="video/mp4"/></video>
+      <div class="top-row"><span class="tag">Walk-through</span><span class="dur">New</span></div>
       <div class="play-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="body">
         <div class="ttl">Adjiringanor <em>Homes</em></div>
-        <div class="meta"><span>East Legon, Accra</span><span>USD 350,000 · 3.5 bd</span></div>
+        <div class="meta"><span>East Legon, Accra</span><span>For Sale</span></div>
       </div>
     </a>
     </div>

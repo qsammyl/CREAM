@@ -24,7 +24,7 @@
     "usHoldings": "805 Horizon Way, Manchester, CT 06042, USA",
     "coords": { "lat": 5.6423527, "lng": -0.1611202 }
   },
-  "hours": "TODO(sam): confirm opening hours — the old site showed both 'Mon–Sat 09:00–18:00' and 'Mon–Fri 09:00–18:00, Sat 10:00–14:00'. Placeholder used: 'By appointment · Mon–Sat'.",
+  "hours": "Mon–Fri",
   "web3forms": {
     "contactKey": "a1d19664-4e29-4813-94ef-3b071d6caa17",
     "listingKey": "39affe3c-c624-46f8-8ec5-df3ac0cde6f9",
