@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Enums\AssetCategory;
+use App\Enums\CommentStatus;
+use App\Http\Requests\StoreCommentRequest;
+use App\Models\Article;
 use App\Models\Asset;
 use App\Models\AssetRedirect;
+use App\Models\Comment;
+use App\Support\ActivityLogger;
+use App\Support\Turnstile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -217,12 +223,74 @@ class PublicController extends Controller
 
     public function blog(): View
     {
-        // Articles & comments arrive in Phase 4; until then the blog shows the
-        // Signature Home Show fallback (as the static site does with no posts).
+        $articles = Article::query()->published()->with('author')
+            ->orderByDesc('published_at')->paginate(9);
+
         return view('public.blog', ['active' => '',
             'title' => 'Blog — Ghana Real Estate & Property Insight | Credence Real Estate',
             'description' => 'The Credence blog: practical writing on buying, building, renting and managing property in Ghana for local and diaspora clients.',
-            'canonical' => '/blog']);
+            'canonical' => '/blog', 'articles' => $articles]);
+    }
+
+    public function blogPost(string $slug): View
+    {
+        $article = Article::query()->published()->where('slug', $slug)->firstOrFail();
+
+        return $this->renderArticle($article);
+    }
+
+    public function legacyArticle(string $path): View
+    {
+        $article = Article::query()->published()->where('legacy_path', $path)->firstOrFail();
+
+        return $this->renderArticle($article);
+    }
+
+    protected function renderArticle(Article $article): View
+    {
+        $comments = $article->allow_comments ? $article->approvedComments()->get() : collect();
+
+        return view('public.article', [
+            'active' => '',
+            'article' => $article,
+            'comments' => $comments,
+            'title' => $article->title.' | Credence Real Estate',
+            'description' => \Illuminate\Support\Str::limit(strip_tags((string) ($article->excerpt ?: $article->body)), 157, ''),
+            'canonical' => $article->url(),
+            'ogImage' => $article->coverUrl(),
+            'includePopup' => false,
+        ]);
+    }
+
+    public function storeComment(StoreCommentRequest $request, string $slug): RedirectResponse
+    {
+        $article = Article::query()->published()->where('slug', $slug)->firstOrFail();
+        abort_unless($article->allow_comments, 403);
+
+        // Honeypot: pretend success without saving, so bots learn nothing.
+        if ($request->honeypotTripped()) {
+            return back()->with('comment_status', 'pending')->withFragment('comments');
+        }
+
+        if (! app(Turnstile::class)->verify($request->input('cf-turnstile-response'), $request->ip())) {
+            return back()->withInput()
+                ->withErrors(['comment' => 'Please complete the verification challenge and try again.'])
+                ->withFragment('comment-form');
+        }
+
+        $comment = Comment::create([
+            'article_id' => $article->id,
+            'name' => $request->validated('name'),
+            'email' => $request->validated('email'),
+            'body' => $request->validated('body'),
+            'status' => CommentStatus::Pending,
+            'ip_hash' => ActivityLogger::hashIp($request->ip()),
+            'user_agent' => mb_substr((string) $request->userAgent(), 0, 500),
+        ]);
+
+        ActivityLogger::log('create', $comment, $request, actor: null);
+
+        return back()->with('comment_status', 'pending')->withFragment('comments');
     }
 
     public function privacy(): View

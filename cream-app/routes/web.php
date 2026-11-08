@@ -32,6 +32,9 @@ Route::get('/search-document', [PublicController::class, 'searchDocument'])->nam
 
 Route::get('/insights', [PublicController::class, 'insights'])->name('insights');
 Route::get('/blog', [PublicController::class, 'blog'])->name('blog');
+Route::get('/blog/{slug}', [PublicController::class, 'blogPost'])->where('slug', '[a-z0-9-]+')->name('blog.show');
+Route::post('/blog/{slug}/comments', [PublicController::class, 'storeComment'])
+    ->where('slug', '[a-z0-9-]+')->middleware('throttle:comments')->name('comments.store');
 
 Route::get('/privacy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PublicController::class, 'terms'])->name('terms');
@@ -41,6 +44,10 @@ Route::get('/listings/{slug}', [PublicController::class, 'listing'])
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/robots.txt', [SitemapController::class, 'robots']);
+
+// Hand-written legacy blog posts keep their original top-level URLs.
+Route::get('/{legacy}', [PublicController::class, 'legacyArticle'])
+    ->where('legacy', 'blog-[a-z0-9-]+')->name('blog.legacy');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +70,5 @@ Route::middleware(['auth', 'active', AuthenticateSession::class, '2fa.admin'])
         });
 
         require __DIR__.'/staff-assets.php';
+        require __DIR__.'/staff-content.php';
     });

@@ -33,6 +33,19 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
                 Bin
             </a>
+
+            <div class="nav-sec">Content</div>
+            <a href="{{ route('staff.articles.index') }}" class="{{ request()->routeIs('staff.articles.*') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4M8 13h8M8 17h8M8 9h3"/></svg>
+                Articles
+            </a>
+            <a href="{{ route('staff.comments.index') }}" class="{{ request()->routeIs('staff.comments.*') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Comments
+                @php($pendingComments = \App\Models\Comment::where('status', 'pending')->count())
+                @if ($pendingComments)<span class="pill">{{ $pendingComments }}</span>@endif
+            </a>
+
             <a href="{{ route('staff.profile') }}" class="{{ request()->routeIs('staff.profile') ? 'active' : '' }}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
                 Profile &amp; security

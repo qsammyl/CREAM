@@ -33,6 +33,9 @@ return [
 
     'email' => 'info@credencerealestateandassetmgt.com',
 
+    // Where moderation digests / alerts go (Phase 7 makes this editable in Settings).
+    'moderation_email' => env('MODERATION_EMAIL', 'info@credencerealestateandassetmgt.com'),
+
     'address' => [
         'hq' => 'Bawuah Junction, East Legon, Greater Accra, Ghana',
         'district' => 'East Legon',

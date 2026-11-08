@@ -102,7 +102,99 @@ class ImportStatic extends Command
             $this->comment('Missing photos are expected where the static site used branded placeholders (TODO(sam) in data/listings.json).');
         }
 
+        $this->importArticles();
+
         return self::SUCCESS;
+    }
+
+    protected function importArticles(): void
+    {
+        $jsonPath = base_path('../data/posts.json');
+        if (! is_file($jsonPath)) {
+            return;
+        }
+
+        $data = json_decode((string) file_get_contents($jsonPath), true);
+        $posts = $data['posts'] ?? [];
+        $created = 0;
+        $skipped = 0;
+
+        $this->newLine();
+        $this->line('Blog posts:');
+
+        foreach ($posts as $p) {
+            $slug = $p['slug'] ?? null;
+            if (! $slug || \App\Models\Article::withTrashed()->where('slug', $slug)->exists()) {
+                $skipped++;
+
+                continue;
+            }
+
+            [$body, $legacyPath] = $this->articleBody($p);
+
+            \App\Models\Article::create([
+                'slug' => $slug,
+                'title' => $p['title'],
+                'excerpt' => $p['excerpt'] ?? null,
+                'body' => \App\Support\HtmlSanitizer::article($body),
+                'author_name' => $p['author'] ?? 'Credence',
+                'status' => \App\Enums\ArticleStatus::Published,
+                'allow_comments' => true,
+                'source' => $p['source'] ?? null,
+                'source_url' => $p['sourceUrl'] ?? null,
+                'legacy_path' => $legacyPath,
+                'published_at' => $p['date'] ?? now(),
+            ]);
+            $created++;
+            $this->info("  + {$p['title']}");
+        }
+
+        $this->info("Blog: imported {$created}, skipped {$skipped} already present.");
+    }
+
+    /**
+     * Returns [bodyHtml, legacyPath]. File-based posts keep their original URL
+     * and have their body extracted from the hand-written HTML; body-array
+     * posts are rendered to HTML.
+     *
+     * @param  array<string, mixed>  $p
+     * @return array{0: ?string, 1: ?string}
+     */
+    protected function articleBody(array $p): array
+    {
+        if (! empty($p['file'])) {
+            $path = base_path('../'.$p['file']);
+            $legacy = preg_replace('/\.html$/', '', $p['file']);
+            if (is_file($path)
+                && preg_match('/id="article-body">(.*?)<\/main>/s', (string) file_get_contents($path), $m)) {
+                return [trim($m[1]), $legacy];
+            }
+
+            return [null, $legacy];
+        }
+
+        return [$this->renderBodyBlocks($p['body'] ?? []), null];
+    }
+
+    /**
+     * @param  array<int, mixed>  $blocks
+     */
+    protected function renderBodyBlocks(array $blocks): string
+    {
+        $html = '';
+        foreach ($blocks as $b) {
+            if (is_string($b)) {
+                $html .= '<p>'.e($b).'</p>';
+            } elseif (isset($b['h'])) {
+                $html .= '<h2>'.e($b['h']).'</h2>';
+            } elseif (isset($b['ol'])) {
+                $html .= '<ol>'.implode('', array_map(fn ($i) => '<li>'.e($i).'</li>', $b['ol'])).'</ol>';
+            } elseif (isset($b['ul'])) {
+                $html .= '<ul>'.implode('', array_map(fn ($i) => '<li>'.e($i).'</li>', $b['ul'])).'</ul>';
+            }
+        }
+
+        return $html;
     }
 
     /**
