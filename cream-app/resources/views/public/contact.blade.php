@@ -61,10 +61,10 @@
             <div class="topic-row" id="topics">
                 @foreach ($topics as $i => $t)<button class="topic-chip{{ $i === 0 ? ' on' : '' }}" type="button">{{ $t }}</button>@endforeach
             </div>
-            <form class="cr-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" data-web3>
-                <input type="hidden" name="access_key" value="{{ config('cream.web3forms.contact_key') }}"/>
-                <input type="hidden" name="subject" value="New Enquiry — Credence Real Estate"/>
-                <input type="hidden" name="from_name" value="Credence Website"/>
+            @include('public.partials.form-status')
+            <form class="cr-form" id="contactForm" action="{{ route('enquiries.store') }}" method="POST" data-enquiry>
+                @csrf
+                <input type="hidden" name="type" value="contact"/>
                 <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
                 <input type="hidden" id="topicInput" name="enquiry_type" value="Buy a Property"/>
                 <div class="row-2"><div><label>Full name</label><input name="name" type="text" required/></div><div><label>Country / region</label><select name="country"><option>Ghana</option><option>United Kingdom</option><option>United States</option><option>Canada</option><option>Germany</option><option>Nigeria</option><option>Other</option></select></div></div>
@@ -72,6 +72,7 @@
                 <div class="row-2"><div><label>Approx. budget (USD)</label><select name="budget"><option>Under 150K</option><option>150K – 300K</option><option>300K – 500K</option><option>500K – 1M</option><option>1M+</option><option>Not yet defined</option></select></div><div><label>Timeline</label><select name="timeline"><option>Immediate (this quarter)</option><option>3 – 6 months</option><option>6 – 12 months</option><option>12+ months</option><option>Exploring</option></select></div></div>
                 <div><label>Message</label><textarea name="message" placeholder="A short brief — bedrooms, neighbourhood, intent (own or invest), and anything else we should know…"></textarea></div>
                 <label class="check"><input type="checkbox" name="newsletter" checked/> Keep me informed on signature listings, market notes &amp; the Signature Home Show — quarterly only.</label>
+                @include('partials.turnstile')
                 <button class="submit" type="submit">Send message <x-icon name="arrow"/></button>
                 <div class="form-msg" style="display:none"></div>
                 <p class="privacy-note">By submitting you agree to our <a href="/privacy">privacy notice</a>.</p>

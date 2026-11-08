@@ -46,14 +46,15 @@
 
     <section class="sec bone" id="register"><div class="container">
         <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Register interest</div><h2 class="t">Get first access to <em>off-plan</em> prices.</h2></div><div class="right">Register and we will send pricing, floor plans and site updates as the project progresses.</div></div>
-        <form class="cr-form" style="max-width:720px" action="https://api.web3forms.com/submit" method="POST" data-web3>
-            <input type="hidden" name="access_key" value="{{ config('cream.web3forms.contact_key') }}"/>
-            <input type="hidden" name="subject" value="New project — Register interest"/>
-            <input type="hidden" name="from_name" value="Credence Website"/>
+        @include('public.partials.form-status')
+        <form class="cr-form" style="max-width:720px" action="{{ route('enquiries.store') }}" method="POST" data-enquiry>
+            @csrf
+            <input type="hidden" name="type" value="new_project"/>
             <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
             <div class="row-2"><div><label>Full name</label><input name="name" required/></div><div><label>Project</label><select name="project">@foreach ($items as $l)<option>{{ $l->title }}</option>@endforeach<option>Not sure yet</option></select></div></div>
             <div class="row-2"><div><label>Email</label><input type="email" name="email" required/></div><div><label>Phone / WhatsApp</label><input type="tel" name="phone"/></div></div>
             <div><label>Message</label><textarea name="message" placeholder="Unit preference, budget, timeline…"></textarea></div>
+            @include('partials.turnstile')
             <button type="submit" class="submit">Register interest <x-icon name="arrow"/></button>
             <div class="form-msg" style="display:none"></div>
         </form>

@@ -173,28 +173,33 @@
     });
   });
 
-  /* ---------- Web3Forms AJAX submit (progressive enhancement) ---------- */
-  document.querySelectorAll('form[data-web3]').forEach(function (form) {
+  /* ---------- Enquiry AJAX submit (progressive enhancement) ---------- */
+  document.querySelectorAll('form[data-enquiry]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       var btn = form.querySelector('[type="submit"]');
       var msg = form.querySelector('.form-msg');
-      if (!msg) return; // fall back to native POST
+      if (!msg) return; // fall back to native POST (page reload + flash)
       e.preventDefault();
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Sending…'; }
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
-        .then(function (r) { return r.json(); })
-        .then(function (json) {
-          if (json.success) {
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+      })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, json: j }; }); })
+        .then(function (res) {
+          if (res.ok && res.json.success) {
             form.reset();
             msg.style.cssText = 'display:block;margin-top:12px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.5;background:#F0FAF4;border:1px solid #B6DFC7;color:#1A5C38';
             msg.innerHTML = '<strong>Message sent.</strong> A member of our team will be in touch within one business day.';
             if (btn) btn.style.display = 'none';
-          } else { throw new Error(json.message || 'Failed'); }
+          } else { throw new Error((res.json && res.json.message) || 'Failed'); }
         })
-        .catch(function () {
+        .catch(function (err) {
           msg.style.cssText = 'display:block;margin-top:12px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.5;background:#FEF2F2;border:1px solid #FECACA;color:#991B1B';
-          msg.innerHTML = 'Something went wrong — please try again or reach us on WhatsApp or at info@credencerealestateandassetmgt.com.';
-          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Send Message'; }
+          msg.textContent = (err && err.message && err.message !== 'Failed') ? err.message
+            : 'Something went wrong — please try again, or reach us on WhatsApp.';
+          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Send message'; }
         });
     });
   });

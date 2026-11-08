@@ -51,6 +51,12 @@
                 @php($pendingTestimonials = \App\Models\Testimonial::where('status', 'pending')->count())
                 @if ($pendingTestimonials)<span class="pill">{{ $pendingTestimonials }}</span>@endif
             </a>
+            <a href="{{ route('staff.enquiries.index') }}" class="{{ request()->routeIs('staff.enquiries.*') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                Enquiries
+                @php($newEnquiries = \App\Models\Enquiry::where('status', 'new')->count())
+                @if ($newEnquiries)<span class="pill">{{ $newEnquiries }}</span>@endif
+            </a>
 
             <a href="{{ route('staff.profile') }}" class="{{ request()->routeIs('staff.profile') ? 'active' : '' }}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>

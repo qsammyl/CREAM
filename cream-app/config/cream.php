@@ -33,7 +33,8 @@ return [
 
     'email' => 'info@credencerealestateandassetmgt.com',
 
-    // Where moderation digests / alerts go (Phase 7 makes this editable in Settings).
+    // Where enquiry notifications and moderation digests / alerts go
+    // (Phase 7 makes this editable in Settings).
     'moderation_email' => env('MODERATION_EMAIL', 'info@credencerealestateandassetmgt.com'),
 
     'address' => [
@@ -57,13 +58,6 @@ return [
         'name' => 'The Signature Home Show',
         'channel' => 'https://www.youtube.com/@TheSignatureHomeShow',
         'latest_video_id' => 'R1tyNIg0JXA',
-    ],
-
-    // TEMPORARY — Web3Forms keys, read from env so they are not committed.
-    // Removed entirely in Phase 6 when forms move to Laravel.
-    'web3forms' => [
-        'contact_key' => env('WEB3FORMS_CONTACT_KEY', ''),
-        'listing_key' => env('WEB3FORMS_LISTING_KEY', ''),
     ],
 
 ];

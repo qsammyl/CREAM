@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Enums\AssetCategory;
 use App\Enums\CommentStatus;
+use App\Enums\EnquiryStatus;
+use App\Enums\EnquiryType;
 use App\Enums\TestimonialStatus;
 use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\StoreEnquiryRequest;
 use App\Http\Requests\StoreTestimonialRequest;
+use App\Mail\EnquiryReceivedMail;
 use App\Models\Article;
 use App\Models\Asset;
 use App\Models\AssetRedirect;
 use App\Models\Comment;
+use App\Models\Enquiry;
 use App\Models\Testimonial;
 use App\Support\ActivityLogger;
 use App\Support\Turnstile;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -351,6 +358,57 @@ class PublicController extends Controller
         ActivityLogger::log('create', $testimonial, $request, actor: null);
 
         return redirect()->route('feedback')->with('feedback_status', 'thanks');
+    }
+
+    /* ---------------- Enquiries (all public forms) ---------------- */
+
+    public function storeEnquiry(StoreEnquiryRequest $request): RedirectResponse|JsonResponse
+    {
+        // Honeypot: pretend success without saving, so bots learn nothing.
+        if ($request->honeypotTripped()) {
+            return $this->enquiryResponse($request);
+        }
+
+        if (! app(Turnstile::class)->verify($request->input('cf-turnstile-response'), $request->ip())) {
+            if ($request->expectsJson()) {
+                return response()->json(['success' => false, 'message' => 'Please complete the verification challenge and try again.'], 422);
+            }
+
+            return back()->withInput()->withErrors(['enquiry' => 'Please complete the verification challenge and try again.']);
+        }
+
+        $type = EnquiryType::from($request->validated('type'));
+
+        $enquiry = Enquiry::create([
+            'type' => $type,
+            'name' => $request->validated('name'),
+            'email' => $request->validated('email'),
+            'phone' => $request->validated('phone'),
+            'country' => $request->validated('country'),
+            'message' => $request->validated('message'),
+            'subject' => $request->validated('subject') ?: $type->subject(),
+            'asset_id' => $request->validated('asset_id'),
+            'details' => $request->details(),
+            'newsletter_opt_in' => $request->boolean('newsletter'),
+            'status' => EnquiryStatus::New,
+            'source_url' => mb_substr((string) $request->headers->get('referer'), 0, 255) ?: null,
+            'ip_hash' => ActivityLogger::hashIp($request->ip()),
+            'user_agent' => mb_substr((string) $request->userAgent(), 0, 500),
+        ]);
+
+        Mail::to(config('cream.moderation_email'))->queue(new EnquiryReceivedMail($enquiry));
+        ActivityLogger::log('create', $enquiry, $request, actor: null);
+
+        return $this->enquiryResponse($request);
+    }
+
+    protected function enquiryResponse(StoreEnquiryRequest $request): RedirectResponse|JsonResponse
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['success' => true]);
+        }
+
+        return back()->with('enquiry_status', 'sent');
     }
 
     public function privacy(): View

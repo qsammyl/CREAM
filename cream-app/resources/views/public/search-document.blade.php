@@ -57,15 +57,16 @@
 
     <section class="sec bone" id="request"><div class="container">
         <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Request a search</div><h2 class="t">Start your <em>land search.</em></h2></div><div class="right">Complete the form and we will confirm the fee and next steps. Your information is handled per our privacy notice.</div></div>
-        <form class="cr-form" style="max-width:760px" action="https://api.web3forms.com/submit" method="POST" data-web3>
-            <input type="hidden" name="access_key" value="{{ config('cream.web3forms.contact_key') }}"/>
-            <input type="hidden" name="subject" value="Land document search request"/>
-            <input type="hidden" name="from_name" value="Credence Website"/>
+        @include('public.partials.form-status')
+        <form class="cr-form" style="max-width:760px" action="{{ route('enquiries.store') }}" method="POST" data-enquiry>
+            @csrf
+            <input type="hidden" name="type" value="land_search"/>
             <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
             <div class="row-2"><div><label>Full name</label><input name="name" required/></div><div><label>Email</label><input type="email" name="email" required/></div></div>
             <div class="row-2"><div><label>Phone / WhatsApp</label><input type="tel" name="phone" required/></div><div><label>Country / region</label><input name="country"/></div></div>
             <div class="row-2"><div><label>Plot location</label><input name="plot_location" required/></div><div><label>Search type</label><select name="search_type"><option>Official search</option><option>Search with site visit</option></select></div></div>
             <div><label>Message</label><textarea name="message" placeholder="Anything we should know about the plot…"></textarea></div>
+            @include('partials.turnstile')
             <button type="submit" class="submit">Request land search <x-icon name="arrow"/></button>
             <div class="form-msg" style="display:none"></div>
             <p class="privacy-note">We will ask you to send the site plan by WhatsApp or email after you submit. Your documents are handled per our <a href="/privacy">privacy notice</a>.</p>

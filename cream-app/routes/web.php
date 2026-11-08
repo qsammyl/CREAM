@@ -41,6 +41,11 @@ Route::get('/feedback', [PublicController::class, 'feedback'])->name('feedback')
 Route::post('/feedback', [PublicController::class, 'storeFeedback'])
     ->middleware('throttle:testimonials')->name('feedback.store');
 
+// All public enquiry forms (contact, sell, land search, listing, off-market,
+// new-project, short-stay) post here.
+Route::post('/enquiries', [PublicController::class, 'storeEnquiry'])
+    ->middleware('throttle:enquiries')->name('enquiries.store');
+
 Route::get('/privacy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PublicController::class, 'terms'])->name('terms');
 

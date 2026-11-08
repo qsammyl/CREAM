@@ -6,27 +6,21 @@
 
 @section('content')
     <div class="stat-row">
+        <a class="stat" href="{{ route('staff.enquiries.index') }}" style="text-decoration:none;color:inherit">
+            <div class="k">New enquiries</div>
+            <div class="v">{{ $stats['new_enquiries'] }}</div>
+        </a>
+        <a class="stat" href="{{ route('staff.comments.index') }}" style="text-decoration:none;color:inherit">
+            <div class="k">Comments to moderate</div>
+            <div class="v">{{ $stats['pending_comments'] }}</div>
+        </a>
+        <a class="stat" href="{{ route('staff.testimonials.index') }}" style="text-decoration:none;color:inherit">
+            <div class="k">Testimonials to review</div>
+            <div class="v">{{ $stats['pending_testimonials'] }}</div>
+        </a>
         <div class="stat">
-            <div class="k">Staff accounts</div>
-            <div class="v">{{ $stats['staff_total'] }}</div>
-        </div>
-        <div class="stat">
-            <div class="k">Administrators</div>
-            <div class="v">{{ $stats['admins'] }}</div>
-        </div>
-        <div class="stat">
-            <div class="k">Active accounts</div>
+            <div class="k">Active staff</div>
             <div class="v">{{ $stats['active'] }}</div>
-        </div>
-    </div>
-
-    <div class="panel">
-        <div class="panel-head"><h2>Foundation ready</h2></div>
-        <div class="panel-body prose">
-            <p>This is the Phase&nbsp;2 foundation of the CREAM staff dashboard: secure login,
-               roles, two-factor authentication, the activity log and these base screens.</p>
-            <p class="muted">Coming in the next phases: assets &amp; media, articles &amp; comments,
-               testimonials &amp; QR codes, the enquiries inbox, settings &amp; users, and analytics.</p>
         </div>
     </div>
 

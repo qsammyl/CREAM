@@ -58,7 +58,7 @@ class SecurityHeaders
             "font-src 'self' https://fonts.gstatic.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "script-src 'self' https://challenges.cloudflare.com",
-            "frame-src https://challenges.cloudflare.com",
+            'frame-src https://challenges.cloudflare.com',
             "connect-src 'self'",
             "form-action 'self'",
             'upgrade-insecure-requests',
@@ -68,9 +68,9 @@ class SecurityHeaders
     /**
      * Public site. No inline scripts are used (hero/reels/popup run from
      * /assets/site.js), so script-src stays 'self'. Allowances: Google Fonts,
-     * Google Maps iframes, self-hosted video, and — until Phase 6 — the
-     * Web3Forms endpoint for form submission. The Turnstile host is pre-allowed
-     * for the Phase 6 form rollout.
+     * Google Maps iframes, self-hosted video, and the Cloudflare Turnstile
+     * widget. As of Phase 6 all forms post to this app (no third-party form
+     * endpoint), so connect-src/form-action are 'self' + Turnstile only.
      */
     protected function publicCsp(): string
     {
@@ -83,9 +83,9 @@ class SecurityHeaders
             "font-src 'self' https://fonts.gstatic.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "script-src 'self' https://challenges.cloudflare.com",
-            "frame-src https://www.google.com https://maps.google.com https://challenges.cloudflare.com",
-            "connect-src 'self' https://api.web3forms.com",
-            "form-action 'self' https://api.web3forms.com",
+            'frame-src https://www.google.com https://maps.google.com https://challenges.cloudflare.com',
+            "connect-src 'self'",
+            "form-action 'self'",
             'upgrade-insecure-requests',
         ]);
     }

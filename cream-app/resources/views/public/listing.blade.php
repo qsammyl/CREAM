@@ -138,15 +138,18 @@
                         <a href="{{ $waHref }}" target="_blank" rel="noopener" class="wa"><x-icon name="wa"/> WhatsApp</a>
                         <a href="tel:{{ config('cream.phone.tel') }}"><x-icon name="phone"/> Call</a>
                     </div>
-                    <form action="https://api.web3forms.com/submit" method="POST" data-web3>
-                        <input type="hidden" name="access_key" value="{{ config('cream.web3forms.listing_key') }}"/>
-                        <input type="hidden" name="subject" value="Property Enquiry — {{ $l->title }} ({{ $l->reference }})"/>
-                        <input type="hidden" name="from_name" value="Credence RE Website"/>
+                    @include('public.partials.form-status')
+                    <form action="{{ route('enquiries.store') }}" method="POST" data-enquiry>
+                        @csrf
+                        <input type="hidden" name="type" value="listing"/>
+                        <input type="hidden" name="asset_id" value="{{ $l->id }}"/>
+                        <input type="hidden" name="subject" value="Property enquiry — {{ $l->title }} ({{ $l->reference }})"/>
                         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
                         <input type="text" name="name" placeholder="Full name" required/>
                         <input type="email" name="email" placeholder="Email address" required/>
                         <input type="tel" name="phone" placeholder="Phone / WhatsApp"/>
                         <textarea name="message" placeholder="{{ $isLand ? 'Which documents would you like? Preferred contact time…' : 'Your message or preferred viewing time…' }}"></textarea>
+                        @include('partials.turnstile')
                         <button type="submit" class="submit">{{ $isLand ? 'Request documents' : 'Submit enquiry' }}</button>
                         <div class="form-msg" style="display:none"></div>
                     </form>

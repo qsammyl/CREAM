@@ -8,6 +8,7 @@
 
 use App\Http\Controllers\Staff\ArticleController;
 use App\Http\Controllers\Staff\CommentController;
+use App\Http\Controllers\Staff\EnquiryController;
 use App\Http\Controllers\Staff\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,10 @@ Route::post('testimonials/{testimonial}/archive', [TestimonialController::class,
 Route::post('testimonials/{testimonial}/spam', [TestimonialController::class, 'spam'])->name('testimonials.spam');
 Route::post('testimonials/{testimonial}/feature', [TestimonialController::class, 'feature'])->name('testimonials.feature');
 Route::delete('testimonials/{testimonial}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+
+// Enquiries inbox
+Route::get('enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
+Route::post('enquiries/bulk', [EnquiryController::class, 'bulk'])->name('enquiries.bulk');
+Route::get('enquiries/{enquiry}', [EnquiryController::class, 'show'])->name('enquiries.show');
+Route::patch('enquiries/{enquiry}/status', [EnquiryController::class, 'updateStatus'])->name('enquiries.status');
+Route::delete('enquiries/{enquiry}', [EnquiryController::class, 'destroy'])->name('enquiries.destroy');
