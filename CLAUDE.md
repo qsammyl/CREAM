@@ -17,7 +17,7 @@ The rebuild is done in **numbered phases** (Plan → Foundation → Assets → A
 - **Never invent content** (listings, prices, testimonials, staff, articles). Seed only from the existing `data/*.json` and pages. Mark gaps `TODO(sam)`.
 - **Keep the public design and URLs.** Same fonts/colours/layout; every URL the static site exposed must still resolve (301s only where unavoidable).
 - **No secrets in git.** `cream-app/.env` is git-ignored; `.env.example` carries placeholders.
-- Forms still post to **Web3Forms** until Phase 6 replaces them with Laravel handling (keys are in `.env`, referenced via `config('cream.web3forms.*')`).
+- Forms are **Laravel-handled** (Phase 6). Every public form posts to `POST /enquiries` → one `Enquiry` model (typed `details` JSON), with CSRF + honeypot + Turnstile + rate limit; each submission queues an `EnquiryReceivedMail` to `config('cream.moderation_email')` and appears in the staff inbox at `/staff/enquiries`. Web3Forms is fully removed.
 
 ## Local toolchain — important, non-obvious
 
