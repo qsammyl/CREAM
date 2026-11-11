@@ -133,3 +133,30 @@ table.data tr:last-child td{border-bottom:0}
   .topbar,.content{padding-left:18px;padding-right:18px}
   .codes{columns:1}
 }
+
+/* ---------- Icon row actions (Edit / View / Delete) ---------- */
+.rowacts-ic{display:flex;align-items:center;gap:2px}
+.rowacts-ic form{display:inline-flex;margin:0}
+.rowacts-ic .act{display:inline-grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:8px;background:transparent;color:var(--ink-3);cursor:pointer;transition:background .15s ease,color .15s ease}
+.rowacts-ic .act svg{width:17px;height:17px}
+.rowacts-ic .act:hover{background:var(--bone-2);color:var(--emerald)}
+.rowacts-ic .act:focus-visible{outline:2px solid var(--emerald);outline-offset:1px}
+.rowacts-ic .act-del{color:#B5453A}
+.rowacts-ic .act-del:hover{background:#FBEAE8;color:var(--err-ink)}
+.rowacts-ic .act-del:focus-visible{outline-color:var(--err-ink)}
+
+/* ---------- Brand-matched scrollbars ---------- */
+/* Replaces the default OS scrollbar (grey, with up/down arrows) that clashes
+   with the brand. dashboard.css is staff-only, so the * scope stays scoped
+   to the dashboard. */
+*{scrollbar-width:thin;scrollbar-color:#cdbe9f transparent}
+*::-webkit-scrollbar{width:10px;height:10px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:#cdbe9f;border-radius:999px;border:2px solid transparent;background-clip:padding-box}
+*::-webkit-scrollbar-thumb:hover{background:#b7a37f;background-clip:padding-box}
+*::-webkit-scrollbar-corner{background:transparent}
+/* Dark emerald sidebar nav: translucent light thumb */
+.sidebar,.nav{scrollbar-color:rgba(255,255,255,.24) transparent}
+.nav::-webkit-scrollbar{width:8px}
+.nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border:2px solid transparent;background-clip:padding-box}
+.nav::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.38);background-clip:padding-box}

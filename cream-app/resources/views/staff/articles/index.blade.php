@@ -44,10 +44,10 @@
                             <td class="muted">{{ $a->comments()->count() }}</td>
                             <td class="muted">{{ $a->updated_at->diffForHumans() }}</td>
                             <td>
-                                <div class="rowacts">
-                                    <a href="{{ route('staff.articles.edit', $a) }}">Edit</a>
-                                    @if ($a->status->value === 'published')<a href="{{ $a->url() }}" target="_blank">View</a>@endif
-                                    <form method="POST" action="{{ route('staff.articles.destroy', $a) }}" data-confirm="Delete “{{ $a->title }}”?">@csrf @method('DELETE')<button type="submit">Delete</button></form>
+                                <div class="rowacts rowacts-ic">
+                                    <a href="{{ route('staff.articles.edit', $a) }}" class="act" aria-label="Edit article" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></a>
+                                    @if ($a->status->value === 'published')<a href="{{ $a->url() }}" target="_blank" rel="noopener" class="act" aria-label="View live post" title="View live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></a>@endif
+                                    <form method="POST" action="{{ route('staff.articles.destroy', $a) }}" data-confirm="Delete “{{ $a->title }}”?">@csrf @method('DELETE')<button type="submit" class="act act-del" aria-label="Delete article" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button></form>
                                 </div>
                             </td>
                         </tr>
