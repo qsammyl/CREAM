@@ -69,8 +69,9 @@
                 </select>
                 <button type="submit" class="btn btn-ghost" data-confirm="Apply to selected testimonials?">Apply to selected</button>
             </div>
+        </form>
 
-            @foreach ($testimonials as $t)
+        @foreach ($testimonials as $t)
                 <div class="tst">
                     <div class="chk"><input type="checkbox" name="ids[]" value="{{ $t->id }}" form="bulkForm"></div>
                     <div class="main">
@@ -112,13 +113,19 @@
 
                         <details class="editbox">
                             <summary>Edit display details</summary>
-                            <form method="POST" action="{{ route('staff.testimonials.update', $t) }}">
+                            <form method="POST" action="{{ route('staff.testimonials.update', $t) }}" enctype="multipart/form-data">
                                 @csrf @method('PUT')
                                 <div class="grid">
                                     <div><label>Name</label><input name="name" value="{{ $t->name }}" required></div>
                                     <div><label>Role / area</label><input name="role" value="{{ $t->role }}" placeholder="Buyer · East Legon, 2025"></div>
                                     <div><label>Rating</label><input type="number" name="rating" min="1" max="5" value="{{ $t->rating }}" required></div>
                                     <div><label>Order</label><input type="number" name="sort_order" min="0" value="{{ $t->sort_order }}"></div>
+                                    <div style="grid-column:1/-1">
+                                        <label>Photo (optional)</label>
+                                        @if ($t->photoUrl())<span style="display:inline-flex;align-items:center;gap:8px;margin-right:12px;vertical-align:middle"><img src="{{ $t->photoUrl() }}" alt="" style="width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:center 22%"><label style="font-weight:400;font-size:12px;margin:0"><input type="checkbox" name="remove_photo" value="1"> Remove</label></span>@endif
+                                        <input type="file" name="photo" accept="image/jpeg,image/png,image/webp">
+                                        <div class="hint" style="font-size:11.5px;color:var(--ink-3);margin-top:4px">JPEG/PNG/WebP, re-encoded to WebP. Replaces initials with a round avatar.</div>
+                                    </div>
                                     <div><button type="submit" class="btn btn-ghost" style="padding:7px 14px">Save</button></div>
                                 </div>
                             </form>
@@ -126,7 +133,6 @@
                     </div>
                 </div>
             @endforeach
-        </form>
 
         {{-- Per-row action forms (kept outside the bulk form) --}}
         @foreach ($testimonials as $t)

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Testimonial extends Model
 {
@@ -16,7 +17,7 @@ class Testimonial extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'email', 'role', 'rating', 'body', 'consent',
+        'name', 'email', 'role', 'photo_path', 'rating', 'body', 'consent',
         'status', 'is_featured', 'sort_order', 'source',
         'ip_hash', 'user_agent', 'moderated_by', 'moderated_at',
     ];
@@ -68,6 +69,12 @@ class Testimonial extends Model
     public function initial(): string
     {
         return mb_strtoupper(mb_substr(trim($this->name), 0, 1)) ?: '·';
+    }
+
+    /** Public URL of the avatar photo, or null to fall back to the initials chip. */
+    public function photoUrl(): ?string
+    {
+        return $this->photo_path ? Storage::disk('uploads')->url($this->photo_path) : null;
     }
 
     /** A testimonial can only be published if the author consented. */

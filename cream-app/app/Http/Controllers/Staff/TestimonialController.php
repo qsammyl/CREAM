@@ -6,6 +6,7 @@ use App\Enums\TestimonialStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use App\Support\ActivityLogger;
+use App\Support\ImageProcessor;
 use App\Support\QrCode;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -47,14 +48,32 @@ class TestimonialController extends Controller
             'role' => ['nullable', 'string', 'max:120'],
             'rating' => ['required', 'integer', 'between:1,5'],
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:10240'],
+            'remove_photo' => ['nullable', 'boolean'],
         ]);
 
-        $testimonial->update([
+        $update = [
             'name' => $data['name'],
             'role' => $data['role'] ?? null,
             'rating' => $data['rating'],
             'sort_order' => $data['sort_order'] ?? $testimonial->sort_order,
-        ]);
+        ];
+
+        $processor = new ImageProcessor;
+
+        if ($request->hasFile('photo')) {
+            $result = $processor->process($request->file('photo')->getRealPath(), 'testimonials');
+            $processor->delete([$result['path']]); // avatar only needs the 800px variant
+            if ($testimonial->photo_path) {
+                $processor->delete([$testimonial->photo_path]);
+            }
+            $update['photo_path'] = $result['path_sm'];
+        } elseif ($request->boolean('remove_photo') && $testimonial->photo_path) {
+            $processor->delete([$testimonial->photo_path]);
+            $update['photo_path'] = null;
+        }
+
+        $testimonial->update($update);
         ActivityLogger::log('update', $testimonial);
 
         return back()->with('flash', 'Testimonial details updated.');

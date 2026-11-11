@@ -8,7 +8,8 @@
 .tst-card .q{color:var(--ink-2);line-height:1.7;font-size:16px;margin:6px 0 16px;flex:1}
 .tst-card .stars{color:var(--gold);letter-spacing:2px;font-size:15px;margin-bottom:14px}
 .tst-card .who{display:flex;align-items:center;gap:12px}
-.tst-card .av{width:42px;height:42px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:19px;flex:none}
+.tst-card .av{width:42px;height:42px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:19px;flex:none;overflow:hidden}
+.tst-card .av img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
 .tst-card .n{font-family:var(--serif);font-size:18px}
 .tst-card .r{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
 .tst-cta{background:var(--ink);color:#fff;border-radius:var(--r-l);padding:36px;text-align:center;margin-top:34px}
@@ -34,7 +35,7 @@
                         <blockquote class="q">{{ $t->body }}</blockquote>
                         <div class="stars" aria-label="{{ $t->rating }} out of 5 stars">{{ str_repeat('★', $t->rating).str_repeat('☆', 5 - $t->rating) }}</div>
                         <figcaption class="who">
-                            <div class="av">{{ $t->initial() }}</div>
+                            <div class="av">@if ($t->photoUrl())<img src="{{ $t->photoUrl() }}" alt="{{ $t->name }}" loading="lazy"/>@else{{ $t->initial() }}@endif</div>
                             <div><div class="n">{{ $t->name }}</div>@if ($t->role)<div class="r">{{ $t->role }}</div>@endif</div>
                         </figcaption>
                     </figure>
