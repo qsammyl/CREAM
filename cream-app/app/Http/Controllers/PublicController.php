@@ -42,13 +42,23 @@ class PublicController extends Controller
         $testimonials = Testimonial::query()->approved()
             ->orderByDesc('is_featured')->orderBy('sort_order')->latest()->take(3)->get();
 
+        // Walk-through reels: only assets that actually have a video or a cover
+        // photo, so the cards show real media (like the live site) rather than
+        // empty placeholders. Falls back to the featured list if none qualify.
+        $reels = Asset::query()->defaultListings()->with('media')
+            ->where(fn ($q) => $q->whereNotNull('video_url')->orWhereHas('media'))
+            ->orderBy('sort_order')->orderBy('id')->take(4)->get();
+        if ($reels->isEmpty()) {
+            $reels = $featured->take(4);
+        }
+
         return view('public.home', [
             'title' => 'Credence Real Estate & Asset Management — Building Value. Creating Legacy.',
             'description' => 'Premium real estate, construction and asset management in Accra for Ghanaians at home and in the diaspora. View title-verified properties or talk to our team.',
             'canonical' => '/',
             'active' => '',
             'featured' => $featured,
-            'reels' => $featured->take(4),
+            'reels' => $reels,
             'testimonials' => $testimonials,
         ]);
     }

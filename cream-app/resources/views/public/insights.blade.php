@@ -1,5 +1,21 @@
 @extends('public.layout')
 
+@push('head')
+<style>
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.pay-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:30px 28px}
+.pay-card .pay-num{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--gold-2)}
+.pay-card h3{font-family:var(--serif);font-weight:400;font-size:24px;margin:10px 0}
+.pay-card h3 span{color:var(--ink-3);font-size:16px}
+.pay-card p{color:var(--ink-2);font-size:15px;line-height:1.65;margin:0}
+.pay-note{margin-top:22px;background:var(--ink);color:#fff;border-radius:var(--r-l);padding:34px}
+.pay-note h3{font-family:var(--serif);font-weight:400;font-size:26px;margin:0 0 12px}
+.pay-note p{color:rgba(255,255,255,.82);font-size:15.5px;line-height:1.7;margin:0 0 12px;max-width:68ch}
+.pay-note .pay-sign{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold);margin:16px 0 22px}
+@media(max-width:820px){.pay-grid{grid-template-columns:1fr}}
+</style>
+@endpush
+
 @section('content')
     <x-page-hero :crumbs="[['label' => 'Credence', 'href' => '/'], ['label' => 'Insights']]"
         h1="Insights &amp;<br/><em>the Home Show.</em>"
@@ -41,5 +57,28 @@
         <p class="prose" style="color:var(--ink-2);margin-top:14px">Short, practical notes on the Accra market — pricing by area, what diaspora buyers should watch, and documentation trends.</p>
         {{-- TODO(sam): supply real market notes / statistics for this section. No figures are invented here. --}}
         <p class="small" style="margin-top:10px">Market notes are being prepared. <a href="/contact">Ask us a specific question</a> in the meantime.</p>
+    </div></section>
+
+    <section class="sec bone" id="payment-options"><div class="container">
+        <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Ownership made accessible</div><h2 class="section-title">Flexible<br/>payment options.</h2></div><div class="right">At Credence Real Estate, we make property ownership accessible and convenient — whether you are based in Ghana or living abroad. We offer two flexible ways to pay.</div></div>
+        <div class="pay-grid">
+            <div class="pay-card">
+                <div class="pay-num">01 · Outright</div>
+                <h3>Outright payment <span>(out-of-pocket)</span></h3>
+                <p>Clients who prefer to purchase with their personal funds can make direct payments in accordance with the agreed payment terms.</p>
+            </div>
+            <div class="pay-card">
+                <div class="pay-num">02 · Mortgage</div>
+                <h3>Mortgage financing</h3>
+                <p>We partner with selected banks in Ghana to facilitate mortgage financing for both residents and Ghanaians in the diaspora. Eligible clients can explore suitable mortgage options to make ownership easier and more manageable.</p>
+            </div>
+        </div>
+        <div class="pay-note">
+            <h3>Buying from the diaspora? We have you covered.</h3>
+            <p>You do not need to be physically present in Ghana to secure your dream property. Our team guides you through every stage of the process — from property selection and mortgage application to documentation and acquisition.</p>
+            <p>At Credence, we go beyond selling properties. We provide the guidance, support and financial pathways to help you own your dream home.</p>
+            <p class="pay-sign">Your Vision. Our Credence.</p>
+            <a class="btn-solid" href="/contact?reason=diaspora">Talk to our team <x-icon name="arrow"/></a>
+        </div>
     </div></section>
 @endsection

@@ -82,6 +82,9 @@
 .reel .dur{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:5px;color:#fff}
 .reel .top-row,.reel .body{transition:opacity .3s ease,transform .3s ease}
 .reel:hover .top-row,.reel:hover .body{opacity:0;pointer-events:none;transform:translateY(5px)}
+/* No-media reels: clean branded preview (image-less), mirroring the main site's video cards */
+.reel .ph-brand{background:linear-gradient(165deg,#1C4034 0%,#102A22 48%,#0C0F0D 100%)}
+.reel .ph-brand .ph-mark,.reel .ph-brand .ph-word,.reel .ph-brand .ph-sub{display:none}
 @media(max-width:1080px){.reels-row{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.reels-row{grid-template-columns:1fr 1fr;gap:12px}}
 .test{background:var(--bone)}
@@ -91,7 +94,8 @@
 .qcard .q{font-family:var(--serif);font-size:23px;line-height:1.35;font-style:italic;color:var(--ink)}
 .qcard .stars{color:var(--gold);letter-spacing:.18em;font-size:13px}
 .qcard .who{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
-.qcard .who .av{width:46px;height:46px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:18px;flex:none}
+.qcard .who .av{width:46px;height:46px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:18px;flex:none;overflow:hidden}
+.qcard .who .av img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
 .qcard .who .n{font-family:var(--serif);font-size:18px}
 .qcard .who .r{font-size:12.5px;color:var(--ink-3);margin-top:2px}
 @media(max-width:900px){.test-grid{grid-template-columns:1fr}}
@@ -102,7 +106,7 @@
 .closing .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .closing .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
 .closing .btn-ghost:hover{background:#fff;color:var(--emerald);border-color:#fff}
-.closing .btn-gold:hover{background:#fff}
+.closing .btn-gold:hover{background:#fff;color:var(--emerald)}
 .ceo-quote{background:var(--ink);color:#fff;text-align:center}
 .ceo-quote .q{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,34px);line-height:1.35;max-width:24ch;margin:0 auto}
 .ceo-quote .q em{color:var(--gold)}
@@ -206,7 +210,7 @@
                 @endphp
                 <a href="/listings/{{ $r->slug }}" class="reel" data-video="{{ $r->video_url ? '/'.ltrim($r->video_url, '/') : '' }}">
                     @if ($r->video_url)
-                        <video muted loop playsinline preload="none" @if ($cover) poster="{{ $cover->url() }}" @endif><source src="/{{ ltrim($r->video_url, '/') }}" type="video/mp4"/></video>
+                        <video muted loop playsinline preload="metadata" @if ($cover) poster="{{ $cover->url() }}" @endif><source src="/{{ ltrim($r->video_url, '/') }}" type="video/mp4"/></video>
                     @elseif ($cover)
                         <img src="{{ $cover->url() }}" alt="{{ $r->title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="lazy"/>
                     @else
@@ -237,7 +241,7 @@
         <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Client Voices</div><h2 class="section-title">Trusted at home<br/>and abroad.</h2></div><div class="right">A small selection of the families and investors we have quietly helped build, buy, and manage property across Accra and beyond.</div></div>
         <div class="test-grid">
             @foreach ($testimonials as $t)
-                <div class="qcard"><span class="mark">&ldquo;</span><div class="q">{{ $t->body }}</div><div class="stars" aria-label="{{ $t->rating }} out of 5">{{ str_repeat('★', $t->rating).str_repeat('☆', 5 - $t->rating) }}</div><div class="who"><div class="av">{{ $t->initial() }}</div><div><div class="n">{{ $t->name }}</div>@if ($t->role)<div class="r">{{ $t->role }}</div>@endif</div></div></div>
+                <div class="qcard"><span class="mark">&ldquo;</span><div class="q">{{ $t->body }}</div><div class="stars" aria-label="{{ $t->rating }} out of 5">{{ str_repeat('★', $t->rating).str_repeat('☆', 5 - $t->rating) }}</div><div class="who"><div class="av">@if ($t->photoUrl())<img src="{{ $t->photoUrl() }}" alt="{{ $t->name }}" loading="lazy"/>@else{{ $t->initial() }}@endif</div><div><div class="n">{{ $t->name }}</div>@if ($t->role)<div class="r">{{ $t->role }}</div>@endif</div></div></div>
             @endforeach
         </div>
         <div style="text-align:center;margin-top:28px"><a class="btn-ghost" href="/testimonials">Read more client stories <x-icon name="arrow"/></a></div>

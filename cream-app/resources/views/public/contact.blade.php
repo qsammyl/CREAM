@@ -7,7 +7,7 @@
 @push('head')
 <style>
 .quick{background:var(--bone);padding:40px 0;border-bottom:1px solid var(--line)}
-.quick-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.quick-row{display:grid;grid-template-columns:1fr 1.5fr 1fr 1fr;gap:16px}
 .qitem{display:flex;gap:14px;padding:18px 20px;border-radius:var(--r-m);background:var(--paper);border:1px solid var(--line);transition:all .25s ease}
 .qitem:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--shadow-1)}
 .qitem .ic{width:42px;height:42px;border-radius:50%;background:var(--bone-2);display:grid;place-items:center;color:var(--emerald);flex:none}
@@ -36,7 +36,18 @@
 .cmap{aspect-ratio:21/7;border-radius:var(--r-l);overflow:hidden;margin-top:8px}
 .cmap iframe{width:100%;height:100%;border:0;filter:grayscale(.12)}
 @media(max-width:1080px){.quick-row{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr;gap:40px}.side{position:static}.offices-grid{grid-template-columns:1fr}}
+@media(max-width:1080px){.quick-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.quick-row{grid-template-columns:1fr}}
+.faq{max-width:840px;margin-top:30px;display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:18px 22px;font-family:var(--serif);font-size:19px;line-height:1.25;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:22px;color:var(--gold);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details[open] summary{border-bottom:1px solid var(--line)}
+.faq .faq-a{padding:16px 22px 20px;color:var(--ink-2);font-size:15px;line-height:1.65}
+.faq .faq-a p{margin:0 0 10px}
+.faq .faq-a p:last-child{margin:0}
 </style>
 @endpush
 
@@ -47,7 +58,7 @@
 
     <section class="quick"><div class="container"><div class="quick-row">
         <a class="qitem" href="tel:{{ config('cream.phone.tel') }}"><div class="ic"><x-icon name="phone"/></div><div><div class="k">Phone</div><div class="v">{{ config('cream.phone.display') }}</div><div class="d">By appointment · Mon–Fri</div></div></a>
-        <a class="qitem" href="mailto:{{ config('cream.email') }}"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><div class="k">Email</div><div class="v" style="font-size:14px;word-break:break-all">{{ config('cream.email') }}</div><div class="d">Replies within 1 business day</div></div></a>
+        <a class="qitem" href="mailto:{{ config('cream.email') }}"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><div class="k">Email</div><div class="v" style="font-size:13.5px;white-space:nowrap">{{ config('cream.email') }}</div><div class="d">Replies within 1 business day</div></div></a>
         <a class="qitem" href="https://wa.me/{{ config('cream.whatsapp.number') }}" target="_blank" rel="noopener"><div class="ic"><x-icon name="wa"/></div><div><div class="k">WhatsApp</div><div class="v">{{ config('cream.whatsapp.display') }}</div><div class="d">Voice notes accepted</div></div></a>
         <a class="qitem" href="#offices"><div class="ic"><x-icon name="pin"/></div><div><div class="k">Visit HQ</div><div class="v">East Legon, Accra</div><div class="d">Mon–Fri</div></div></a>
     </div></div></section>
@@ -107,5 +118,23 @@
             <div class="off"><span class="flag">United States · Holdings liaison</span><div class="city">Manchester, CT</div><div class="role">Credence Holdings LLC</div><div class="lines"><div>805 Horizon Way, Manchester CT 06042</div><div>North American diaspora, by appointment.</div></div><div class="hours">By appointment · EST &amp; PST</div></div>
         </div>
         <div class="cmap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Credence RE — East Legon, Accra" src="https://maps.google.com/maps?q={{ config('cream.address.lat') }},{{ config('cream.address.lng') }}&t=&ie=UTF8&output=embed"></iframe></div>
+    </div></section>
+
+    <section class="sec bone" id="faq"><div class="container">
+        <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Good to know</div><h2 class="section-title">Frequently<br/>asked.</h2></div><div class="right">Quick answers on paying for a property and buying from abroad. <a href="/insights#payment-options">More on flexible payment options →</a></div></div>
+        <div class="faq">
+            <details open>
+                <summary>What payment options do you offer?</summary>
+                <div class="faq-a"><p>Two flexible options: <b>outright (out-of-pocket) payment</b> in line with the agreed terms, or <b>mortgage financing</b> arranged through our partner banks in Ghana for eligible residents and diaspora clients.</p></div>
+            </details>
+            <details>
+                <summary>Can I buy from the diaspora without being in Ghana?</summary>
+                <div class="faq-a"><p>Yes — you do not need to be physically present. Our team guides you through every stage remotely, from property selection and mortgage application to documentation and acquisition.</p></div>
+            </details>
+            <details>
+                <summary>Do you help arrange a mortgage?</summary>
+                <div class="faq-a"><p>Yes. We work in partnership with selected banks in Ghana to help eligible clients — at home or abroad — explore suitable mortgage options for easier, more manageable ownership.</p></div>
+            </details>
+        </div>
     </div></section>
 @endsection

@@ -37,11 +37,10 @@
                 <ul style="margin-bottom:22px">
                     <li><a href="/insights">Insights hub</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="/testimonials">Client stories</a></li>
                     <li><a href="{{ config('cream.show.channel') }}" target="_blank" rel="noopener">Signature Home Show</a></li>
                     <li><a href="/search-document">Search Document</a></li>
                 </ul>
-                <h5>Company</h5>
+                {{-- <h5>Company</h5>
                 <div class="of"><b>Accra HQ</b>East Legon, Greater Accra · Ghana<br/><a href="tel:{{ config('cream.phone.tel') }}">{{ config('cream.phone.display') }}</a></div>
                 <div class="of"><a href="mailto:{{ config('cream.email') }}">{{ config('cream.email') }}</a><br/><a href="https://wa.me/{{ config('cream.whatsapp.number') }}" target="_blank" rel="noopener">WhatsApp {{ config('cream.whatsapp.display') }}</a></div>
                 <ul>
@@ -49,7 +48,7 @@
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/privacy">Privacy</a></li>
                     <li><a href="/terms">Terms</a></li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
         <div class="bot">
