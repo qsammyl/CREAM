@@ -42,7 +42,7 @@
         '@context' => 'https://schema.org', '@type' => 'RealEstateListing',
         'name' => $l->title, 'url' => url('/listings/'.$l->slug),
         'description' => $l->summary ?: '',
-        'image' => $cover?->url(),
+        'image' => $cover ? url($cover->url()) : null,
         'offers' => $l->price ? ['@type' => 'Offer', 'price' => $l->price, 'priceCurrency' => $l->currency->value, 'availability' => 'https://schema.org/InStock'] : null,
         'address' => ['@type' => 'PostalAddress', 'addressLocality' => $l->location, 'addressRegion' => 'Greater Accra', 'addressCountry' => 'GH'],
         'numberOfBedrooms' => (! $isLand && $l->beds) ? $l->beds : null,

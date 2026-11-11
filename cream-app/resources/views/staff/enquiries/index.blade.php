@@ -58,7 +58,7 @@
                     <option value="spam">Mark spam</option>
                     <option value="delete">Delete</option>
                 </select>
-                <button type="submit" class="btn btn-ghost" onclick="return confirm('Apply to selected enquiries?')">Apply to selected</button>
+                <button type="submit" class="btn btn-ghost" data-confirm="Apply to selected enquiries?">Apply to selected</button>
             </div>
 
             @foreach ($enquiries as $e)

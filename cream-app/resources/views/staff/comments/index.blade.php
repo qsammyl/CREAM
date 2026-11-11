@@ -47,7 +47,7 @@
                     <option value="spam">Mark as spam</option>
                     <option value="delete">Delete</option>
                 </select>
-                <button type="submit" class="btn btn-ghost" onclick="return confirm('Apply to selected comments?')">Apply to selected</button>
+                <button type="submit" class="btn btn-ghost" data-confirm="Apply to selected comments?">Apply to selected</button>
             </div>
 
             @foreach ($comments as $c)
@@ -66,7 +66,7 @@
                             @if ($c->status->value !== 'spam')
                                 <button type="submit" class="sp" form="spam-{{ $c->id }}">Mark as spam</button>
                             @endif
-                            <button type="submit" class="del" form="del-{{ $c->id }}" onclick="return confirm('Delete this comment?')">Delete</button>
+                            <button type="submit" class="del" form="del-{{ $c->id }}" data-confirm="Delete this comment?">Delete</button>
                         </div>
                     </div>
                 </div>

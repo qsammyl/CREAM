@@ -32,21 +32,21 @@
 @section('content')
     <form method="GET" class="filters">
         <input type="search" name="q" value="{{ request('q') }}" placeholder="Search title, reference, area…"/>
-        <select name="category" onchange="this.form.submit()">
+        <select name="category" data-autosubmit>
             <option value="">All categories</option>
             @foreach ($categories as $v => $label)<option value="{{ $v }}" @selected(request('category') === $v)>{{ $label }}</option>@endforeach
         </select>
-        <select name="status" onchange="this.form.submit()">
+        <select name="status" data-autosubmit>
             <option value="">All statuses</option>
             @foreach ($statuses as $v => $label)<option value="{{ $v }}" @selected(request('status') === $v)>{{ $label }}</option>@endforeach
         </select>
-        <select name="sort" onchange="this.form.submit()">
+        <select name="sort" data-autosubmit>
             <option value="updated" @selected(request('sort', 'updated') === 'updated')>Sort: Updated</option>
             <option value="price" @selected(request('sort') === 'price')>Sort: Price</option>
             <option value="title" @selected(request('sort') === 'title')>Sort: Title</option>
         </select>
-        <label class="chk"><input type="checkbox" name="exclusive" value="1" onchange="this.form.submit()" @checked(request('exclusive'))> Exclusive</label>
-        <label class="chk"><input type="checkbox" name="featured" value="1" onchange="this.form.submit()" @checked(request('featured'))> Featured</label>
+        <label class="chk"><input type="checkbox" name="exclusive" value="1" data-autosubmit @checked(request('exclusive'))> Exclusive</label>
+        <label class="chk"><input type="checkbox" name="featured" value="1" data-autosubmit @checked(request('featured'))> Featured</label>
         <button type="submit" class="btn btn-ghost">Apply</button>
         @if (request()->hasAny(['q', 'category', 'status', 'exclusive', 'featured', 'sort']))
             <a href="{{ route('staff.assets.index') }}" class="btn btn-ghost">Reset</a>
@@ -82,7 +82,7 @@
                                     <a href="{{ route('staff.assets.edit', $a) }}">Edit</a>
                                     <a href="{{ route('staff.assets.preview', $a) }}" target="_blank">Preview</a>
                                     <form method="POST" action="{{ route('staff.assets.duplicate', $a) }}">@csrf<button type="submit" style="color:var(--emerald-3)">Duplicate</button></form>
-                                    <form method="POST" action="{{ route('staff.assets.destroy', $a) }}" onsubmit="return confirm('Move “{{ $a->title }}” to the bin?')">@csrf @method('DELETE')<button type="submit">Bin</button></form>
+                                    <form method="POST" action="{{ route('staff.assets.destroy', $a) }}" data-confirm="Move “{{ $a->title }}” to the bin?">@csrf @method('DELETE')<button type="submit">Bin</button></form>
                                 </div>
                             </td>
                         </tr>

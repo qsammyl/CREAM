@@ -88,7 +88,7 @@
 
             <div class="card">
                 <h3>Danger zone</h3>
-                <form method="POST" action="{{ route('staff.enquiries.destroy', $enquiry) }}" onsubmit="return confirm('Delete this enquiry?')">
+                <form method="POST" action="{{ route('staff.enquiries.destroy', $enquiry) }}" data-confirm="Delete this enquiry?">
                     @csrf @method('DELETE')
                     <button type="submit" class="btn btn-ghost" style="color:var(--err-ink);border-color:var(--err-bd)">Delete enquiry</button>
                 </form>

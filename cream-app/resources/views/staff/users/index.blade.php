@@ -56,7 +56,7 @@
                             <td>@if ($inv->isExpired())<span class="tag off">Expired</span>@else<span class="tag">Awaiting</span>@endif</td>
                             <td style="text-align:right;white-space:nowrap">
                                 <form method="POST" action="{{ route('staff.invitations.resend', $inv) }}" style="display:inline">@csrf<button class="btn btn-ghost" style="padding:5px 10px">Resend</button></form>
-                                <form method="POST" action="{{ route('staff.invitations.destroy', $inv) }}" style="display:inline" onsubmit="return confirm('Revoke this invitation?')">@csrf @method('DELETE')<button class="btn btn-ghost" style="padding:5px 10px;color:var(--err-ink);border-color:var(--err-bd)">Revoke</button></form>
+                                <form method="POST" action="{{ route('staff.invitations.destroy', $inv) }}" style="display:inline" data-confirm="Revoke this invitation?">@csrf @method('DELETE')<button class="btn btn-ghost" style="padding:5px 10px;color:var(--err-ink);border-color:var(--err-bd)">Revoke</button></form>
                             </td>
                         </tr>
                     @endforeach

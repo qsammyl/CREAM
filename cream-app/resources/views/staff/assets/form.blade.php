@@ -166,7 +166,7 @@ textarea.input{min-height:90px;resize:vertical;font-family:inherit}
                                     @unless ($m->is_cover)<form method="POST" action="{{ route('staff.assets.media.cover', $m) }}">@csrf<button type="submit">Set cover</button></form>@endunless
                                     <form method="POST" action="{{ route('staff.assets.media.move', [$m, 'up']) }}">@csrf<button type="submit">↑</button></form>
                                     <form method="POST" action="{{ route('staff.assets.media.move', [$m, 'down']) }}">@csrf<button type="submit">↓</button></form>
-                                    <form method="POST" action="{{ route('staff.assets.media.destroy', $m) }}" onsubmit="return confirm('Delete this photo?')">@csrf @method('DELETE')<button type="submit" class="del">Delete</button></form>
+                                    <form method="POST" action="{{ route('staff.assets.media.destroy', $m) }}" data-confirm="Delete this photo?">@csrf @method('DELETE')<button type="submit" class="del">Delete</button></form>
                                 </div>
                             </div>
                         </div>

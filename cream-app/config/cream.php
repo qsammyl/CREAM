@@ -35,7 +35,9 @@ return [
 
     // Where enquiry notifications and moderation digests / alerts go
     // (Phase 7 makes this editable in Settings).
-    'moderation_email' => env('MODERATION_EMAIL', 'info@credencerealestateandassetmgt.com'),
+    // Use `?:` (not env()'s 2nd arg) so a present-but-empty MODERATION_EMAIL
+    // still falls back — env() only applies its default when the var is absent.
+    'moderation_email' => env('MODERATION_EMAIL') ?: 'info@credencerealestateandassetmgt.com',
 
     'address' => [
         'hq' => 'Bawuah Junction, East Legon, Greater Accra, Ghana',

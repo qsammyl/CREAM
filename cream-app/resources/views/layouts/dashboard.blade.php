@@ -115,6 +115,7 @@
         </main>
     </div>
 </div>
+<script src="/assets/dashboard.js" defer></script>
 @stack('scripts')
 </body>
 </html>

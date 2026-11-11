@@ -53,7 +53,10 @@ return [
         'uploads' => [
             'driver' => 'local',
             'root' => public_path('uploads'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/uploads',
+            // Relative, so <img> URLs are always same-origin (no CSP img-src
+            // host mismatch when the site is reached via www/apex/IP). Absolute
+            // URLs for OG tags / JSON-LD are built with url() at those call sites.
+            'url' => '/uploads',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

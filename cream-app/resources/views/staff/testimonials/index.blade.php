@@ -67,7 +67,7 @@
                     <option value="spam">Mark as spam</option>
                     <option value="delete">Delete</option>
                 </select>
-                <button type="submit" class="btn btn-ghost" onclick="return confirm('Apply to selected testimonials?')">Apply to selected</button>
+                <button type="submit" class="btn btn-ghost" data-confirm="Apply to selected testimonials?">Apply to selected</button>
             </div>
 
             @foreach ($testimonials as $t)
@@ -107,7 +107,7 @@
                             @if ($t->status->value !== 'spam')
                                 <button type="submit" class="sp" form="spam-{{ $t->id }}">Spam</button>
                             @endif
-                            <button type="submit" class="del" form="del-{{ $t->id }}" onclick="return confirm('Delete this testimonial?')">Delete</button>
+                            <button type="submit" class="del" form="del-{{ $t->id }}" data-confirm="Delete this testimonial?">Delete</button>
                         </div>
 
                         <details class="editbox">

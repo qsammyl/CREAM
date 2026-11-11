@@ -22,7 +22,7 @@
 @section('content')
     <form method="GET" class="filters">
         <input type="search" name="q" value="{{ request('q') }}" placeholder="Search title…">
-        <select name="status" onchange="this.form.submit()">
+        <select name="status" data-autosubmit>
             <option value="">All statuses</option>
             @foreach ($statuses as $v => $l)<option value="{{ $v }}" @selected(request('status') === $v)>{{ $l }}</option>@endforeach
         </select>
@@ -47,7 +47,7 @@
                                 <div class="rowacts">
                                     <a href="{{ route('staff.articles.edit', $a) }}">Edit</a>
                                     @if ($a->status->value === 'published')<a href="{{ $a->url() }}" target="_blank">View</a>@endif
-                                    <form method="POST" action="{{ route('staff.articles.destroy', $a) }}" onsubmit="return confirm('Delete “{{ $a->title }}”?')">@csrf @method('DELETE')<button type="submit">Delete</button></form>
+                                    <form method="POST" action="{{ route('staff.articles.destroy', $a) }}" data-confirm="Delete “{{ $a->title }}”?">@csrf @method('DELETE')<button type="submit">Delete</button></form>
                                 </div>
                             </td>
                         </tr>

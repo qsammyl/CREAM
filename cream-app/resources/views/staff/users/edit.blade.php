@@ -61,7 +61,7 @@
         <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
             <button type="submit" class="btn btn-primary">Save changes</button>
             @unless ($isSelf)
-                <button type="submit" form="delete-user" class="btn btn-ghost" style="color:var(--err-ink);border-color:var(--err-bd)" onclick="return confirm('Delete {{ $user->name }}? This cannot be undone.')">Delete account</button>
+                <button type="submit" form="delete-user" class="btn btn-ghost" style="color:var(--err-ink);border-color:var(--err-bd)" data-confirm="Delete {{ $user->name }}? This cannot be undone.">Delete account</button>
             @endunless
         </div>
     </form>
