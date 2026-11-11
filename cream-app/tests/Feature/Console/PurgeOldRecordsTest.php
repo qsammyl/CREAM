@@ -4,6 +4,7 @@ namespace Tests\Feature\Console;
 
 use App\Models\Comment;
 use App\Models\Enquiry;
+use App\Models\PageView;
 use App\Models\Setting;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -43,5 +44,27 @@ class PurgeOldRecordsTest extends TestCase
 
         $this->assertDatabaseMissing('comments', ['id' => $oldSpamComment->id]);
         $this->assertDatabaseHas('comments', ['id' => $recentSpamComment->id]);
+    }
+
+    public function test_old_page_views_are_purged_but_recent_ones_kept(): void
+    {
+        Setting::put('retention_analytics_days', 30);
+
+        $old = PageView::factory()->on(now()->subDays(60))->create();
+        $recent = PageView::factory()->on(now()->subDays(5))->create();
+
+        $this->artisan('cream:purge-old-records')->assertExitCode(0);
+
+        $this->assertDatabaseMissing('page_views', ['id' => $old->id]);
+        $this->assertDatabaseHas('page_views', ['id' => $recent->id]);
+    }
+
+    public function test_page_views_are_kept_when_retention_is_zero(): void
+    {
+        PageView::factory()->on(now()->subYear())->create();
+
+        $this->artisan('cream:purge-old-records')->assertExitCode(0);
+
+        $this->assertDatabaseCount('page_views', 1);
     }
 }

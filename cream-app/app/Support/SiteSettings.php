@@ -49,6 +49,7 @@ class SiteSettings
             'Data retention' => [
                 ['key' => 'retention_enquiries_days', 'path' => null, 'label' => 'Delete closed/spam enquiries after N days (0 = keep forever)', 'type' => 'number'],
                 ['key' => 'retention_comments_days', 'path' => null, 'label' => 'Delete spam comments after N days (0 = keep forever)', 'type' => 'number'],
+                ['key' => 'retention_analytics_days', 'path' => null, 'label' => 'Delete analytics page-views after N days (0 = keep forever)', 'type' => 'number'],
             ],
         ];
     }

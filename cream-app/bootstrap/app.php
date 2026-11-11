@@ -5,6 +5,7 @@ use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\RedirectLegacyHtml;
 use App\Http\Middleware\RequireTwoFactorForAdmins;
 use App\Http\Middleware\SecurityHeaders;
+use App\Http\Middleware\TrackPageView;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -23,6 +24,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Security headers on every response.
         $middleware->append(SecurityHeaders::class);
+
+        // First-party cookieless page-view analytics (records on terminate; it
+        // self-filters to public HTML page loads, so it is safe to run globally).
+        $middleware->append(TrackPageView::class);
 
         // Route middleware aliases.
         $middleware->alias([

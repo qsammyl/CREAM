@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AcceptInvitationController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Staff\ActivityController;
+use App\Http\Controllers\Staff\AnalyticsController;
 use App\Http\Controllers\Staff\DashboardController;
 use App\Http\Controllers\Staff\InvitationController;
 use App\Http\Controllers\Staff\ProfileController;
@@ -84,6 +85,9 @@ Route::middleware(['auth', 'active', AuthenticateSession::class, '2fa.admin'])
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
         Route::post('/profile/logout-other-sessions', [ProfileController::class, 'logoutOtherSessions'])
             ->name('profile.logout-others');
+
+        // Traffic analytics — visible to all staff (aggregate, non-sensitive).
+        Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
 
         Route::middleware('admin')->group(function () {
             Route::get('/activity', [ActivityController::class, 'index'])->name('activity');

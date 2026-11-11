@@ -58,6 +58,11 @@
                 @if ($newEnquiries)<span class="pill">{{ $newEnquiries }}</span>@endif
             </a>
 
+            <a href="{{ route('staff.analytics') }}" class="{{ request()->routeIs('staff.analytics') ? 'active' : '' }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+                Analytics
+            </a>
+
             <a href="{{ route('staff.profile') }}" class="{{ request()->routeIs('staff.profile') ? 'active' : '' }}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
                 Profile &amp; security
