@@ -11,6 +11,9 @@ Artisan::command('inspire', function () {
 // Hourly digest of new pending comments to the moderation inbox.
 Schedule::command('comments:digest')->hourly()->withoutOverlapping();
 
+// Daily retention purge of old closed/spam records (respects Settings; 0 = off).
+Schedule::command('cream:purge-old-records')->dailyAt('03:30')->withoutOverlapping();
+
 // Drain the database queue (queued mail etc.) — the hPanel cron runs
 // `php artisan schedule:run` every minute on the server.
 Schedule::command('queue:work --stop-when-empty --max-time=55')

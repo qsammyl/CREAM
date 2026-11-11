@@ -48,10 +48,6 @@
 @endpush
 
 @section('content')
-    @if (session('flash_error'))
-        <div class="alert" style="background:#FFF8EC;border:1px solid var(--warn-bd);color:var(--warn-ink)">{{ session('flash_error') }}</div>
-    @endif
-
     <div class="tabs">
         @foreach (['pending' => 'Pending', 'approved' => 'Published', 'archived' => 'Archived', 'spam' => 'Spam'] as $k => $label)
             <a href="{{ route('staff.testimonials.index', ['tab' => $k]) }}" class="{{ $tab === $k ? 'on' : '' }}">{{ $label }}<span class="n">{{ $counts[$k] }}</span></a>

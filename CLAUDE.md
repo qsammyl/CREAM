@@ -31,9 +31,9 @@ Development is on Windows with **Laravel Herd**. Two gotchas:
   Run Composer under 8.4 too: `php84 "$HOME/.config/herd/bin/composer.phar" <args>` (platform is pinned to 8.4 in `composer.json`).
 - The database is a **portable MariaDB 10.11** that does **not auto-start** and stops when the session ends. Start it manually before migrating/serving:
   ```
-  C:\Users\qsamm\mariadb\mariadb-10.11.19-winx64\bin\mysqld.exe --no-defaults --datadir=C:\Users\qsamm\mariadb-data --port=3306 --bind-address=127.0.0.1 --console
+  C:\Users\qsamm\mariadb\mariadb-10.11.19-winx64\bin\mysqld.exe --no-defaults --datadir=C:\Users\qsamm\mariadb-data --port=3309 --bind-address=127.0.0.1 --console
   ```
-  Databases `cream` (dev) and `cream_test` exist; user `cream` / password in `.env`.
+  The port must match `DB_PORT` in `.env` (currently **3309**). Databases `cream` (dev) and `cream_test` exist; user `cream` / password in `.env`.
 
 ## Commands
 

@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Auth\AcceptInvitationController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Staff\ActivityController;
 use App\Http\Controllers\Staff\DashboardController;
+use App\Http\Controllers\Staff\InvitationController;
 use App\Http\Controllers\Staff\ProfileController;
+use App\Http\Controllers\Staff\SettingsController;
+use App\Http\Controllers\Staff\UserController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +69,12 @@ Route::get('/{legacy}', [PublicController::class, 'legacyArticle'])
 |--------------------------------------------------------------------------
 */
 
+// Invitation acceptance — public (no auth), the invitee sets their password here.
+Route::get('/staff/invite/{token}', [AcceptInvitationController::class, 'show'])
+    ->where('token', '[A-Za-z0-9]+')->name('invitation.accept.show');
+Route::post('/staff/invite/{token}', [AcceptInvitationController::class, 'accept'])
+    ->where('token', '[A-Za-z0-9]+')->name('invitation.accept');
+
 Route::middleware(['auth', 'active', AuthenticateSession::class, '2fa.admin'])
     ->prefix('staff')
     ->name('staff.')
@@ -77,6 +87,18 @@ Route::middleware(['auth', 'active', AuthenticateSession::class, '2fa.admin'])
 
         Route::middleware('admin')->group(function () {
             Route::get('/activity', [ActivityController::class, 'index'])->name('activity');
+
+            Route::get('/settings', [SettingsController::class, 'edit'])->name('settings');
+            Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
+
+            Route::get('/users', [UserController::class, 'index'])->name('users.index');
+            Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+            Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+            Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+            Route::post('/invitations', [InvitationController::class, 'store'])->name('invitations.store');
+            Route::post('/invitations/{invitation}/resend', [InvitationController::class, 'resend'])->name('invitations.resend');
+            Route::delete('/invitations/{invitation}', [InvitationController::class, 'destroy'])->name('invitations.destroy');
         });
 
         require __DIR__.'/staff-assets.php';

@@ -64,6 +64,14 @@
             </a>
             @if ($me->isAdmin())
                 <div class="nav-sec">Admin</div>
+                <a href="{{ route('staff.users.index') }}" class="{{ request()->routeIs('staff.users.*') ? 'active' : '' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5.2"/></svg>
+                    Staff users
+                </a>
+                <a href="{{ route('staff.settings') }}" class="{{ request()->routeIs('staff.settings*') ? 'active' : '' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 4.6 15H4a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 6 8.6l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 11 4.6V4a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8 1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+                    Settings
+                </a>
                 <a href="{{ route('staff.activity') }}" class="{{ request()->routeIs('staff.activity') ? 'active' : '' }}">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
                     Activity log
@@ -99,6 +107,9 @@
             @endif
             @if (session('flash'))
                 <div class="alert alert-ok">{{ session('flash') }}</div>
+            @endif
+            @if (session('flash_error'))
+                <div class="alert" style="background:#FFF8EC;border:1px solid var(--warn-bd);color:var(--warn-ink)">{{ session('flash_error') }}</div>
             @endif
             @yield('content')
         </main>

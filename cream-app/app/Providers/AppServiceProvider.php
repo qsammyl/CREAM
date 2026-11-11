@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Enums\AssetCategory;
 use App\Models\Asset;
+use App\Support\SiteSettings;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\View;
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Overlay admin-edited settings onto config('cream.*') defaults.
+        SiteSettings::apply();
+
         // Public comment submissions: 3 per IP per 10 minutes.
         RateLimiter::for('comments', fn ($request) => Limit::perMinutes(10, 3)->by($request->ip()));
 
