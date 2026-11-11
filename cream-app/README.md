@@ -9,8 +9,8 @@ Lives alongside the original static site (one directory up) until cut-over.
 - **Server layout (production):** app outside `public_html`, only `public/` inside it (Hostinger doc-root can't be moved)
 
 > Phase status and the full plan live in the project root. This README covers
-> **local development setup** (Phase 2 foundation). Deployment, backups and the
-> release packaging scripts are added in Phase 9.
+> **local development setup**. For production packaging and the Hostinger
+> cut-over, see **[`../DEPLOY.md`](../DEPLOY.md)** and `deploy/package.ps1`.
 
 ## Requirements (local, Windows)
 
@@ -83,6 +83,19 @@ Covers: login (valid / invalid / inactive / generic error), role permissions
 (staff blocked from admin-only routes), the 2FA-required-for-admins gate, the
 activity log (login / failed login, IP stored only hashed), and the
 `cream:create-admin` command.
+
+## Deployment (production)
+
+The app ships to Hostinger in a **split layout** — app outside `public_html`,
+only the web root's contents inside it. Build an upload-ready release locally:
+
+```powershell
+pwsh deploy\package.ps1 -Zip      # writes dist\{cream-app,public_html}\ (+ zip)
+```
+
+Then follow **[`../DEPLOY.md`](../DEPLOY.md)** (first deploy, content cut-over,
+cron, updates, rollback). The tooling only builds the package; you run every
+server step yourself.
 
 ## What's here (Phase 2)
 

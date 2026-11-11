@@ -47,16 +47,21 @@ return [
             'report' => false,
         ],
 
-        // Web-served uploads. Rooted inside the web root (public/uploads →
-        // public_html/uploads in production), so no storage:link symlink is
-        // needed on Hostinger. Only re-encoded, EXIF-stripped images land here.
+        // Web-served uploads. Only re-encoded, EXIF-stripped images land here;
+        // no storage:link symlink is needed on Hostinger.
+        //
+        // Locally the web root IS the app's public/ dir, so the default
+        // public_path('uploads') is correct. In the production split layout the
+        // app lives OUTSIDE public_html, so set UPLOADS_ROOT to the real docroot
+        // uploads folder (e.g. /home/<user>/public_html/uploads) — otherwise
+        // images would be written outside the served root. See DEPLOY.md.
         'uploads' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
+            'root' => env('UPLOADS_ROOT', public_path('uploads')),
             // Relative, so <img> URLs are always same-origin (no CSP img-src
             // host mismatch when the site is reached via www/apex/IP). Absolute
             // URLs for OG tags / JSON-LD are built with url() at those call sites.
-            'url' => '/uploads',
+            'url' => env('UPLOADS_URL', '/uploads'),
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
