@@ -38,16 +38,14 @@
 @media(max-width:1080px){.quick-row{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr;gap:40px}.side{position:static}.offices-grid{grid-template-columns:1fr}}
 @media(max-width:1080px){.quick-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.quick-row{grid-template-columns:1fr}}
-.faq{max-width:840px;margin-top:30px;display:flex;flex-direction:column;gap:12px}
-.faq details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden}
-.faq summary{list-style:none;cursor:pointer;padding:18px 22px;font-family:var(--serif);font-size:19px;line-height:1.25;display:flex;justify-content:space-between;align-items:center;gap:18px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--mono);font-size:22px;color:var(--gold);flex:none}
-.faq details[open] summary::after{content:"–"}
-.faq details[open] summary{border-bottom:1px solid var(--line)}
-.faq .faq-a{padding:16px 22px 20px;color:var(--ink-2);font-size:15px;line-height:1.65}
-.faq .faq-a p{margin:0 0 10px}
-.faq .faq-a p:last-child{margin:0}
+.faq-head{max-width:620px;margin-bottom:36px}
+.faq-head .section-title{margin:10px 0 0}
+.faq-intro{color:var(--ink-2);font-size:16px;line-height:1.6;margin-top:14px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 56px}
+.faq-grid .qa h3{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.2;margin:0 0 9px}
+.faq-grid .qa p{color:var(--ink-2);font-size:14.5px;line-height:1.66;margin:0}
+.faq-grid .qa a{color:var(--gold-2);text-decoration:underline;text-underline-offset:2px}
+@media(max-width:820px){.faq-grid{grid-template-columns:1fr;gap:26px}}
 </style>
 @endpush
 
@@ -121,20 +119,18 @@
     </div></section>
 
     <section class="sec bone" id="faq"><div class="container">
-        <div class="section-head"><div class="left"><div class="eyebrow"><span class="dot"></span>Good to know</div><h2 class="section-title">Frequently<br/>asked.</h2></div><div class="right">Quick answers on paying for a property and buying from abroad. <a href="/insights#payment-options">More on flexible payment options →</a></div></div>
-        <div class="faq">
-            <details open>
-                <summary>What payment options do you offer?</summary>
-                <div class="faq-a"><p>Two flexible options: <b>outright (out-of-pocket) payment</b> in line with the agreed terms, or <b>mortgage financing</b> arranged through our partner banks in Ghana for eligible residents and diaspora clients.</p></div>
-            </details>
-            <details>
-                <summary>Can I buy from the diaspora without being in Ghana?</summary>
-                <div class="faq-a"><p>Yes — you do not need to be physically present. Our team guides you through every stage remotely, from property selection and mortgage application to documentation and acquisition.</p></div>
-            </details>
-            <details>
-                <summary>Do you help arrange a mortgage?</summary>
-                <div class="faq-a"><p>Yes. We work in partnership with selected banks in Ghana to help eligible clients — at home or abroad — explore suitable mortgage options for easier, more manageable ownership.</p></div>
-            </details>
+        <div class="faq-head">
+            <div class="eyebrow"><span class="dot"></span>Common Questions</div>
+            <h2 class="section-title">What to ask<br/>on a first call.</h2>
+            <p class="faq-intro">A few of the questions clients ask most often, with our short answers. Bring more on the call — we welcome them.</p>
+        </div>
+        <div class="faq-grid">
+            <div class="qa"><h3>Do you work with diaspora buyers?</h3><p>Yes — it's our specialism. We provide end-to-end service from land due diligence and title verification through construction, interior finishing, and ongoing management for clients in the USA, UK, and beyond.</p></div>
+            <div class="qa"><h3>How are properties verified?</h3><p>Every property we list has been title-searched at the Lands Commission, independently surveyed, and signed off by retained counsel. We share full documentation on confirmed enquiry.</p></div>
+            <div class="qa"><h3>Can I tour a property remotely?</h3><p>Absolutely. We produce live walkthroughs via WhatsApp video, full cinematic tours for shortlisted homes, and arrange in-person tours for visiting family or counsel on your behalf.</p></div>
+            <div class="qa"><h3>What does property management include?</h3><p>Tenant sourcing &amp; vetting, rent collection, 24-hour maintenance, monthly statements, quarterly condition reports, and a dedicated account manager who knows your property by name.</p></div>
+            <div class="qa"><h3>Do you build on land I already own?</h3><p>Yes. We provide standalone construction &amp; project management for clients with existing land — from concept through handover, with weekly site reporting throughout.</p></div>
+            <div class="qa"><h3>What payment options do you offer?</h3><p>Two flexible routes — outright (out-of-pocket) payment in line with the agreed terms, or mortgage financing through our partner banks in Ghana for eligible residents and diaspora clients. Developments also use staged payments tied to verifiable milestones, with escrow available on request. <a href="/insights#payment-options">More on flexible payment options →</a></p></div>
         </div>
     </div></section>
 @endsection
