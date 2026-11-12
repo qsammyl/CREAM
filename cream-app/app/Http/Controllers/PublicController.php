@@ -157,6 +157,34 @@ class PublicController extends Controller
         ]);
     }
 
+    /**
+     * Bespoke campaign landing page for a featured partnership project
+     * (currently SUNRIDGE). Content lives in the dedicated Blade view; only
+     * the published campaign is served, everything else 404s. Credence is the
+     * sole point of contact — the page never links out to the developer.
+     */
+    public function project(string $slug): View
+    {
+        $campaign = config('cream.campaign');
+
+        // The page stays reachable while the campaign slug + view exist, even if
+        // the popup is toggled off in Settings — so existing links never 404.
+        abort_unless(
+            ($campaign['slug'] ?? null) === $slug && view()->exists("public.projects.{$slug}"),
+            404
+        );
+
+        return view("public.projects.{$slug}", [
+            'active' => 'assets',
+            'includePopup' => false,
+            'campaign' => $campaign,
+            'title' => $campaign['name'].' — '.$campaign['subtitle'].' | Credence Real Estate',
+            'description' => 'SUNRIDGE: an 80-acre villa city beside the University of Ghana, Accra — detached villas and townhouses with a central clubhouse, retail and 30% green space. 500 homes now released. Register your interest with Credence.',
+            'canonical' => '/projects/'.$slug,
+            'ogImage' => '/assets/projects/'.$slug.'/og.jpg',
+        ]);
+    }
+
     public function shortStays(): View
     {
         $items = Asset::query()->defaultListings()->category(AssetCategory::ShortStay)->with('media')->orderBy('sort_order')->get();

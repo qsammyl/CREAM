@@ -30,6 +30,8 @@ class SettingsController extends Controller
                 'email' => ['nullable', 'email', 'max:255'],
                 'url' => ['nullable', 'url', 'max:255'],
                 'number' => ['nullable', 'integer', 'min:0', 'max:3650'],
+                'textarea' => ['nullable', 'string', 'max:1000'],
+                'toggle' => ['nullable', 'boolean'],
                 default => ['nullable', 'string', 'max:255'],
             };
         }
@@ -37,6 +39,14 @@ class SettingsController extends Controller
         $data = $request->validate($rules);
 
         foreach (SiteSettings::fields() as $field) {
+            // Checkboxes don't submit when off — store an explicit boolean so a
+            // deliberate "off" overrides the config default.
+            if ($field['type'] === 'toggle') {
+                Setting::put($field['key'], $request->boolean($field['key']));
+
+                continue;
+            }
+
             $value = $data[$field['key']] ?? null;
             if ($field['type'] === 'number') {
                 $value = (int) $value;

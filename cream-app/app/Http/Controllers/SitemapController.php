@@ -16,6 +16,10 @@ class SitemapController extends Controller
             '/search-document', '/insights', '/blog', '/privacy', '/terms',
         ];
 
+        if (config('cream.campaign.enabled')) {
+            $staticPaths[] = '/projects/'.config('cream.campaign.slug');
+        }
+
         $today = now()->toDateString();
         $urls = [];
 

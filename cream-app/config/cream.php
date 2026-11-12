@@ -62,4 +62,28 @@ return [
         'latest_video_id' => 'R1tyNIg0JXA',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Featured project campaign (site-wide promo popup)
+    |--------------------------------------------------------------------------
+    | Drives the attention popup shown across the public site and links to the
+    | bespoke /projects/{slug} landing page. Set enabled => false to retire it.
+    | Credence is the sole point of contact — the popup/page never link out to
+    | the developer or masterplanner. Prices/timeline are deliberately "on
+    | request" so every lead comes through us.
+    */
+    'campaign' => [
+        'enabled' => true,
+        'slug' => 'sunridge',
+        'name' => 'SUNRIDGE',
+        'subtitle' => 'University City of Ghana',
+        'eyebrow' => 'Now selling · 500 homes',
+        'location' => 'University of Ghana enclave · Accra',
+        'teaser' => '500 homes released to the public',
+        'blurb' => 'An 80-acre gated villa city beside the University of Ghana — detached villas, townhouses, a central clubhouse and retail.',
+        'image' => '/assets/projects/sunridge/popup.jpg',
+        'href' => '/projects/sunridge',
+        'foot' => 'Prices and floor plans on request — speak to Credence directly.',
+    ],
+
 ];

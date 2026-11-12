@@ -46,6 +46,22 @@ class SiteSettings
                 ['key' => 'show_channel', 'path' => 'show.channel', 'label' => 'Channel URL', 'type' => 'url'],
                 ['key' => 'show_latest_video', 'path' => 'show.latest_video_id', 'label' => 'Latest video ID (YouTube)', 'type' => 'text'],
             ],
+            // Controls the site-wide attention popup (and its promo nav links /
+            // sitemap entry). The destination page at /projects/{slug} stays
+            // live regardless, so existing links never 404. `slug` is structural
+            // (it maps to the Blade view) so it is intentionally not editable here.
+            'Featured project popup' => [
+                ['key' => 'campaign_enabled', 'path' => 'campaign.enabled', 'label' => 'Show the popup across the site', 'type' => 'toggle'],
+                ['key' => 'campaign_teaser', 'path' => 'campaign.teaser', 'label' => 'Badge text (e.g. “500 homes released to the public”)', 'type' => 'text'],
+                ['key' => 'campaign_eyebrow', 'path' => 'campaign.eyebrow', 'label' => 'Eyebrow (small line above the title)', 'type' => 'text'],
+                ['key' => 'campaign_name', 'path' => 'campaign.name', 'label' => 'Project name (popup title)', 'type' => 'text'],
+                ['key' => 'campaign_subtitle', 'path' => 'campaign.subtitle', 'label' => 'Subtitle', 'type' => 'text'],
+                ['key' => 'campaign_location', 'path' => 'campaign.location', 'label' => 'Location line', 'type' => 'text'],
+                ['key' => 'campaign_blurb', 'path' => 'campaign.blurb', 'label' => 'Blurb', 'type' => 'textarea'],
+                ['key' => 'campaign_href', 'path' => 'campaign.href', 'label' => 'Link (e.g. /projects/sunridge)', 'type' => 'text'],
+                ['key' => 'campaign_image', 'path' => 'campaign.image', 'label' => 'Image path (e.g. /assets/projects/sunridge/popup.jpg)', 'type' => 'text'],
+                ['key' => 'campaign_foot', 'path' => 'campaign.foot', 'label' => 'Footnote', 'type' => 'textarea'],
+            ],
             'Data retention' => [
                 ['key' => 'retention_enquiries_days', 'path' => null, 'label' => 'Delete closed/spam enquiries after N days (0 = keep forever)', 'type' => 'number'],
                 ['key' => 'retention_comments_days', 'path' => null, 'label' => 'Delete spam comments after N days (0 = keep forever)', 'type' => 'number'],
@@ -72,6 +88,17 @@ class SiteSettings
                     continue;
                 }
                 $value = Setting::get($field['key']);
+
+                // Toggles are stored as a real boolean and must override even
+                // when false (a stored "0" string would otherwise be truthy).
+                if (($field['type'] ?? null) === 'toggle') {
+                    if ($value !== null) {
+                        config(['cream.'.$field['path'] => (bool) $value]);
+                    }
+
+                    continue;
+                }
+
                 if ($value !== null && $value !== '') {
                     config(['cream.'.$field['path'] => $value]);
                 }

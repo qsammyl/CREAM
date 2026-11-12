@@ -10,7 +10,7 @@
             <h5>Properties</h5>
             <a href="/properties/buy">Buy</a><a href="/properties/rent">Rent</a><a href="/sell">Sell with us</a><a href="/properties/land">Land</a>
             <h5>Exclusives</h5>
-            <a href="/exclusives">Exclusive listings</a><a href="/new-projects">New projects &amp; off-plan</a><a href="/exclusives#off-market">Off-market brief</a>
+            @if (config('cream.campaign.enabled'))<a href="{{ config('cream.campaign.href') }}">{{ config('cream.campaign.name') }} — University City</a>@endif<a href="/exclusives">Exclusive listings</a><a href="/new-projects">New projects &amp; off-plan</a><a href="/exclusives#off-market">Off-market brief</a>
             <h5>Short stays</h5>
             <a href="/short-stays">Short-stay homes</a><a href="/short-stays#request">Request dates</a>
         </div>

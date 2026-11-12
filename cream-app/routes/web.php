@@ -32,6 +32,8 @@ Route::get('/properties/land', [PublicController::class, 'land'])->name('propert
 Route::get('/sell', [PublicController::class, 'sell'])->name('sell');
 Route::get('/exclusives', [PublicController::class, 'exclusives'])->name('exclusives');
 Route::get('/new-projects', [PublicController::class, 'newProjects'])->name('new-projects');
+Route::get('/projects/{slug}', [PublicController::class, 'project'])
+    ->where('slug', '[a-z0-9-]+')->name('projects.show');
 Route::get('/short-stays', [PublicController::class, 'shortStays'])->name('short-stays');
 Route::get('/search-document', [PublicController::class, 'searchDocument'])->name('search-document');
 

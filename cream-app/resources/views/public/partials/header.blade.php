@@ -35,6 +35,9 @@
                             <a role="menuitem" href="/properties/land">Land</a>
                         </div>
                         <div class="col"><h4>Exclusives</h4>
+                            @if (config('cream.campaign.enabled'))
+                                <a role="menuitem" class="mega-feature" href="{{ config('cream.campaign.href') }}">{{ config('cream.campaign.name') }} <span>New · University City</span></a>
+                            @endif
                             <a role="menuitem" href="/exclusives">Exclusive listings</a>
                             <a role="menuitem" href="/new-projects">New projects &amp; off-plan</a>
                             <a role="menuitem" href="/exclusives#off-market">Off-market brief</a>

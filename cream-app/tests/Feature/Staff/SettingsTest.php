@@ -48,6 +48,31 @@ class SettingsTest extends TestCase
         $this->assertSame(90, (int) Setting::get('retention_enquiries_days'));
     }
 
+    public function test_admin_can_edit_and_toggle_the_featured_popup(): void
+    {
+        // Save copy + turn the popup off (unchecked checkbox is simply absent).
+        $this->actingAs($this->admin())
+            ->put('/staff/settings', [
+                'campaign_name' => 'SUNRIDGE',
+                'campaign_blurb' => 'An 80-acre villa city beside the University of Ghana.',
+            ])
+            ->assertRedirect()
+            ->assertSessionHas('flash');
+
+        SiteSettings::apply();
+        $this->assertFalse(config('cream.campaign.enabled'));
+        $this->assertSame('SUNRIDGE', config('cream.campaign.name'));
+        $this->assertSame('An 80-acre villa city beside the University of Ghana.', config('cream.campaign.blurb'));
+
+        // Turning it back on overrides the stored "off".
+        $this->actingAs($this->admin())
+            ->put('/staff/settings', ['campaign_enabled' => '1'])
+            ->assertRedirect();
+
+        SiteSettings::apply();
+        $this->assertTrue(config('cream.campaign.enabled'));
+    }
+
     public function test_invalid_email_is_rejected(): void
     {
         $this->actingAs($this->admin())

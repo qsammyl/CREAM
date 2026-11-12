@@ -216,3 +216,13 @@ body.has-solid-header header.site .main-bar{ background:rgba(246,242,236,.94); b
 /* Empty state */
 .cr-empty{ border:1px dashed var(--line-2); border-radius:var(--r-l); padding:48px 32px; text-align:center; color:var(--ink-3); background:var(--paper); }
 .cr-empty h3{ font-family:var(--serif); font-weight:400; font-size:26px; color:var(--ink); margin:0 0 10px; }
+
+/* ---------- Featured campaign (nav link + promo popup accent) ---------- */
+/* Featured mega link — selectors match `.mega .col a` specificity (0-3-2) and add
+   `.mega-feature`, so they win over the base mega-link rule above. */
+header.site .mega .col a.mega-feature{ display:flex; flex-direction:column; align-items:flex-start; gap:3px; padding:9px 12px; margin:-2px 0 8px; border-radius:10px; background:linear-gradient(180deg, rgba(184,150,94,.14), rgba(184,150,94,.06)); border:1px solid rgba(184,150,94,.35); font-weight:600; color:var(--emerald); border-bottom:1px solid rgba(184,150,94,.35); transition:background .18s ease, color .18s ease, border-color .18s ease; }
+header.site .mega .col a.mega-feature:hover{ background:var(--emerald); color:#fff; border-color:var(--emerald); }
+header.site .mega .col a.mega-feature span{ font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-2); font-weight:500; }
+header.site .mega .col a.mega-feature:hover span{ color:#E7D6B4; }
+.cr-modal .cr-badge{ align-self:flex-start; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:var(--rust); padding:5px 11px; border-radius:999px; }
+.cr-modal .cr-photo .cr-photo-tag{ position:absolute; left:16px; bottom:16px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:rgba(15,14,12,.55); padding:5px 10px; border-radius:999px; }
